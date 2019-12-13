@@ -38,8 +38,8 @@ team.
 1.  Click the button
 2.  Select the team to install the application
 3.  Select the default channel to post to (this can be changed later)
-4.  If successful a `SLACK_KEY_ID` will be returned. :point\_left:
-    :rotating\_light: **Keep this Key** :rotating\_light:
+4.  If successful a `SLACK_KEY_ID` will be returned. 👈 🚨 **Keep this
+    Key** 🚨
 5.  If not successful an error message will be returned.
 6.  To keep the data safe you need your team `MEMBERID` to authenticate
     the `SLACK_KEY_ID`. [How to locate your Member
