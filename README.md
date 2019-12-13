@@ -7,6 +7,8 @@
 
 [![Covrpage
 Summary](https://img.shields.io/badge/covrpage-Last_Build_2019_12_12-brightgreen.svg)](http://tinyurl.com/qq3vz59)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 `slackteams` is an `R` package that allows the user to manage multiple
