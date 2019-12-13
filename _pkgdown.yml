@@ -12,6 +12,10 @@ navbar:
     - github
     - twitter
   components:
+    articles: ~
+    articleindex:
+      text: Articles
+      href: articles/index.html
     twitter:
       icon: fa-lg fa-twitter
       href: http://twitter.com/yoniceedee
@@ -28,3 +32,6 @@ reference:
   contents: has_concept("get")
 - title: Set Teams Information
   contents: has_concept("set")
+articles:
+- title: Unit Tests
+  contents: tests_and_coverage

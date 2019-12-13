@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-12 December, 2019 20:15:04
+12 December, 2019 21:46:25
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -33,7 +33,7 @@ package.
 
 | file                                                     | n |  time | error | failed | skipped | warning |
 | :------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: |
-| [test-file\_managment.R](testthat/test-file_managment.R) | 1 | 0.013 |     0 |      0 |       0 |       0 |
+| [test-file\_managment.R](testthat/test-file_managment.R) | 1 | 0.017 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
@@ -42,7 +42,7 @@ package.
 
 | file                                                        | context         | test                 | status | n |  time |
 | :---------------------------------------------------------- | :-------------- | :------------------- | :----- | -: | ----: |
-| [test-file\_managment.R](testthat/test-file_managment.R#L2) | file\_managment | multiplication works | PASS   | 1 | 0.013 |
+| [test-file\_managment.R](testthat/test-file_managment.R#L2) | file\_managment | multiplication works | PASS   | 1 | 0.017 |
 
 </details>
 
