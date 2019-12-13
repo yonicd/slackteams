@@ -46,7 +46,7 @@ The following button will create a Slack incoming webhook with the correct scope
 6. To keep the data safe you need your team `MEMBERID` to authenticate the `SLACK_KEY_ID`. [How to locate your Member ID](https://medium.com/@moshfeu/how-to-find-my-member-id-in-slack-workspace-d4bba942e38c)
 7. Paste the output into a json file. Default path that `slackteams` looks for the file is `~/slackr.json`.
 
-#### slackr-app.json
+#### slackr.json
 
 ```json
 {

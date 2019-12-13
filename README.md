@@ -47,7 +47,7 @@ team.
 7.  Paste the output into a json file. Default path that `slackteams`
     looks for the file is `~/slackr.json`.
 
-#### slackr-app.json
+#### slackr.json
 
 ``` json
 {
