@@ -15,6 +15,7 @@ License: MIT + file LICENSE
 Depends: R (>= 3.2.0)
 Imports: jsonlite,httr
 Suggests: 
+    slackr,
     emo,
     testthat (>= 2.1.0),
     details,
