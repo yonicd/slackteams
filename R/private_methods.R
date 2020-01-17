@@ -1,5 +1,5 @@
 clean_users = function(obj,team){
-  obj[!obj$deleted,c('id','name','title','real_name')]
+  obj[!obj$deleted,]
 }
 
 clean_channel <- function(obj, team){

@@ -1,6 +1,7 @@
 #' @title Query Team Information
 #' @description Functions to extract information about teams
 #' @param team character, name of team
+#' @param fields character, columns to return in get_team_channels and get_team_users, NULL will return all the columns
 #' @return character
 #' @concept get
 #' @rdname get_methods
@@ -58,23 +59,34 @@ get_team_creds <- function(team){
 
 #' @rdname get_methods
 #' @export
-get_team_users <- function(team){
+get_team_users <- function(team,fields = c('id','name','title','real_name')){
 
   if(missing(team)){
     team <- get_active_team()
   }
 
-  .slack$users[[team]]
+  users <- .slack$users[[team]]
+
+  if(!is.null(fields))
+    users <- users[,fields]
+
+  users
 
 }
 
 #' @rdname get_methods
 #' @export
-get_team_channels <- function(team){
+get_team_channels <- function(team,fields = NULL){
 
   if(missing(team)){
     team <- get_active_team()
   }
 
-  .slack$channels[[team]]
+  chnls <- .slack$channels[[team]]
+
+  if(!is.null(fields))
+    chnls <- chnls[,fields]
+
+  chnls
+
 }

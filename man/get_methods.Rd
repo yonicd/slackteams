@@ -17,12 +17,14 @@ get_active_team()
 
 get_team_creds(team)
 
-get_team_users(team)
+get_team_users(team, fields = c("id", "name", "title", "real_name"))
 
-get_team_channels(team)
+get_team_channels(team, fields = NULL)
 }
 \arguments{
 \item{team}{character, name of team}
+
+\item{fields}{character, columns to return in get_team_channels and get_team_users, NULL will return all the columns}
 }
 \value{
 character

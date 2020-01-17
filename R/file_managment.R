@@ -49,18 +49,11 @@ load_teams_dcf <- function(file = '~/.slackr', verbose = TRUE){
 #' @title Manage Team Files
 #' @description Upload or Update json file containing slackr-app keys
 #' @param file character, path to file
-#' @param verbose PARAM_DESCRIPTION, Default: TRUE
-#' @param auto_unbox PARAM_DESCRIPTION, Default: TRUE
-#' @param pretty PARAM_DESCRIPTION, Default: TRUE
-#' @param ... PARAM_DESCRIPTION
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
-#' @examples
-#' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
-#' }
+#' @param verbose logical, print to console, Default: TRUE
+#' @param auto_unbox logical, automatically unbox all atomic vectors of length 1, Default: TRUE
+#' @param pretty logical adds indentation whitespace to JSON output, Default: TRUE
+#' @param ... arguments to pass to [write_json][jsonlite::write_json]
+#' @return NULL
 #' @rdname team_files
 #' @export
 #' @importFrom jsonlite read_json
@@ -85,13 +78,13 @@ upload_team_file  <- function(file){
 #' @importFrom jsonlite write_json toJSON
 update_team_file  <- function(file, verbose = TRUE, auto_unbox = TRUE, pretty = TRUE,...){
 
-  jsonlite::write_json(slack_get(get_teams()),file,
+  jsonlite::write_json(get_team_creds(get_teams()),file,
                        auto_unbox = auto_unbox,
                        pretty = pretty,...)
 
   if(verbose){
 
-    jsonlite::toJSON(slack_get(get_teams()),
+    jsonlite::toJSON(get_team_creds(get_teams()),
                      auto_unbox = auto_unbox,
                      pretty = pretty,...)
 

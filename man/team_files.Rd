@@ -13,27 +13,14 @@ update_team_file(file, verbose = TRUE, auto_unbox = TRUE,
 \arguments{
 \item{file}{character, path to file}
 
-\item{verbose}{PARAM_DESCRIPTION, Default: TRUE}
+\item{verbose}{logical, print to console, Default: TRUE}
 
-\item{auto_unbox}{PARAM_DESCRIPTION, Default: TRUE}
+\item{auto_unbox}{logical, automatically unbox all atomic vectors of length 1, Default: TRUE}
 
-\item{pretty}{PARAM_DESCRIPTION, Default: TRUE}
+\item{pretty}{logical adds indentation whitespace to JSON output, Default: TRUE}
 
-\item{...}{PARAM_DESCRIPTION}
-}
-\value{
-OUTPUT_DESCRIPTION
+\item{...}{arguments to pass to \link[jsonlite:write_json]{write_json}}
 }
 \description{
 Upload or Update json file containing slackr-app keys
-}
-\details{
-DETAILS
-}
-\examples{
-\dontrun{
-if(interactive()){
- #EXAMPLE1
- }
-}
 }

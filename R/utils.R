@@ -77,7 +77,7 @@ res_validate <- function(res){
   res_content
 }
 
-map_channel <- function(channel){
+map_channel <- function(channel,type){
 
     channels <- get_channels()
     channel_type <- channels[[sprintf('is_%s',gsub('s$','',type))]]
