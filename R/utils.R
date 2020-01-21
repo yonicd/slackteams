@@ -34,6 +34,20 @@ get_conversations <- function(type = c('public_channel', 'private_channel','mpim
 
 }
 
+get_conversations_info <- function(channel,api_token=Sys.getenv("SLACK_API_TOKEN")) {
+
+  loc <- Sys.getlocale('LC_CTYPE')
+  Sys.setlocale('LC_CTYPE','C')
+  on.exit(Sys.setlocale("LC_CTYPE", loc))
+
+  tmp <- httr::POST("https://slack.com/api/conversations.info",
+                    body=list(token=api_token))
+
+  httr::stop_for_status(tmp)
+  httr::content(tmp)
+
+}
+
 get_channels <- function(api_token=Sys.getenv("SLACK_API_TOKEN")) {
 
   loc <- Sys.getlocale('LC_CTYPE')
@@ -48,6 +62,23 @@ get_channels <- function(api_token=Sys.getenv("SLACK_API_TOKEN")) {
 
 }
 
+get_channels_info <- function(channel,api_token=Sys.getenv("SLACK_API_TOKEN")) {
+
+  loc <- Sys.getlocale('LC_CTYPE')
+  Sys.setlocale('LC_CTYPE','C')
+  on.exit(Sys.setlocale("LC_CTYPE", loc))
+
+  tmp <- httr::POST("https://slack.com/api/channels.info",
+                    body=list(
+                      channel = channel,
+                      token=api_token
+                      ))
+
+  httr::stop_for_status(tmp)
+  httr::content(tmp)
+
+}
+
 get_groups <- function(api_token=Sys.getenv("SLACK_API_TOKEN")) {
 
   loc <- Sys.getlocale('LC_CTYPE')
@@ -57,6 +88,23 @@ get_groups <- function(api_token=Sys.getenv("SLACK_API_TOKEN")) {
   tmp <- httr::POST("https://slack.com/api/groups.list", body=list(token=api_token))
   httr::stop_for_status(tmp)
   jsonlite::fromJSON(httr::content(tmp, as="text"))$groups
+
+}
+
+get_groups_info <- function(channel,api_token=Sys.getenv("SLACK_API_TOKEN")) {
+
+  loc <- Sys.getlocale('LC_CTYPE')
+  Sys.setlocale('LC_CTYPE','C')
+  on.exit(Sys.setlocale("LC_CTYPE", loc))
+
+  tmp <- httr::POST("https://slack.com/api/groups.info",
+                    body=list(
+                      channel = channel,
+                      token=api_token
+                    ))
+
+  httr::stop_for_status(tmp)
+  httr::content(tmp)
 
 }
 
