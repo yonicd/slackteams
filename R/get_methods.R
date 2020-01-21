@@ -2,7 +2,11 @@
 #' @description Functions to extract information about teams
 #' @param team character, name of team
 #' @param fields character, columns to return in get_team_channels and get_team_users, NULL will return all the columns
+#' @param channel character, name of a channel
 #' @return character
+#' @details
+#'  Channels can be a public channel, a private channel a direct message or group direct message. To get the names of the channels
+#'  the user has access to use [get_team_channels(fields = 'name')][slackteams::get_team_channels].
 #' @concept get
 #' @rdname get_methods
 #' @export
@@ -89,4 +93,22 @@ get_team_channels <- function(team,fields = NULL){
 
   chnls
 
+}
+
+#' @rdname get_methods
+#' @export
+get_channel_info <- function(channel){
+
+  team_channels <- get_team_channels(fields = c('id','name'))
+
+  id <- team_channels$id[team_channels$name==channel]
+
+  if(!length(id))
+    stop(sprintf("Channel '%s' not found"))
+
+  switch(substr(id,1,1),
+         C = {get_channels_info(id)},
+         G = {get_groups_info(id)},
+         D = {get_conversations_info(id)}
+         )
 }

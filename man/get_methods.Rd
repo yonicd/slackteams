@@ -7,6 +7,7 @@
 \alias{get_team_creds}
 \alias{get_team_users}
 \alias{get_team_channels}
+\alias{get_channel_info}
 \title{Query Team Information}
 \usage{
 get_teams()
@@ -20,16 +21,24 @@ get_team_creds(team)
 get_team_users(team, fields = c("id", "name", "title", "real_name"))
 
 get_team_channels(team, fields = NULL)
+
+get_channel_info(channel)
 }
 \arguments{
 \item{team}{character, name of team}
 
 \item{fields}{character, columns to return in get_team_channels and get_team_users, NULL will return all the columns}
+
+\item{channel}{character, name of a channel}
 }
 \value{
 character
 }
 \description{
 Functions to extract information about teams
+}
+\details{
+Channels can be a public channel, a private channel a direct message or group direct message. To get the names of the channels
+the user has access to use \link[slackteams:get_team_channels]{get_team_channels(fields = 'name')}.
 }
 \concept{get}

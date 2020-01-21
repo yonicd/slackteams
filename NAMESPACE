@@ -3,6 +3,7 @@
 export(activate_team)
 export(add_team)
 export(get_active_team)
+export(get_channel_info)
 export(get_team_channels)
 export(get_team_creds)
 export(get_team_env)

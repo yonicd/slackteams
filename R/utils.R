@@ -41,7 +41,10 @@ get_conversations_info <- function(channel,api_token=Sys.getenv("SLACK_API_TOKEN
   on.exit(Sys.setlocale("LC_CTYPE", loc))
 
   tmp <- httr::POST("https://slack.com/api/conversations.info",
-                    body=list(token=api_token))
+                    body=list(
+                      channel = channel,
+                      token=api_token
+                      ))
 
   httr::stop_for_status(tmp)
   httr::content(tmp)
