@@ -10,9 +10,11 @@
 #' @export
 activate_team <- function(team, verbose = TRUE){
 
+  validate_team(team)
+
   private_slack_get(team)
   slack_setenv()
-  slack_team_info(team)
+  #slack_team_info(team)
   .slack$current_team <- team
   if(verbose)
     slack_setenv_msg(team)

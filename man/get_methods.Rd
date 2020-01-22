@@ -8,6 +8,7 @@
 \alias{get_team_users}
 \alias{get_team_channels}
 \alias{get_channel_info}
+\alias{get_member_name}
 \title{Query Team Information}
 \usage{
 get_teams()
@@ -23,6 +24,8 @@ get_team_users(team, fields = c("id", "name", "title", "real_name"))
 get_team_channels(team, fields = NULL)
 
 get_channel_info(channel)
+
+get_member_name(id)
 }
 \arguments{
 \item{team}{character, name of team}
@@ -30,6 +33,8 @@ get_channel_info(channel)
 \item{fields}{character, columns to return in get_team_channels and get_team_users, NULL will return all the columns}
 
 \item{channel}{character, name of a channel}
+
+\item{id}{character, unique member id}
 }
 \value{
 character

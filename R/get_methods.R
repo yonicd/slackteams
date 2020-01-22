@@ -2,6 +2,7 @@
 #' @description Functions to extract information about teams
 #' @param team character, name of team
 #' @param fields character, columns to return in get_team_channels and get_team_users, NULL will return all the columns
+#' @param id character, unique member id
 #' @param channel character, name of a channel
 #' @return character
 #' @details
@@ -28,9 +29,8 @@ get_active_team  <- function(){
 
   team <- .slack$current_team
 
-  if(is.null(team)){
-    message('No active team')
-  }
+  if(is.null(team))
+    stop('No active team, to activate a team use activate_team()')
 
   team
 
@@ -111,4 +111,11 @@ get_channel_info <- function(channel){
          G = {get_groups_info(id)},
          D = {get_conversations_info(id)}
          )
+}
+
+#' @rdname get_methods
+#' @export
+get_member_name <- function(id){
+  res <- get_team_users(fields = c('id','name'))
+  res$name[res$id==id]
 }
