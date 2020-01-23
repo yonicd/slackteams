@@ -49,6 +49,11 @@ team.
 
 #### slackr.json
 
+This is an example of the json file. Here we have 2 teams: `slackr` and
+`r4ds`. Each one contains a `key` (from
+[slackr-app](https://github.com/yonicd/slackr-app)) and the paired user
+`memberid`.
+
 ``` json
 {
   "slackr": {
