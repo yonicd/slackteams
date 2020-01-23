@@ -107,10 +107,13 @@ get_channel_info <- function(channel){
     stop(sprintf("Channel '%s' not found"))
 
   switch(substr(id,1,1),
-         C = {get_channels_info(id)},
-         G = {get_groups_info(id)},
-         D = {get_conversations_info(id)}
+         C = {get_channels_info(id)$channel},
+         G = {get_groups_info(id)$group},
+         D = {get_conversations_info(id)$channel}
          )
+
+
+
 }
 
 #' @rdname get_methods

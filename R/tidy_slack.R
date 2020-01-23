@@ -4,6 +4,10 @@ tidy_slack <-function(res){
 
 }
 
+tidy_slack.conversations_members <- function(res){
+  purrr::flatten_chr(res$members)
+}
+
 tidy_slack.users_list <- function(res){
 
   members <- res$members

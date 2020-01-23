@@ -1,4 +1,4 @@
-clean_users = function(obj,team){
+clean_users = function(obj){
   obj[!obj$deleted,]
 }
 
@@ -44,8 +44,8 @@ slack_setenv <- function(){
 }
 
 slack_team_info <- function(team){
-  .slack$users[[team]] <- clean_users(get_users(),team)
-  .slack$channels[[team]] <- clean_channel(get_conversations()$channels,team)
+  .slack$users[[team]] <- clean_users(get_users_list())
+  .slack$channels[[team]] <- clean_channel(get_conversations_list(),team)
 }
 
 update_cache <- function(){
