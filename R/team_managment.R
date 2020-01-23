@@ -11,7 +11,7 @@
 activate_team <- function(team, verbose = TRUE) {
   validate_team(team)
 
-  private_slack_get(team)
+  get_slackrapp(team)
   slack_setenv()
   slack_team_info(team)
   .slack$current_team <- team
@@ -38,4 +38,13 @@ remove_team <- function(team) {
   if (length(idx) > 0) {
     .slack$teams <- .slack$teams[-idx]
   }
+}
+
+slack_team_info <- function(team) {
+  .slack$users[[team]] <- clean_users(get_users_list())
+  .slack$channels[[team]] <- clean_channel(get_conversations_list(), team)
+}
+
+update_cache <- function() {
+  .slack$slack_team_info(get_active_team())
 }

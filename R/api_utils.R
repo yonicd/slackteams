@@ -1,7 +1,8 @@
+#' @importFrom httr POST
 call_slack <- function(foo, body) {
   foo_dot <- gsub("_", ".", foo)
 
-  res <- res_validate(res = httr::POST(file.path("https://slack.com/api", foo_dot), body = body))
+  res <- validate_response(res = httr::POST(file.path("https://slack.com/api", foo_dot), body = body))
 
   cursor <- NULL
 
@@ -14,22 +15,10 @@ call_slack <- function(foo, body) {
 
 parse_call <- function() {
   tb <- .traceback(1)
-  idx <- which(sapply(tb, function(x) grepl(x[1], pattern = "^call\_slack"))) + 1
+  idx <- which(sapply(tb, function(x) grepl(x[1], pattern = "^call\\_slack"))) + 1
   call_str <- tb[[idx]]
-  foo <- gsub("\((.*?)$", "", call_str)
+  foo <- gsub("\\((.*?)$", "", call_str)
   gsub("get_", "", foo)
-}
-
-res_validate <- function(res) {
-  httr::warn_for_status(res)
-
-  res_content <- httr::content(res)
-
-  if (!res_content$ok) {
-    return(res_content$error)
-  }
-
-  res_content
 }
 
 map_channel <- function(channel, type) {
@@ -39,7 +28,7 @@ map_channel <- function(channel, type) {
   channels$id[channels$name == channel & channel_type]
 }
 
-
+#' @importFrom purrr reduce map
 paginate <- function(res, limit = NULL) {
   cont <- TRUE
   output <- list()

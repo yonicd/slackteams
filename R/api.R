@@ -10,9 +10,7 @@ get_users_list <- function(..., token = Sys.getenv("SLACK_API_TOKEN")) {
 
 # Conversations
 
-
-get_conversations_list <- function(type = c("public_channel", "private_channel", "mpim", "im"),
-                                   ..., token = Sys.getenv("SLACK_API_TOKEN")) {
+get_conversations_list <- function(type = c("public_channel", "private_channel", "mpim", "im"), ..., token = Sys.getenv("SLACK_API_TOKEN")) {
   types <- paste0(match.arg(type, several.ok = TRUE), collapse = ",")
 
   res <- call_slack(parse_call(), body = list(token = token, types = types, ...))

@@ -2,10 +2,13 @@ tidy_slack <- function(res) {
   UseMethod("tidy_slack")
 }
 
+#' @importFrom purrr flatten_chr
 tidy_slack.conversations_members <- function(res) {
   purrr::flatten_chr(res$members)
 }
 
+#' @importFrom purrr map_df
+#' @importFrom tibble as_tibble
 tidy_slack.users_list <- function(res) {
   members <- res$members
 
@@ -24,6 +27,8 @@ tidy_slack.users_list <- function(res) {
   tibble::as_tibble(cbind.data.frame(member_info, member_profile, stringsAsFactors = FALSE))
 }
 
+#' @importFrom purrr map_df map_lgl
+#' @importFrom tibble as_tibble
 tidy_slack.default <- function(res) {
   el <- intersect(names(res), c("channel", "channels", "groups", "conversations"))
 
