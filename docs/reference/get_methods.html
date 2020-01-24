@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">slackteams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -131,9 +131,15 @@
 
 <span class='fu'>get_team_creds</span>(<span class='no'>team</span>)
 
-<span class='fu'>get_team_users</span>(<span class='no'>team</span>)
+<span class='fu'>get_team_users</span>(<span class='no'>team</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id"</span>, <span class='st'>"name"</span>, <span class='st'>"real_name"</span>))
 
-<span class='fu'>get_team_channels</span>(<span class='no'>team</span>)</pre>
+<span class='fu'>get_team_channels</span>(<span class='no'>team</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>get_channel_members</span>(<span class='no'>channel</span>)
+
+<span class='fu'>get_channel_info</span>(<span class='no'>channel</span>)
+
+<span class='fu'>get_member_name</span>(<span class='no'>id</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,11 +148,27 @@
       <th>team</th>
       <td><p>character, name of team</p></td>
     </tr>
+    <tr>
+      <th>fields</th>
+      <td><p>character, columns to return in get_team_channels and get_team_users, NULL will return all the columns</p></td>
+    </tr>
+    <tr>
+      <th>channel</th>
+      <td><p>character, name of a channel</p></td>
+    </tr>
+    <tr>
+      <th>id</th>
+      <td><p>character, unique member id</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>character</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Channels can be a public channel, a private channel a direct message or group direct message. To get the names of the channels
+the user has access to use get_team_channels(fields = 'name').</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -154,6 +176,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>
