@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • slackteams</title>
+<title>Create slackr dcf file — activeteam2dcf • slackteams</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Create slackr dcf file — activeteam2dcf" />
+<meta property="og:description" content="Convert the active team to a slackr compatible dcf file on the local system" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -110,99 +112,44 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Create slackr dcf file</h1>
+    
+    <div class="hidden name"><code>activeteam2dcf.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Convert the active team to a slackr compatible dcf file on the local system</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>activeteam2dcf</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"~/.slackr"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-team-managment" class="hasAnchor"><a href="#section-team-managment" class="anchor"></a>Team Managment</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="manage_team.html">activate_team()</a></code> <code><a href="manage_team.html">add_team()</a></code> <code><a href="manage_team.html">remove_team()</a></code> </p>
-        </td>
-        <td><p>Team Managment Functions</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-team-file-managment" class="hasAnchor"><a href="#section-team-file-managment" class="anchor"></a>Team File Managment</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="activeteam2dcf.html">activeteam2dcf()</a></code> </p>
-        </td>
-        <td><p>Create slackr dcf file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_team_dcf.html">load_team_dcf()</a></code> </p>
-        </td>
-        <td><p>Load Team(s) From File</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_teams.html">load_teams()</a></code> </p>
-        </td>
-        <td><p>Load Team(s) From File</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-query-teams-information" class="hasAnchor"><a href="#section-query-teams-information" class="anchor"></a>Query Teams Information</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="get_methods.html">get_teams()</a></code> <code><a href="get_methods.html">get_team_env()</a></code> <code><a href="get_methods.html">get_active_team()</a></code> <code><a href="get_methods.html">get_team_creds()</a></code> <code><a href="get_methods.html">get_team_users()</a></code> <code><a href="get_methods.html">get_team_channels()</a></code> <code><a href="get_methods.html">get_channel_members()</a></code> <code><a href="get_methods.html">get_channel_info()</a></code> <code><a href="get_methods.html">get_member_name()</a></code> </p>
-        </td>
-        <td><p>Query Team Information</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-set-teams-information" class="hasAnchor"><a href="#section-set-teams-information" class="anchor"></a>Set Teams Information</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="set_team_envvars.html">set_username()</a></code> <code><a href="set_team_envvars.html">set_icon_emoji()</a></code> </p>
-        </td>
-        <td><p>Set Team Information</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>character, path to write the dcf file to, Default: '~/.slackr'</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>logical, Print messages to console, Default: TRUE</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>If the file is "" then the output will be printed to the console</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-team-managment">Team Managment</a></li>
-      <li><a href="#section-team-file-managment">Team File Managment</a></li>
-      <li><a href="#section-query-teams-information">Query Teams Information</a></li>
-      <li><a href="#section-set-teams-information">Set Teams Information</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
+
   </div>
 </div>
 

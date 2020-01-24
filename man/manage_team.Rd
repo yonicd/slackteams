@@ -24,4 +24,11 @@ remove_team(team)
 \description{
 Manage teams that can be accessed
 }
+\details{
+If the team credentials are last loaded via load_teams() then
+when activating a team slackrapp will be called to retrieve
+private webhook information needed to interact with Slack API.
+If the team credentials are last loaded via load_team_dcf() the
+private webhook is assumed to be located in the file.
+}
 \concept{managment}
