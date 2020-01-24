@@ -4,6 +4,11 @@
 #' @param verbose logical, Print messages to console, Default: TRUE
 #' @param memberid chracter, member id of user in the team
 #' @param key character, slackr-app key unique to the memberid
+#' @details If the team credentials are last loaded via load_teams() then
+#'  when activating a team slackrapp will be called to retrieve
+#'  private webhook information needed to interact with Slack API.
+#'  If the team credentials are last loaded via load_team_dcf() the
+#'  private webhook is assumed to be located in the file.
 #' @return NULL
 #' @concept managment
 #' @rdname manage_team
@@ -11,7 +16,10 @@
 activate_team <- function(team, verbose = TRUE) {
   validate_team(team)
 
-  get_slackrapp(team)
+  if(grepl('json$',.slack$file)){
+    get_slackrapp(team)
+  }
+
   slack_setenv()
   slack_team_info(team)
   .slack$current_team <- team
@@ -46,5 +54,5 @@ slack_team_info <- function(team) {
 }
 
 update_cache <- function() {
-  .slack$slack_team_info(get_active_team())
+  slack_team_info(get_active_team())
 }

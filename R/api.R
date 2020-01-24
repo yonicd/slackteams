@@ -1,73 +1,67 @@
 # Users
 
-get_users_list <- function(..., token = Sys.getenv("SLACK_API_TOKEN")) {
-  res <- call_slack(parse_call(), body = list(token = token, ...))
+#' @importFrom slackcalls post_slack
+get_users_list <- function(..., token = Sys.getenv("SLACK_API_TOKEN"), paginate = TRUE, max_results = Inf, max_calls = Inf) {
 
-  res <- paginate(res)
+  res <- slackcalls::post_slack(parse_call(), max_results = max_results, max_calls = max_calls, paginate = paginate, token = token, ...)
 
   tidy_slack(res)
 }
 
 # Conversations
 
-get_conversations_list <- function(type = c("public_channel", "private_channel", "mpim", "im"), ..., token = Sys.getenv("SLACK_API_TOKEN")) {
+#' @importFrom slackcalls post_slack
+get_conversations_list <- function(type = c("public_channel", "private_channel", "mpim", "im"), ..., token = Sys.getenv("SLACK_API_TOKEN"), paginate = TRUE, max_results = Inf, max_calls = Inf) {
   types <- paste0(match.arg(type, several.ok = TRUE), collapse = ",")
 
-  res <- call_slack(parse_call(), body = list(token = token, types = types, ...))
-
-  res <- paginate(res)
+  res <- slackcalls::post_slack(parse_call(), max_results = max_results, max_calls = max_calls, paginate = paginate, token = token, types = types, ...)
 
   tidy_slack(res)
 }
 
-get_conversations_info <- function(channel, ..., token = Sys.getenv("SLACK_API_TOKEN")) {
-  res <- call_slack(parse_call(), body = list(channel = channel, token = token, ...))
+#' @importFrom slackcalls post_slack
+get_conversations_info <- function(channel, ..., token = Sys.getenv("SLACK_API_TOKEN"), paginate = TRUE, max_results = Inf, max_calls = Inf) {
 
-  res <- paginate(res)
+  res <- slackcalls::post_slack(parse_call(), max_results = max_results, max_calls = max_calls, paginate = paginate, channel = channel, token = token, ...)
 
   return(res)
 }
 
-get_conversations_members <- function(channel, ..., token = Sys.getenv("SLACK_API_TOKEN")) {
-  res <- call_slack(parse_call(), body = list(channel = channel, token = token, ...))
-
-  res <- paginate(res)
+#' @importFrom slackcalls post_slack
+get_conversations_members <- function(channel, ..., token = Sys.getenv("SLACK_API_TOKEN"), paginate = TRUE, max_results = Inf, max_calls = Inf) {
+  res <- slackcalls::post_slack(parse_call(), max_results = max_results, max_calls = max_calls, paginate = paginate, channel = channel, token = token, ...)
 
   tidy_slack(res)
 }
 
 # Channels
 
-get_channels_list <- function(..., token = Sys.getenv("SLACK_API_TOKEN")) {
-  res <- call_slack(parse_call(), body = list(token = token, ...))
-
-  res <- paginate(res)
+#' @importFrom slackcalls post_slack
+get_channels_list <- function(..., token = Sys.getenv("SLACK_API_TOKEN"), paginate = TRUE, max_results = Inf, max_calls = Inf) {
+  res <- slackcalls::post_slack(parse_call(), max_results = max_results, max_calls = max_calls, paginate = paginate, token = token, ...)
 
   tidy_slack(res)
 }
 
-get_channels_info <- function(channel, ..., token = Sys.getenv("SLACK_API_TOKEN")) {
-  res <- call_slack(parse_call(), body = list(channel = channel, token = token, ...))
-
-  res <- paginate(res)
+#' @importFrom slackcalls post_slack
+get_channels_info <- function(channel, ..., token = Sys.getenv("SLACK_API_TOKEN"), paginate = TRUE, max_results = Inf, max_calls = Inf) {
+  res <- slackcalls::post_slack(parse_call(), max_results = max_results, max_calls = max_calls, paginate = paginate, channel = channel, token = token, ...)
 
   res
 }
 
 # Groups
 
-get_groups_list <- function(..., token = Sys.getenv("SLACK_API_TOKEN")) {
-  res <- call_slack(parse_call(), body = list(token = token, ...))
-
-  res <- paginate(res)
+#' @importFrom slackcalls post_slack
+get_groups_list <- function(..., token = Sys.getenv("SLACK_API_TOKEN"), paginate = TRUE, max_results = Inf, max_calls = Inf) {
+  res <- slackcalls::post_slack(parse_call(), max_results = max_results, max_calls = max_calls, paginate = paginate, token = token, ...)
 
   tidy_slack(res)
 }
 
-get_groups_info <- function(channel, ..., token = Sys.getenv("SLACK_API_TOKEN")) {
-  res <- call_slack(parse_call(), body = list(channel = channel, token = token, ...))
-
-  res <- paginate(res)
+#' @importFrom slackcalls post_slack
+get_groups_info <- function(channel, ..., token = Sys.getenv("SLACK_API_TOKEN"), paginate = TRUE, max_results = Inf, max_calls = Inf) {
+  res <- slackcalls::post_slack(parse_call(), max_results = max_results, max_calls = max_calls, paginate = paginate, channel = channel, token = token, ...)
 
   return(res)
 }

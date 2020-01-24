@@ -13,13 +13,9 @@ Description: Users many times have multiple have accounts with multiple
     switch accounts to post to channels using the slackr package.
 License: MIT + file LICENSE
 Depends: R (>= 3.2.0)
-Imports: jsonlite,httr,details,purrr,tibble
-Suggests: 
-    slackr,
-    emo,
-    testthat (>= 2.1.0),
-    knitr,
-    rmarkdown
+Imports: details,httr,jsonlite,slackcalls,tibble
+Suggests: slackr, emo, testthat (>= 2.1.0), knitr, rmarkdown
+Remotes: yonicd/slackcalls
 RdMacros: details
 Encoding: UTF-8
 LazyData: true

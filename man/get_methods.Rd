@@ -7,6 +7,7 @@
 \alias{get_team_creds}
 \alias{get_team_users}
 \alias{get_team_channels}
+\alias{get_channel_members}
 \alias{get_channel_info}
 \alias{get_member_name}
 \title{Query Team Information}
@@ -19,9 +20,11 @@ get_active_team()
 
 get_team_creds(team)
 
-get_team_users(team, fields = c("id", "name", "title", "real_name"))
+get_team_users(team, fields = c("id", "name", "real_name"))
 
 get_team_channels(team, fields = NULL)
+
+get_channel_members(channel)
 
 get_channel_info(channel)
 

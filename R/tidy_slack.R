@@ -2,24 +2,22 @@ tidy_slack <- function(res) {
   UseMethod("tidy_slack")
 }
 
-#' @importFrom purrr flatten_chr
 tidy_slack.conversations_members <- function(res) {
-  purrr::flatten_chr(res$members)
+  unlist(res$members)
 }
 
-#' @importFrom purrr map_df
 #' @importFrom tibble as_tibble
 tidy_slack.users_list <- function(res) {
   members <- res$members
 
   cols <- lapply(members, names)
 
-  member_info <- purrr::map_df(members, function(x) {
+  member_info <- map_df(members, function(x) {
     cols <- setdiff(names(x), c("profile", "real_name", "tz"))
     tibble::as_tibble(x[cols])
   })
 
-  member_profile <- purrr::map_df(members, function(x) {
+  member_profile <- map_df(members, function(x) {
     cols <- setdiff(names(x$profile), c("fields"))
     tibble::as_tibble(x$profile[cols])
   })
@@ -27,13 +25,14 @@ tidy_slack.users_list <- function(res) {
   tibble::as_tibble(cbind.data.frame(member_info, member_profile, stringsAsFactors = FALSE))
 }
 
-#' @importFrom purrr map_df map_lgl
 #' @importFrom tibble as_tibble
 tidy_slack.default <- function(res) {
-  el <- intersect(names(res), c("channel", "channels", "groups", "conversations"))
+  fields <- c("channel", "channels", "groups", "conversations","members")
 
-  purrr::map_df(res[[el]], function(x) {
-    cols <- !purrr::map_lgl(x, inherits, what = c("NULL", "list"))
+  el <- intersect(names(res), fields)
+
+  map_df(res[[el]], function(x) {
+    cols <- !map_lgl(x, inherits, what = c("NULL", "list"))
     tibble::as_tibble(x[cols])
   })
 }
