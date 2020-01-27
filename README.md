@@ -9,6 +9,18 @@
 Summary](https://img.shields.io/badge/covrpage-Last_Build_2019_12_12-brightgreen.svg)](http://tinyurl.com/qq3vz59)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R-win build
+status](https://github.com/yonicd/slackteams/workflows/R-win/badge.svg)](https://github.com/yonicd/slackteams)
+[![R-mac build
+status](https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackteams)
+[![R-linux build
+status](https://github.com/yonicd/slackteams/workflows/R-linux/badge.svg)](https://github.com/yonicd/slackteams)
+[![Codecov test
+coverage](https://codecov.io/gh/yonicd/slackteams/branch/master/graph/badge.svg)](https://codecov.io/gh/yonicd/slackteams?branch=master)
+<!-- badges: end -->
+
+<!-- badges: start -->
+
 <!-- badges: end -->
 
 `slackteams` is an `R` package that allows the user to manage multiple
