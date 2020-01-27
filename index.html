@@ -81,13 +81,15 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#slackteams" class="anchor"></a>slackteams</h1></div>
 <!-- badges: start -->
-
+<p><a href="http://tinyurl.com/qq3vz59"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_01_27-brightgreen.svg" alt="Covrpage Summary"></a> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <a href="https://github.com/yonicd/slackteams"><img src="https://github.com/yonicd/slackteams/workflows/R-win/badge.svg" alt="R-win build status"></a> <a href="https://github.com/yonicd/slackteams"><img src="https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg" alt="R-mac build status"></a> <a href="https://github.com/yonicd/slackteams"><img src="https://github.com/yonicd/slackteams/workflows/R-linux/badge.svg" alt="R-linux build status"></a> <a href="https://codecov.io/gh/yonicd/slackteams?branch=master"><img src="https://codecov.io/gh/yonicd/slackteams/branch/master/graph/badge.svg" alt="Codecov test coverage"></a> <!-- badges: end --></p>
+<!-- badges: start -->
+<!-- badges: end -->
 <p><code>slackteams</code> is an <code>R</code> package that allows the user to manage multiple Slack teams during a session.</p>
 <p>The package queries the <a href="https://github.com/yonicd/slackr-app">slackr-app</a> database to set the environment variables needed by <a href="https://github.com/hrbrmstr/slackr">slackr</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"yonicd/slackteams"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"yonicd/slackteams"</span>)</span></code></pre></div>
 </div>
 <div id="create-an-incoming-webhook" class="section level2">
 <h2 class="hasAnchor">
@@ -112,50 +114,46 @@
 <h4 class="hasAnchor">
 <a href="#slackrjson" class="anchor"></a>slackr.json</h4>
 <p>This is an example of the json file. Here we have 2 teams: <code>slackr</code> and <code>r4ds</code>. Each one contains a <code>key</code> (from <a href="https://github.com/yonicd/slackr-app">slackr-app</a>) and the paired user <code>memberid</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="dt">"slackr"</span><span class="fu">:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb2-3" title="3">    <span class="dt">"key"</span><span class="fu">:</span> <span class="st">"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb2-4" title="4">    <span class="dt">"memberid"</span><span class="fu">:</span> <span class="st">"UABC123"</span></a>
-<a class="sourceLine" id="cb2-5" title="5">  <span class="fu">},</span></a>
-<a class="sourceLine" id="cb2-6" title="6">  <span class="dt">"r4ds"</span><span class="fu">:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb2-7" title="7">    <span class="dt">"key"</span><span class="fu">:</span> <span class="st">"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb2-8" title="8">    <span class="dt">"memberid"</span><span class="fu">:</span> <span class="st">"UXYZ456"</span></a>
-<a class="sourceLine" id="cb2-9" title="9">  <span class="fu">}</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="fu">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="dt">"slackr"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="dt">"key"</span><span class="fu">:</span> <span class="st">"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="dt">"memberid"</span><span class="fu">:</span> <span class="st">"UABC123"</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">},</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="dt">"r4ds"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>    <span class="dt">"key"</span><span class="fu">:</span> <span class="st">"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>    <span class="dt">"memberid"</span><span class="fu">:</span> <span class="st">"UXYZ456"</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">}</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="fu">}</span></span></code></pre></div>
 </div>
 </div>
 <div id="basic-usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basic-usage" class="anchor"></a>Basic Usage</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(slackteams)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(slackteams)</span></code></pre></div>
 <div id="load-the-teams" class="section level3">
 <h3 class="hasAnchor">
 <a href="#load-the-teams" class="anchor"></a>Load the teams</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">slackteams<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackteams/man/load_teams.html">load_teams</a></span>()</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; The following teams are loaded:</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt;   slackr, r4ds</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>slackteams<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackteams/man/load_teams.html">load_teams</a></span>()</span></code></pre></div>
 </div>
 <div id="activate-a-team" class="section level3">
 <h3 class="hasAnchor">
 <a href="#activate-a-team" class="anchor"></a>Activate a Team</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">slackteams<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackteams/man/manage_team.html">activate_team</a></span>(<span class="st">'r4ds'</span>)</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="co">#&gt; slackr environment variables are set to 'r4ds' supplied definitions</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>slackteams<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackteams/man/manage_team.html">activate_team</a></span>(<span class="st">'r4ds'</span>)</span></code></pre></div>
 </div>
 <div id="post-a-message" class="section level3">
 <h3 class="hasAnchor">
 <a href="#post-a-message" class="anchor"></a>Post a Message</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">slackr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackr/man/slackr.html">slackr</a></span>(<span class="st">'My Spiffy Message'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>slackr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackr/man/slackr.html">slackr</a></span>(<span class="st">'My Spiffy Message'</span>)</span></code></pre></div>
 </div>
 <div id="activate-another-team" class="section level3">
 <h3 class="hasAnchor">
 <a href="#activate-another-team" class="anchor"></a>Activate Another Team</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">slackteams<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackteams/man/manage_team.html">activate_team</a></span>(<span class="st">'slackr'</span>)</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="co">#&gt; slackr environment variables are set to 'slackr' supplied definitions</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>slackteams<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackteams/man/manage_team.html">activate_team</a></span>(<span class="st">'slackr'</span>)</span></code></pre></div>
 </div>
 <div id="post-a-message-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#post-a-message-1" class="anchor"></a>Post a Message</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">slackr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackr/man/slackr.html">slackr</a></span>(<span class="st">'My Other Spiffy Message'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>slackr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackr/man/slackr.html">slackr</a></span>(<span class="st">'My Other Spiffy Message'</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -176,14 +174,7 @@
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="http://tinyurl.com/qq3vz59"><img src="https://img.shields.io/badge/covrpage-Last_Build_2019_12_12-brightgreen.svg" alt="Covrpage Summary"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-</ul>
-</div>
-</div>
+  </div>
 </div>
 
 
