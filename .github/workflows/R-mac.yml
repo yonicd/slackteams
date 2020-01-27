@@ -16,6 +16,7 @@ jobs:
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       CRAN: ${{ matrix.config.cran }}
+      SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
 
     steps:
       - uses: actions/checkout@master
@@ -39,13 +40,9 @@ jobs:
         run: Rscript -e "install.packages('remotes')" -e "remotes::install_deps(dependencies = TRUE)" -e "remotes::install_cran('rcmdcheck')"
 
       - name: Check
-        env:
-          SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '${{ matrix.config.args }}', error_on = 'warning', check_dir = 'check')"
 
       - name: covr
-        env:
-          SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
         run: |
           Rscript -e 'remotes::install_github("r-lib/covr@gh-actions")' \
                   -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'
@@ -54,8 +51,6 @@ jobs:
         run: R CMD INSTALL .
 
       - name: covrpage
-        env:
-          SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
         if: github.ref == 'refs/heads/master'
         run: |
           Rscript -e 'remotes::install_github("metrumresearchgroup/covrpage@actions")' \
