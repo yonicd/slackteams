@@ -89,15 +89,12 @@ library(slackteams)
 
 ``` r
 slackteams::load_teams()
-#> The following teams are loaded:
-#>   slackr, r4ds
 ```
 
 ### Activate a Team
 
 ``` r
 slackteams::activate_team('r4ds')
-#> slackr environment variables are set to 'r4ds' supplied definitions
 ```
 
 ### Post a Message
@@ -110,7 +107,6 @@ slackr::slackr('My Spiffy Message')
 
 ``` r
 slackteams::activate_team('slackr')
-#> slackr environment variables are set to 'slackr' supplied definitions
 ```
 
 ### Post a Message

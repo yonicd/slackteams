@@ -7,6 +7,7 @@ output: github_document
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  eval=FALSE,
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%"
@@ -91,7 +92,7 @@ slackteams::activate_team('r4ds')
 
 ### Post a Message
 
-```{r,eval=FALSE}
+```{r}
 slackr::slackr('My Spiffy Message')
 ```
 
@@ -103,6 +104,6 @@ slackteams::activate_team('slackr')
 
 ### Post a Message
 
-```{r,eval=FALSE}
+```{r}
 slackr::slackr('My Other Spiffy Message')
 ```
