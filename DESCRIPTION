@@ -15,7 +15,7 @@ License: MIT + file LICENSE
 Depends: R (>= 3.2.0)
 Imports: details,httr,jsonlite,slackcalls,tibble
 Suggests: slackr, emo, testthat (>= 2.1.0), knitr, rmarkdown
-Remotes: yonicd/slackcalls
+Remotes: yonicd/slackcalls, hadley/emo
 RdMacros: details
 Encoding: UTF-8
 LazyData: true
