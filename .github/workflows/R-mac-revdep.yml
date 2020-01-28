@@ -1,6 +1,8 @@
-on: repository_dispatch
+name: Repository Dispatch
 
-name: R-mac-revdep
+on:
+  repository_dispatch:
+    types: [my-event]
 
 jobs:
   check:
