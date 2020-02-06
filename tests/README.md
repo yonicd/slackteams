@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-06 February, 2020 18:36:32
+06 February, 2020 22:00:37
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -36,17 +36,17 @@ Coverage summary is created using the
 Unit Test summary is created using the
 [testthat](https://github.com/r-lib/testthat) package.
 
-| file                                                     | n | time | error | failed | skipped | warning |
-| :------------------------------------------------------- | -: | ---: | ----: | -----: | ------: | ------: |
-| [test-file\_managment.R](testthat/test-file_managment.R) | 1 | 0.03 |     0 |      0 |       0 |       0 |
+| file                                                     | n |  time | error | failed | skipped | warning |
+| :------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: |
+| [test-file\_managment.R](testthat/test-file_managment.R) | 1 | 0.029 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
 <summary> Show Detailed Test Results </summary>
 
-| file                                                        | context         | test                 | status | n | time |
-| :---------------------------------------------------------- | :-------------- | :------------------- | :----- | -: | ---: |
-| [test-file\_managment.R](testthat/test-file_managment.R#L2) | file\_managment | multiplication works | PASS   | 1 | 0.03 |
+| file                                                        | context         | test                 | status | n |  time |
+| :---------------------------------------------------------- | :-------------- | :------------------- | :----- | -: | ----: |
+| [test-file\_managment.R](testthat/test-file_managment.R#L2) | file\_managment | multiplication works | PASS   | 1 | 0.029 |
 
 </details>
 
@@ -57,7 +57,7 @@ Unit Test summary is created using the
 | Field    | Value                               |                                                                                                                                                                                                                                                                    |
 | :------- | :---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Version  | R version 3.6.2 (2019-12-12)        |                                                                                                                                                                                                                                                                    |
-| Platform | x86\_64-apple-darwin15.6.0 (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/0ae3dfbef16210b93e42b65051dc3e7fdebe4e2e/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
+| Platform | x86\_64-apple-darwin15.6.0 (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/40096e7ae271e70158d522f79ee919f52dfecaf8/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
 | Running  | macOS Catalina 10.15.3              |                                                                                                                                                                                                                                                                    |
 | Language | en\_US                              |                                                                                                                                                                                                                                                                    |
 | Timezone | UTC                                 |                                                                                                                                                                                                                                                                    |
