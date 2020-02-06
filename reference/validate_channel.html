@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Manage Team Files — upload_team_file • slackteams</title>
+<title>Validate Channel Label — validate_channel • slackteams</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Manage Team Files — upload_team_file" />
-<meta property="og:description" content="Upload or Update json file containing slackr-app keys" />
+<meta property="og:title" content="Validate Channel Label — validate_channel" />
+<meta property="og:description" content="Validate channel label and convert it to Slack channel ID" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,51 +114,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Manage Team Files</h1>
+    <h1>Validate Channel Label</h1>
     
-    <div class="hidden name"><code>team_files.Rd</code></div>
+    <div class="hidden name"><code>validate_channel.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Upload or Update json file containing slackr-app keys</p>
+    <p>Validate channel label and convert it to Slack channel ID</p>
     </div>
 
-    <pre class="usage"><span class='fu'>upload_team_file</span>(<span class='no'>file</span>)
-
-<span class='fu'>update_team_file</span>(<span class='no'>file</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>auto_unbox</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>pretty</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>validate_channel</span>(<span class='no'>channel</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>character, path to file</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>logical, print to console, Default: TRUE</p></td>
-    </tr>
-    <tr>
-      <th>auto_unbox</th>
-      <td><p>logical, automatically unbox all atomic vectors of length 1, Default: TRUE</p></td>
-    </tr>
-    <tr>
-      <th>pretty</th>
-      <td><p>logical adds indentation whitespace to JSON output, Default: TRUE</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>arguments to pass to <a href='https://jeroen.cran.dev/jsonlite/reference/read_json.html'>write_json</a></p></td>
+      <th>channel</th>
+      <td><p>character, channel label</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>character</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
 
   </div>
