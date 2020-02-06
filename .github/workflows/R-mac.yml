@@ -63,11 +63,20 @@ jobs:
           Rscript -e 'remotes::install_github("metrumresearchgroup/pkgdown")' \
                   -e "pkgdown:::deploy_local(new_process = FALSE, remote_url = 'https://x-access-token:${{secrets.GITHUB_PAT}}@github.com/${{github.repository}}.git')"
 
-      - name: threads trigger
+      - name: slackthreads trigger
         if: github.ref == 'refs/heads/master'
         uses: peter-evans/repository-dispatch@v1.0.0
         with:
           token: ${{secrets.GITHUB_PAT}}
-          repository: yonicd/threads
+          repository: yonicd/slackthreads
+          event-type: push
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+
+      - name: slackblocks trigger
+        if: github.ref == 'refs/heads/master'
+        uses: peter-evans/repository-dispatch@v1.0.0
+        with:
+          token: ${{secrets.GITHUB_PAT}}
+          repository: yonicd/slackblocks
           event-type: push
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
