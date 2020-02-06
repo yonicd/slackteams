@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-30 January, 2020 01:32:46
+06 February, 2020 18:36:32
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -57,8 +57,8 @@ Unit Test summary is created using the
 | Field    | Value                               |                                                                                                                                                                                                                                                                    |
 | :------- | :---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Version  | R version 3.6.2 (2019-12-12)        |                                                                                                                                                                                                                                                                    |
-| Platform | x86\_64-apple-darwin15.6.0 (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/8516aebc1803f740b89d5afc24dbd27ff4db23f6/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
-| Running  | macOS Catalina 10.15.2              |                                                                                                                                                                                                                                                                    |
+| Platform | x86\_64-apple-darwin15.6.0 (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/0ae3dfbef16210b93e42b65051dc3e7fdebe4e2e/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
+| Running  | macOS Catalina 10.15.3              |                                                                                                                                                                                                                                                                    |
 | Language | en\_US                              |                                                                                                                                                                                                                                                                    |
 | Timezone | UTC                                 |                                                                                                                                                                                                                                                                    |
 
