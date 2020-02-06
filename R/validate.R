@@ -27,3 +27,32 @@ validate_response <- function(res) {
 
   res_content
 }
+
+
+#' @title Validate Channel Label
+#' @description Validate channel label and convert it to Slack channel ID
+#' @param channel character, channel label
+#' @return character
+#' @rdname validate_channel
+#' @export
+validate_channel <- function(channel){
+
+  # Strip leading # or @ to allow user flexibility.
+  channel <- sub("^#", "", channel)
+  channel <- sub("^@", "", channel)
+
+  team_channels <- get_team_channels(
+    get_active_team(),
+    fields = c('id','name')
+  )
+
+  # Check both the id and name, in case the user passed in an id.
+  if (channel %in% team_channels$id) {
+    return(channel)
+  } else if (channel %in% team_channels$name) {
+    return(team_channels$id[grepl(channel, team_channels$name)])
+  } else {
+    stop("Unknown channel.")
+  }
+
+}

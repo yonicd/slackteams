@@ -50,7 +50,7 @@ remove_team <- function(team) {
 
 slack_team_info <- function(team) {
   .slack$users[[team]] <- clean_users(get_users_list())
-  .slack$channels[[team]] <- clean_channel(get_conversations_list(), team)
+  .slack$channels[[team]] <- clean_channel(get_conversations_list(limit = 1000L), team)
 }
 
 update_cache <- function() {
