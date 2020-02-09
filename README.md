@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Covrpage
-Summary](https://img.shields.io/badge/covrpage-Last_Build_2019_12_12-brightgreen.svg)](http://tinyurl.com/qq3vz59)
+Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_02_09-brightgreen.svg)](http://tinyurl.com/qq3vz59)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R-win build
@@ -57,7 +57,7 @@ team.
     the `SLACK_KEY_ID`. [How to locate your Member
     ID](https://medium.com/@moshfeu/how-to-find-my-member-id-in-slack-workspace-d4bba942e38c)
 7.  Paste the output into a json file. Default path that `slackteams`
-    looks for the file is `~/slackr.json`.
+    looks for the file is `~/.slackteams`.
 
 #### slackr.json
 

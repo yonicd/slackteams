@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 # slackteams
 
 <!-- badges: start -->
-[![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2019_12_12-brightgreen.svg)](http://tinyurl.com/qq3vz59)
+[![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_02_09-brightgreen.svg)](http://tinyurl.com/qq3vz59)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R-win build status](https://github.com/yonicd/slackteams/workflows/R-win/badge.svg)](https://github.com/yonicd/slackteams)
 [![R-mac build status](https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackteams)
@@ -53,7 +53,7 @@ The following button will create a Slack incoming webhook with the correct scope
 4. If successful a `SLACK_KEY_ID` will be returned. `r emo::ji('point_left')` `r emo::ji('rotating_light')` __Keep this Key__ `r emo::ji('rotating_light')`
 5. If not successful an error message will be returned.
 6. To keep the data safe you need your team `MEMBERID` to authenticate the `SLACK_KEY_ID`. [How to locate your Member ID](https://medium.com/@moshfeu/how-to-find-my-member-id-in-slack-workspace-d4bba942e38c)
-7. Paste the output into a json file. Default path that `slackteams` looks for the file is `~/slackr.json`.
+7. Paste the output into a json file. Default path that `slackteams` looks for the file is `~/.slackteams`.
 
 #### slackr.json
 

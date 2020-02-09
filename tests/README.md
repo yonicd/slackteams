@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-06 February, 2020 23:31:04
+09 February, 2020 09:01:46
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -34,19 +34,21 @@ Coverage summary is created using the
 ## Unit Tests
 
 Unit Test summary is created using the
-[testthat](https://github.com/r-lib/testthat) package.
+[testthat](https://github.com/r-lib/testthat)
+package.
 
-| file                                                     | n | time | error | failed | skipped | warning |
-| :------------------------------------------------------- | -: | ---: | ----: | -----: | ------: | ------: |
-| [test-file\_managment.R](testthat/test-file_managment.R) | 1 | 0.03 |     0 |      0 |       0 |       0 |
+| file                                                     | n |  time | error | failed | skipped | warning |
+| :------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: |
+| [test-file\_managment.R](testthat/test-file_managment.R) | 1 | 0.016 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
-<summary> Show Detailed Test Results </summary>
+<summary> Show Detailed Test Results
+</summary>
 
-| file                                                        | context         | test                 | status | n | time |
-| :---------------------------------------------------------- | :-------------- | :------------------- | :----- | -: | ---: |
-| [test-file\_managment.R](testthat/test-file_managment.R#L2) | file\_managment | multiplication works | PASS   | 1 | 0.03 |
+| file                                                        | context         | test                 | status | n |  time |
+| :---------------------------------------------------------- | :-------------- | :------------------- | :----- | -: | ----: |
+| [test-file\_managment.R](testthat/test-file_managment.R#L2) | file\_managment | multiplication works | PASS   | 1 | 0.016 |
 
 </details>
 
@@ -54,19 +56,19 @@ Unit Test summary is created using the
 
 <summary> Session Info </summary>
 
-| Field    | Value                               |                                                                                                                                                                                                                                                                    |
-| :------- | :---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Version  | R version 3.6.2 (2019-12-12)        |                                                                                                                                                                                                                                                                    |
-| Platform | x86\_64-apple-darwin15.6.0 (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/ba1918bad1b6ea844ea84ef8a0c4d51323de0920/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
-| Running  | macOS Catalina 10.15.3              |                                                                                                                                                                                                                                                                    |
-| Language | en\_US                              |                                                                                                                                                                                                                                                                    |
-| Timezone | UTC                                 |                                                                                                                                                                                                                                                                    |
+| Field    | Value                               |
+| :------- | :---------------------------------- |
+| Version  | R version 3.6.1 (2019-07-05)        |
+| Platform | x86\_64-apple-darwin15.6.0 (64-bit) |
+| Running  | macOS Mojave 10.14.5                |
+| Language | en\_US                              |
+| Timezone | America/New\_York                   |
 
 | Package  | Version |
 | :------- | :------ |
-| testthat | 2.3.1   |
-| covr     | 3.3.2   |
-| covrpage | 0.0.71  |
+| testthat | 2.2.1   |
+| covr     | 3.3.0   |
+| covrpage | 0.0.70  |
 
 </details>
 
