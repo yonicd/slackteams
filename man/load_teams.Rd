@@ -7,7 +7,7 @@
 load_teams(file = "~/.slackteams", verbose = TRUE)
 }
 \arguments{
-\item{file}{character, Path to json containing slackr-app keys, Default: '~/slackr.json'}
+\item{file}{character, Path to json containing slackr-app keys, Default: '~/.slackteams'}
 
 \item{verbose}{logical, Print message after loading, Default: TRUE}
 }

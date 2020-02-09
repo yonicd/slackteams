@@ -9,11 +9,12 @@ load_team_dcf(team = "user", file = "~/.slackr", verbose = TRUE)
 \arguments{
 \item{team}{character, name of team, Default: 'user'}
 
-\item{file}{character, Path to json containing slackr-app keys, Default: '~/slackr.json'}
+\item{file}{character, Path to dcf containing slackr compatible fields, Default: '~/.slackr'}
 
 \item{verbose}{logical, Print message after loading, Default: TRUE}
 }
 \description{
-Load teams from local file that contains slackr-app keys
+Load teams from local file that contains slack API definitions
+that are slackr compatible
 }
 \concept{files}

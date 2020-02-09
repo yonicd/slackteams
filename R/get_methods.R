@@ -137,3 +137,9 @@ get_member_name <- function(id) {
 
   res[res$id %in% id,]
 }
+
+#' @rdname get_methods
+#' @export
+get_activeteam_id <- function(){
+  unique(get_team_users(get_active_team(),'team_id')[[1]])
+}

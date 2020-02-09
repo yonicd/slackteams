@@ -10,6 +10,7 @@
 \alias{get_channel_members}
 \alias{get_channel_info}
 \alias{get_member_name}
+\alias{get_activeteam_id}
 \title{Query Team Information}
 \usage{
 get_teams()
@@ -29,6 +30,8 @@ get_channel_members(channel)
 get_channel_info(channel)
 
 get_member_name(id)
+
+get_activeteam_id()
 }
 \arguments{
 \item{team}{character, name of team}

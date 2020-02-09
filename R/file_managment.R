@@ -48,7 +48,7 @@ load_team_dcf <- function(team = 'user',file = "~/.slackr", verbose = TRUE) {
     .slack$teams <- append(.slack$teams, new_teams)
   }
 
-  .slack$file <- file
+  .slack$file[[team]] <- file
 
   if (verbose) {
     message(sprintf(
@@ -82,7 +82,10 @@ upload_team_file <- function(file) {
 
     .slack$teams <- append(.slack$teams, jsn[new_teams])
 
-    assign("file", file, envir = .slack)
+    for(team in names(jsn)){
+      .slack$file[[team]] <- file
+    }
+
   }
 }
 
