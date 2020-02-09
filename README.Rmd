@@ -53,7 +53,7 @@ The following button will create a Slack incoming webhook with the correct scope
 4. If successful a `SLACK_KEY_ID` will be returned. `r emo::ji('point_left')` `r emo::ji('rotating_light')` __Keep this Key__ `r emo::ji('rotating_light')`
 5. If not successful an error message will be returned.
 6. To keep the data safe you need your team `MEMBERID` to authenticate the `SLACK_KEY_ID`. [How to locate your Member ID](https://medium.com/@moshfeu/how-to-find-my-member-id-in-slack-workspace-d4bba942e38c)
-7. Paste the output into a json file. Default path that `slackteams` looks for the file is `~/slackr.json`.
+7. Paste the output into a json file. Default path that `slackteams` looks for the file is `~/.slackteams`.
 
 #### slackr.json
 

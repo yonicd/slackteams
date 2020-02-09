@@ -4,7 +4,7 @@
 \alias{load_teams}
 \title{Load Team(s) From File}
 \usage{
-load_teams(file = "~/slackr.json", verbose = TRUE)
+load_teams(file = "~/.slackteams", verbose = TRUE)
 }
 \arguments{
 \item{file}{character, Path to json containing slackr-app keys, Default: '~/slackr.json'}

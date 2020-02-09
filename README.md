@@ -57,7 +57,7 @@ team.
     the `SLACK_KEY_ID`. [How to locate your Member
     ID](https://medium.com/@moshfeu/how-to-find-my-member-id-in-slack-workspace-d4bba942e38c)
 7.  Paste the output into a json file. Default path that `slackteams`
-    looks for the file is `~/slackr.json`.
+    looks for the file is `~/.slackteams`.
 
 #### slackr.json
 

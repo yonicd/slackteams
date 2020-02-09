@@ -1,12 +1,13 @@
 #' @title Load Team(s) From File
 #' @description Load teams from local file that contains slackr-app keys
-#' @param file character, Path to json containing slackr-app keys, Default: '~/slackr.json'
+#' @param file character, Path to json containing slackr-app keys, Default: '~/.slackteams'
 #' @param verbose logical, Print message after loading, Default: TRUE
 #' @return NULL
 #' @concept files
 #' @rdname load_teams
 #' @export
-load_teams <- function(file = "~/slackr.json", verbose = TRUE) {
+load_teams <- function(file = "~/.slackteams", verbose = TRUE) {
+
   upload_team_file(file)
 
   if (verbose) {
@@ -20,9 +21,10 @@ load_teams <- function(file = "~/slackr.json", verbose = TRUE) {
 }
 
 #' @title Load Team(s) From File
-#' @description Load teams from local file that contains slackr-app keys
+#' @description Load teams from local file that contains slack API definitions
+#'   that are slackr compatible
 #' @param team character, name of team, Default: 'user'
-#' @param file character, Path to json containing slackr-app keys, Default: '~/slackr.json'
+#' @param file character, Path to dcf containing slackr compatible fields, Default: '~/.slackr'
 #' @param verbose logical, Print message after loading, Default: TRUE
 #' @return NULL
 #' @concept files
@@ -70,6 +72,9 @@ load_team_dcf <- function(team = 'user',file = "~/.slackr", verbose = TRUE) {
 #' @export
 #' @importFrom jsonlite read_json
 upload_team_file <- function(file) {
+
+  file <- catch_slackr_json(file)
+
   if (file.exists(file)) {
     jsn <- jsonlite::read_json(file)
 
@@ -127,4 +132,25 @@ activeteam2dcf <- function(file = '~/.slackr', verbose = TRUE) {
   names(vars_df)[grepl('^incoming',names(vars_df))] <- 'incoming_webhook_url'
 
   write.dcf(vars_df, file = file)
+}
+
+catch_slackr_json <- function(file){
+
+  old_path <- '~/slackr.json'
+  deprec_msg <- "'slackr.json' is being deprecated\n  Please rename 'slackr.json' to '.slackteams'\n\n"
+
+  if(file==old_path){
+
+    message(deprec_msg)
+
+  }else{
+
+    if(!file.exists(file)&file.exists(old_path)){
+      message(deprec_msg)
+      file <- old_path
+    }
+
+  }
+
+  file
 }
