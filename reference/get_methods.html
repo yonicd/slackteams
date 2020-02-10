@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">slackteams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -129,7 +129,7 @@
 
 <span class='fu'>get_active_team</span>()
 
-<span class='fu'>get_team_creds</span>(<span class='no'>team</span>)
+<span class='fu'>get_team_creds</span>(<span class='kw'>team</span> <span class='kw'>=</span> <span class='fu'>get_active_team</span>())
 
 <span class='fu'>get_team_users</span>(<span class='no'>team</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id"</span>, <span class='st'>"name"</span>, <span class='st'>"real_name"</span>))
 
@@ -139,7 +139,9 @@
 
 <span class='fu'>get_channel_info</span>(<span class='no'>channel</span>)
 
-<span class='fu'>get_member_name</span>(<span class='no'>id</span>)</pre>
+<span class='fu'>get_member_name</span>(<span class='no'>id</span>)
+
+<span class='fu'>get_activeteam_id</span>()</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
