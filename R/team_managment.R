@@ -12,11 +12,12 @@
 #' @return NULL
 #' @concept managment
 #' @rdname manage_team
+#' @importFrom jsonlite validate
 #' @export
 activate_team <- function(team, verbose = TRUE) {
   validate_team(team)
 
-  if(grepl('json$',.slack$file)){
+  if(jsonlite::validate(txt = readLines(.slack$file[[team]]))){
     get_slackrapp(team)
   }
 
@@ -49,6 +50,8 @@ remove_team <- function(team) {
 }
 
 slack_team_info <- function(team) {
+  # activeteam <- get_team_info()
+  # .slack$activeteam <- activeteam[['team']][['id']]
   .slack$users[[team]] <- clean_users(get_users_list())
   .slack$channels[[team]] <- clean_channel(get_conversations_list(), team)
 }

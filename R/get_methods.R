@@ -37,7 +37,7 @@ get_active_team <- function() {
 
 #' @rdname get_methods
 #' @export
-get_team_creds <- function(team) {
+get_team_creds <- function(team = get_active_team()) {
   idx <- which(team %in% get_teams())
 
   if (length(idx) != length(team)) {
@@ -136,4 +136,10 @@ get_member_name <- function(id) {
     )
 
   res[res$id %in% id,]
+}
+
+#' @rdname get_methods
+#' @export
+get_activeteam_id <- function(){
+  unique(get_team_users(get_active_team(),'team_id')[[1]])
 }

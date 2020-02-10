@@ -31,6 +31,7 @@ load_teams <- function(file = "~/.slackteams", verbose = TRUE) {
 #' @rdname load_team_dcf
 #' @export
 load_team_dcf <- function(team = 'user',file = "~/.slackr", verbose = TRUE) {
+
   res <- read.dcf(file)
 
   for (i in intersect(colnames(res), .slack$cred_fields)) {
@@ -41,14 +42,8 @@ load_team_dcf <- function(team = 'user',file = "~/.slackr", verbose = TRUE) {
     }
   }
 
-  new_teams <- setdiff(team, names(.slack$teams))
-
-  if(length(new_teams)>0){
-    names(new_teams) <- new_teams
-    .slack$teams <- append(.slack$teams, new_teams)
-  }
-
-  .slack$file <- file
+  .slack$teams[[team]] <- 'dcf'
+  .slack$file[[team]] <- file
 
   if (verbose) {
     message(sprintf(
@@ -76,13 +71,14 @@ upload_team_file <- function(file) {
   file <- catch_slackr_json(file)
 
   if (file.exists(file)) {
+
     jsn <- jsonlite::read_json(file)
 
-    new_teams <- setdiff(names(jsn), names(.slack$teams))
+    for(team in names(jsn)){
+      .slack$teams[[team]] <- jsn[[team]]
+      .slack$file[[team]] <- file
+    }
 
-    .slack$teams <- append(.slack$teams, jsn[new_teams])
-
-    assign("file", file, envir = .slack)
   }
 }
 
