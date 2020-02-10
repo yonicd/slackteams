@@ -19,7 +19,7 @@ get_team_env()
 
 get_active_team()
 
-get_team_creds(team)
+get_team_creds(team = get_active_team())
 
 get_team_users(team, fields = c("id", "name", "real_name"))
 

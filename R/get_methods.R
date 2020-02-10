@@ -37,7 +37,7 @@ get_active_team <- function() {
 
 #' @rdname get_methods
 #' @export
-get_team_creds <- function(team) {
+get_team_creds <- function(team = get_active_team()) {
   idx <- which(team %in% get_teams())
 
   if (length(idx) != length(team)) {
