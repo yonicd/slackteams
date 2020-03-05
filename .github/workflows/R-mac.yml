@@ -70,7 +70,7 @@ jobs:
           token: ${{secrets.GITHUB_PAT}}
           repository: yonicd/slackthreads
           event-type: push
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          client-payload: '{"repository": "${{ github.repository }}", "ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
 
       - name: slackblocks trigger
         if: github.ref == 'refs/heads/master'
@@ -79,4 +79,4 @@ jobs:
           token: ${{secrets.GITHUB_PAT}}
           repository: yonicd/slackblocks
           event-type: push
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          client-payload: '{"repository": "${{ github.repository }}", "ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
