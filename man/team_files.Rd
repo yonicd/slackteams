@@ -7,8 +7,7 @@
 \usage{
 upload_team_file(file)
 
-update_team_file(file, verbose = TRUE, auto_unbox = TRUE,
-  pretty = TRUE, ...)
+update_team_file(file, verbose = TRUE, auto_unbox = TRUE, pretty = TRUE, ...)
 }
 \arguments{
 \item{file}{character, path to file}

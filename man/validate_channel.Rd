@@ -15,3 +15,4 @@ character
 \description{
 Validate channel label and convert it to Slack channel ID
 }
+\concept{managments}

@@ -33,6 +33,7 @@ validate_response <- function(res) {
 #' @description Validate channel label and convert it to Slack channel ID
 #' @param channel character, channel label
 #' @return character
+#' @concept managments
 #' @rdname validate_channel
 #' @export
 validate_channel <- function(channel){
