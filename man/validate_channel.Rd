@@ -13,6 +13,7 @@ validate_channel(channel)
 character
 }
 \description{
-Validate channel label and convert it to Slack channel ID
+Validate that channel label exists in active team and
+convert it to the corresponding slack channel ID
 }
-\concept{managments}
+\concept{managment}
