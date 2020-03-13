@@ -32,7 +32,7 @@ activate_team <- function(team, verbose = TRUE) {
 
 #' @rdname manage_team
 #' @export
-add_team <- function(team, memberid, key) {
+add_team <- function(team, key, memberid) {
   new_team <- list(memberid = memberid, key = key)
   names(new_team) <- team
   .slack$teams <- append(.slack$teams, new_team)
