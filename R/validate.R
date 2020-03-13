@@ -15,20 +15,6 @@ validate_team <- function(team) {
   return(TRUE)
 }
 
-#' @importFrom httr warn_for_status content
-validate_response <- function(res) {
-  httr::warn_for_status(res)
-
-  res_content <- httr::content(res)
-
-  if (!res_content$ok) {
-    return(res_content$error)
-  }
-
-  res_content
-}
-
-
 #' @title Validate Channel Label
 #' @description Validate that channel label exists in active team and
 #'  convert it to the corresponding slack channel ID
@@ -52,7 +38,7 @@ validate_channel <- function(channel){
   if (channel %in% team_channels$id) {
     return(channel)
   } else if (channel %in% team_channels$name) {
-    return(team_channels$id[grepl(channel, team_channels$name)])
+    return(team_channels$id[grepl(sprintf('^%s$',channel), team_channels$name)])
   } else {
     stop("Unknown channel.")
   }
