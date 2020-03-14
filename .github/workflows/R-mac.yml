@@ -1,6 +1,6 @@
 on: [push]
 
-name: R-mac-push
+name: R-mac
 
 jobs:
   check:
