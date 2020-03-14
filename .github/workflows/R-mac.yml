@@ -1,11 +1,12 @@
-on: [push, pull_request]
+on: [push]
 
-name: R-mac
+name: R-mac-push
 
 jobs:
   check:
     runs-on: ${{ matrix.config.os }}
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    if: "!contains(github.event.head_commit.message, 'skip osx')"
 
     strategy:
       fail-fast: false
