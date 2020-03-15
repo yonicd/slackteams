@@ -106,6 +106,16 @@ username| Slack User Name
 api_token| Slack API token
 incoming_webhook_url| Slack incoming webhook URL
 
+Here is an example of the DCF:
+
+```bash
+channel: @general
+username: myusername
+incoming_webhook_url: https://hooks.slack.com/services/XXXXX/XXXXX/XXXXX
+api_token: xoxp-XXXXX-XXXXX-XXXXX-XXXXX
+
+```
+
 These correspond to the environment variables in the first table. These are also the exact fields that [slackr](https://github.com/hrbrmstr/slackr) uses, which makes it easy to either migrate to `slackteams` or use `slackteams` to use `slackr`.
 
 ### Converting JSON to DCF
