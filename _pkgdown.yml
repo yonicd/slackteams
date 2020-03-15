@@ -32,5 +32,7 @@ reference:
 - title: Set Teams Information
   contents: has_concept("set")
 articles:
+- title: Managing Teams
+  contents: manage
 - title: Unit Tests
   contents: tests_and_coverage

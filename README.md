@@ -62,7 +62,7 @@ correct scope to your Slack team.
 7.  Paste the output into a json file. Default path that `slackteams`
     looks for the file is `~/.slackteams`.
 
-#### slackr.json
+#### .slackteams
 
 This is an example of the json file. Here we have 2 teams: `slackr` and
 `r4ds`. Each one contains a `key` (from
