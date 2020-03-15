@@ -87,7 +87,12 @@
     
     
 <p>Here are the ways you can use <code>slackteams</code> to manage your slack teams.</p>
-<p>The main idea of all these methods are to load into the R session a few pieces of information Slack API needs in order for the end user to interact with it.</p>
+<p>These methods are designed to store and load the information needed to interact with the Slack API.</p>
+<div id="visual-workflow" class="section level2">
+<h2 class="hasAnchor">
+<a href="#visual-workflow" class="anchor"></a>Visual Workflow</h2>
+<p><img src="../man/figures/diag.png" width="100%"></p>
+</div>
 <div id="terminology-and-prerequisites" class="section level2">
 <h2 class="hasAnchor">
 <a href="#terminology-and-prerequisites" class="anchor"></a>Terminology and Prerequisites</h2>
@@ -126,16 +131,46 @@
 <li><p>Users of <a href="https://github.com/hrbrmstr/slackr">slackr</a> most likely are familiar with these and know how to create them.</p></li>
 </ul>
 </div>
+<div id="methods" class="section level2">
+<h2 class="hasAnchor">
+<a href="#methods" class="anchor"></a>Methods</h2>
+<p>There are two main methods to set up credentials with the Slack API, each has their own pros and cons depending on what type of usage you may have</p>
+<table class="table">
+<colgroup>
+<col width="25%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">Management Type</th>
+<th align="center">Manage Multiple Teams in Session</th>
+<th align="center">Store Credentials Locally</th>
+<th align="center">Depend on External Server</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">JSON</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+</tr>
+<tr class="even">
+<td align="center">DCF</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="json" class="section level2">
 <h2 class="hasAnchor">
 <a href="#json" class="anchor"></a>JSON</h2>
 <p>The primary method that <code>slackteams</code> loads and activates teams into the session is via a local JSON file. The contents of this file can contain multiple teams which you can activate during a session.</p>
-<div id="slack-app" class="section level3">
+<div id="loading-a-team" class="section level3">
 <h3 class="hasAnchor">
-<a href="#slack-app" class="anchor"></a>Slack App</h3>
-<div id="loading" class="section level4">
-<h4 class="hasAnchor">
-<a href="#loading" class="anchor"></a>Loading</h4>
+<a href="#loading-a-team" class="anchor"></a>Loading A Team</h3>
 <p>If you are using the <code>slackr-app</code> then for every team that you create a <code>SLACK_API_TOKEN</code> and <code>SLACK_INCOMING_URL_PREFIX</code> pairing you will receive from <code>slackr-app</code> server two pieces of information to store in the JSON. The assumed location of the JSON is <code>~/.slackteams</code>.</p>
 <ol style="list-style-type: decimal">
 <li>key: unique identifier to your record on the server</li>
@@ -155,24 +190,6 @@
 <span id="cb1-10"><a href="#cb1-10"></a><span class="fu">}</span></span></code></pre></div>
 <p>For a given <code>TEAM</code> you then can use <code><a href="../reference/manage_team.html">slackteams::activate_team(TEAM)</a></code>. This function sends to the <code>slackr-app</code> server the pairing information and the server will return back the values for the environment variables that are set in the session.</p>
 </div>
-<div id="proscons" class="section level4">
-<h4 class="hasAnchor">
-<a href="#proscons" class="anchor"></a>Pros/Cons</h4>
-<ul>
-<li>Pros
-<ul>
-<li>You are <strong>not</strong> storing sensitive Slack API information on your machine.</li>
-<li>You can switch within session from one team to another easily.</li>
-</ul>
-</li>
-<li>Cons
-<ul>
-<li>Your are dependent on the <code>slackr-app</code> server to retrieve your slack API information.</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 <div id="adding-a-team-within-session" class="section level3">
 <h3 class="hasAnchor">
 <a href="#adding-a-team-within-session" class="anchor"></a>Adding A Team Within Session</h3>
@@ -185,9 +202,9 @@
 <div id="dcf" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dcf" class="anchor"></a>DCF</h2>
-<div id="loading-a-team" class="section level3">
+<div id="loading-a-team-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#loading-a-team" class="anchor"></a>Loading A Team</h3>
+<a href="#loading-a-team-1" class="anchor"></a>Loading A Team</h3>
 <p>A different session persistent method to set the correct environment variables is via <code><a href="../reference/load_team_dcf.html">slackteams::load_team_dcf(team = TEAM,file = PATH_TO_DCF)</a></code>. This function expects a name for the team that you are loading and the path to the DCF file containing the following information:</p>
 <table class="table">
 <thead><tr class="header">
@@ -214,29 +231,15 @@
 </tbody>
 </table>
 <p>These correspond to the environment variables in the first table. These are also the exact fields that <a href="https://github.com/hrbrmstr/slackr">slackr</a> uses, which makes it easy to either migrate to <code>slackteams</code> or use <code>slackteams</code> to use <code>slackr</code>.</p>
-<div id="proscons-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#proscons-1" class="anchor"></a>Pros/Cons</h4>
-<ul>
-<li>Pros
-<ul>
-<li>Your are not dependent on the <code>slackr-app</code> server.</li>
-</ul>
-</li>
-<li>Cons
-<ul>
-<li>The DCF file only stores a single team.</li>
-<li>You are storing sensitive Slack API information on your machine.</li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="converting-json-to-dcf" class="section level3">
 <h3 class="hasAnchor">
 <a href="#converting-json-to-dcf" class="anchor"></a>Converting JSON to DCF</h3>
-<p>For convenience after you activate a team you can convert the the credentials of the active team to a local DCF file using <code><a href="../reference/activeteam2dcf.html">slackteams::activeteam2dcf()</a></code>. This can be useful if you know that you activate one team most of the time and want to manage your own credentials.</p>
-<p>It is also useful if you have unit testing that is dependent on Slack, in which case depending on an external server is over-burdensome.</p>
+<p>For convenience after you activate a team you can convert the credentials of the active team to a local DCF file using <code><a href="../reference/activeteam2dcf.html">slackteams::activeteam2dcf()</a></code>.</p>
+<ul>
+<li><p>This can be useful if you know that you activate one team most of the time and want to manage your own credentials.</p></li>
+<li><p>It is also useful if you have unit testing that is dependent on Slack, in which case depending on an external server is over-burdensome.</p></li>
+</ul>
 </div>
 </div>
   </div>
@@ -247,7 +250,9 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#terminology-and-prerequisites">Terminology and Prerequisites</a></li>
+<li><a href="#visual-workflow">Visual Workflow</a></li>
+      <li><a href="#terminology-and-prerequisites">Terminology and Prerequisites</a></li>
+      <li><a href="#methods">Methods</a></li>
       <li><a href="#json">JSON</a></li>
       <li><a href="#dcf">DCF</a></li>
       </ul>
