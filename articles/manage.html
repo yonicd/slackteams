@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manage Teams • texPreview</title>
+<title>Manage Your Slack Teams • slackteams</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Manage Teams">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Manage Your Slack Teams">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -30,8 +30,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">texPreview</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <a class="navbar-link" href="../index.html">slackteams</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -57,6 +57,12 @@
      
   </a>
 </li>
+<li>
+  <a href="http://twitter.com/yoniceedee">
+    <span class="fa fa-lg fa-twitter"></span>
+     
+  </a>
+</li>
       </ul>
 </div>
 <!--/.nav-collapse -->
@@ -70,7 +76,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Manage Teams</h1>
+      <h1>Manage Your Slack Teams</h1>
             
       
       
@@ -80,11 +86,172 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(slackteams)</a></code></pre></div>
+<p>Here are the ways you can use <code>slackteams</code> to manage your slack teams.</p>
+<p>The main idea of all these methods are to load into the R session a few pieces of information Slack API needs in order for the end user to interact with it.</p>
+<div id="terminology-and-prerequisites" class="section level2">
+<h2 class="hasAnchor">
+<a href="#terminology-and-prerequisites" class="anchor"></a>Terminology and Prerequisites</h2>
+<table class="table">
+<thead><tr class="header">
+<th align="left">Environment Variable</th>
+<th align="left">Description</th>
+<th align="center">Creator</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">SLACK_CHANNEL</td>
+<td align="left">Default Channel to Post</td>
+<td align="center">User</td>
+</tr>
+<tr class="even">
+<td align="left">SLACK_USERNAME</td>
+<td align="left">Slack User Name</td>
+<td align="center">User</td>
+</tr>
+<tr class="odd">
+<td align="left">SLACK_API_TOKEN</td>
+<td align="left">Slack API token</td>
+<td align="center">Slack*</td>
+</tr>
+<tr class="even">
+<td align="left">SLACK_INCOMING_URL_PREFIX</td>
+<td align="left">Slack incoming webhook URL</td>
+<td align="center">Slack</td>
+</tr>
+</tbody>
+</table>
+<p>* The API token and incoming webhook are values generated by Slack.</p>
+<ul>
+<li><p>For new users you can use the button in the main <a href="https://github.com/yonicd/slackteams">README</a> page of this repository or directly at the <a href="https://github.com/yonicd/slackr-app">slackr-app</a> application homepage to create these two elements.</p></li>
+<li><p>Users of <a href="https://github.com/hrbrmstr/slackr">slackr</a> most likely are familiar with these and know how to create them.</p></li>
+</ul>
+</div>
+<div id="json" class="section level2">
+<h2 class="hasAnchor">
+<a href="#json" class="anchor"></a>JSON</h2>
+<p>The primary method that <code>slackteams</code> loads and activates teams into the session is via a local JSON file. The contents of this file can contain multiple teams which you can activate during a session.</p>
+<div id="slack-app" class="section level3">
+<h3 class="hasAnchor">
+<a href="#slack-app" class="anchor"></a>Slack App</h3>
+<div id="loading" class="section level4">
+<h4 class="hasAnchor">
+<a href="#loading" class="anchor"></a>Loading</h4>
+<p>If you are using the <code>slackr-app</code> then for every team that you create a <code>SLACK_API_TOKEN</code> and <code>SLACK_INCOMING_URL_PREFIX</code> pairing you will receive from <code>slackr-app</code> server two pieces of information to store in the JSON. The assumed location of the JSON is <code>~/.slackteams</code>.</p>
+<ol style="list-style-type: decimal">
+<li>key: unique identifier to your record on the server</li>
+<li>memberid: your slack team member id which is used to verify that you sent the key.</li>
+</ol>
+<p>In other words the key is not very useful for other people if they do not have the member id to identify themselves.</p>
+<p>Here is an example of what the JSON looks like</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="dt">"slackr"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="dt">"key"</span><span class="fu">:</span> <span class="st">"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="dt">"memberid"</span><span class="fu">:</span> <span class="st">"UABC123"</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">},</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="dt">"r4ds"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="dt">"key"</span><span class="fu">:</span> <span class="st">"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="fu">,</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="dt">"memberid"</span><span class="fu">:</span> <span class="st">"UXYZ456"</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="fu">}</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">}</span></span></code></pre></div>
+<p>For a given <code>TEAM</code> you then can use <code><a href="../reference/manage_team.html">slackteams::activate_team(TEAM)</a></code>. This function sends to the <code>slackr-app</code> server the pairing information and the server will return back the values for the environment variables that are set in the session.</p>
+</div>
+<div id="proscons" class="section level4">
+<h4 class="hasAnchor">
+<a href="#proscons" class="anchor"></a>Pros/Cons</h4>
+<ul>
+<li>Pros
+<ul>
+<li>You are <strong>not</strong> storing sensitive Slack API information on your machine.</li>
+<li>You can switch within session from one team to another easily.</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>Your are dependent on the <code>slackr-app</code> server to retrieve your slack API information.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="adding-a-team-within-session" class="section level3">
+<h3 class="hasAnchor">
+<a href="#adding-a-team-within-session" class="anchor"></a>Adding A Team Within Session</h3>
+<p>If you have a JSON file already created and want to add a team that you generated credentials via the <code>slackr-app</code> via the console you can use <code><a href="../reference/manage_team.html">slackteams::add_team</a></code> to manually update the slackteams environment with the new team.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>slackteams<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackteams/man/manage_team.html">add_team</a></span>(MY_NEW_TEAM,memberid,key)</span></code></pre></div>
+<p>If you want to store this information in your JSON file you can use, which will either update (teams that exists) or append (new teams) to the local JSON.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>slackteams<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/slackteams/man/team_files.html">update_team_file</a></span>(PATH_TO_JSON)</span></code></pre></div>
+</div>
+</div>
+<div id="dcf" class="section level2">
+<h2 class="hasAnchor">
+<a href="#dcf" class="anchor"></a>DCF</h2>
+<div id="loading-a-team" class="section level3">
+<h3 class="hasAnchor">
+<a href="#loading-a-team" class="anchor"></a>Loading A Team</h3>
+<p>A different session persistent method to set the correct environment variables is via <code><a href="../reference/load_team_dcf.html">slackteams::load_team_dcf(team = TEAM,file = PATH_TO_DCF)</a></code>. This function expects a name for the team that you are loading and the path to the DCF file containing the following information:</p>
+<table class="table">
+<thead><tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">channel</td>
+<td align="left">Default Channel to Post</td>
+</tr>
+<tr class="even">
+<td align="left">username</td>
+<td align="left">Slack User Name</td>
+</tr>
+<tr class="odd">
+<td align="left">api_token</td>
+<td align="left">Slack API token</td>
+</tr>
+<tr class="even">
+<td align="left">incoming_webhook_url</td>
+<td align="left">Slack incoming webhook URL</td>
+</tr>
+</tbody>
+</table>
+<p>These correspond to the environment variables in the first table. These are also the exact fields that <a href="https://github.com/hrbrmstr/slackr">slackr</a> uses, which makes it easy to either migrate to <code>slackteams</code> or use <code>slackteams</code> to use <code>slackr</code>.</p>
+<div id="proscons-1" class="section level4">
+<h4 class="hasAnchor">
+<a href="#proscons-1" class="anchor"></a>Pros/Cons</h4>
+<ul>
+<li>Pros
+<ul>
+<li>Your are not dependent on the <code>slackr-app</code> server.</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>The DCF file only stores a single team.</li>
+<li>You are storing sensitive Slack API information on your machine.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="converting-json-to-dcf" class="section level3">
+<h3 class="hasAnchor">
+<a href="#converting-json-to-dcf" class="anchor"></a>Converting JSON to DCF</h3>
+<p>For convenience after you activate a team you can convert the the credentials of the active team to a local DCF file using <code><a href="../reference/activeteam2dcf.html">slackteams::activeteam2dcf()</a></code>. This can be useful if you know that you activate one team most of the time and want to manage your own credentials.</p>
+<p>It is also useful if you have unit testing that is dependent on Slack, in which case depending on an external server is over-burdensome.</p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#terminology-and-prerequisites">Terminology and Prerequisites</a></li>
+      <li><a href="#json">JSON</a></li>
+      <li><a href="#dcf">DCF</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
@@ -92,7 +259,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Jonathan Sidi.</p>
 </div>
 
 <div class="pkgdown">
