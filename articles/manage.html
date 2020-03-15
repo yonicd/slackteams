@@ -230,6 +230,11 @@
 </tr>
 </tbody>
 </table>
+<p>Here is an example of the DCF:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">channel</span>: @general</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">username</span>: myusername</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">incoming_webhook_url</span>: https://hooks.slack.com/services/XXXXX/XXXXX/XXXXX</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="ex">api_token</span>: xoxp-XXXXX-XXXXX-XXXXX-XXXXX</span></code></pre></div>
 <p>These correspond to the environment variables in the first table. These are also the exact fields that <a href="https://github.com/hrbrmstr/slackr">slackr</a> uses, which makes it easy to either migrate to <code>slackteams</code> or use <code>slackteams</code> to use <code>slackr</code>.</p>
 </div>
 <div id="converting-json-to-dcf" class="section level3">
