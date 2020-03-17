@@ -2,7 +2,7 @@
 #' @description Manage teams that can be accessed
 #' @param team character, team name
 #' @param verbose logical, Print messages to console, Default: TRUE
-#' @param memberid chracter, member id of user in the team
+#' @param memberid character, member id of user in the team
 #' @param key character, slackr-app key unique to the memberid
 #' @details If the team credentials are last loaded via load_teams() then
 #'  when activating a team slackrapp will be called to retrieve
@@ -59,3 +59,4 @@ slack_team_info <- function(team) {
 update_cache <- function() {
   slack_team_info(get_active_team())
 }
+
