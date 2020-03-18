@@ -3,6 +3,8 @@
 export(activate_team)
 export(activeteam2dcf)
 export(add_team)
+export(add_team_interactive)
+export(add_team_token)
 export(get_active_team)
 export(get_activeteam_id)
 export(get_channel_info)

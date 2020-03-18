@@ -3,12 +3,15 @@
 \name{activate_team}
 \alias{activate_team}
 \alias{add_team}
+\alias{add_team_token}
 \alias{remove_team}
 \title{Team Managment Functions}
 \usage{
 activate_team(team, verbose = TRUE)
 
 add_team(team, memberid, key)
+
+add_team_token(team, token)
 
 remove_team(team)
 }
@@ -17,18 +20,20 @@ remove_team(team)
 
 \item{verbose}{logical, Print messages to console, Default: TRUE}
 
-\item{memberid}{chracter, member id of user in the team}
+\item{memberid}{character, member id of user in the team}
 
 \item{key}{character, slackr-app key unique to the memberid}
+
+\item{token}{character, api token issued by slack}
 }
 \description{
 Manage teams that can be accessed
 }
 \details{
-If the team credentials are last loaded via load_teams() then
-when activating a team slackrapp will be called to retrieve
-private webhook information needed to interact with Slack API.
-If the team credentials are last loaded via load_team_dcf() the
-private webhook is assumed to be located in the file.
+If the team credentials are last loaded via load_teams() then when
+activating a team slackrapp will be called to retrieve private webhook
+information needed to interact with Slack API. If the team credentials are
+last loaded via load_team_dcf() the private webhook is assumed to be
+located in the file.
 }
 \concept{managment}
