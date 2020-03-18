@@ -1,5 +1,5 @@
-client_id <- "232409461636.989252639459"
-client_secret <- "8615cdd72230109d2811b57ca60e8002"
+client_id <- "232409461636.994370873922"
+client_secret <- "3327df26a999c8081f62b6fa6d9f4f5e"
 slack_oauth_endpoint <- httr::oauth_endpoint(
   authorize = "https://slack.com/oauth/v2/authorize",
   access = "https://slack.com/api/oauth.v2.access"
