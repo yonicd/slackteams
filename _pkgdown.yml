@@ -34,5 +34,7 @@ reference:
 articles:
 - title: Managing Teams
   contents: manage
+- title: Managing Tokens
+  contents: scopes
 - title: Unit Tests
   contents: tests_and_coverage

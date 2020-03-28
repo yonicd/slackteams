@@ -1,0 +1,72 @@
+---
+title: "Managing Tokens"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Managing Scopes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(details)
+```
+
+## Overview
+
+`slackteams` uses incoming webhook tokens to interact with the Slack API. There are three main methods to create a token.
+
+1. Use `slackteams::add_team_interactive` to interactively create a token for the R session.
+2. Use [slackr-app](https://github.com/yonicd/slackr-app) Slack application button to create a token.
+3. BYOT (Bring your own token) You are a super user or work at a company that supplied you a token. 
+
+```{r setup}
+library(slackteams)
+```
+
+### Interactive
+
+This is similar to oauth2 implementation you would see in [googlesheets4](https://github.com/tidyverse/googlesheets4). The steps are:
+
+1. Call the function from the `R` console
+2. Authorize the creation of the token in a browser.
+3. Get redirected by to the R console.
+
+This is by far the easiest method.
+
+The main piece that the user controls are the [permission scopes](https://api.slack.com/scopes) the token has attached to it. To help with this we use a yaml file to allow users to define locally what scopes they want to define. {slackteams} comes with its own yaml file with the scopes that are needed to use all of `slackverse`.
+
+Click on the triangle to view the contents of the yaml. We define two "roles" in this file. 
+
+`fields` can be 
+
+  - `channels`:  public channels in the workspace
+  - `groups`: private channels that your slack app has been added to
+  - `users`: 	people in the workspace
+  - `im`: direct messages that your slack app has been added to
+  - `mpim`: group direct messages that your slack app has been added to
+  - `emoji`: custom emoji in the workspace
+  - `files`: files shared in channels and conversations that your slack app has been added to
+  - `usergroups`: user groups in the workspace
+  - `chat`: messages in approved channels & conversations
+
+`actions` can be:
+
+  - `write` access mean that you can post content in a field
+  - `read` access mean that you can view basic information about a field
+  - `history` access mean that you can view messages and other content in a field
+
+The following yaml contains `base` scopes which contains only read access permissions to a token and `slackverse` specific permissions to use the packages in `slackverse`. Click the following to view the scopes of each of these settings.
+
+```{details,details.lang = 'yml',details.summary = 'Scopes',echo= FALSE}
+system.file("scopes.yml", package = "slackteams")
+```
+
+### Slackr-app
+
+You can use the button in the main [README](https://github.com/yonicd/slackteams) page of this repository or directly at the [slackr-app](https://github.com/yonicd/slackr-app) application homepage to create the credentials identical to `slackverse` scope settings. 
+
+### BYOT
