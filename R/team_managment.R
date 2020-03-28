@@ -67,19 +67,12 @@ add_team_token <- function(team, token) {
 #'   are exploring options to remedy this situation.
 #' @return NULL
 #' @export
-add_team_interactive<- function(scopes = c("users:read",
-                                           "channels:read",
-                                           "groups:read",
-                                           "im:read",
-                                           "mpim:read"),
+add_team_interactive <- function(scopes = scopes(which = "slackverse"),
                                 verbose = TRUE) {
   min_scopes <- c(
     "users:read", "channels:read", "groups:read", "im:read", "mpim:read"
   )
-  if (!all(
-    min_scopes %in%
-    scopes
-  )) {
+  if (!all(min_scopes %in% scopes)) {
     stop(
       "At a minimum, scopes must include\n",
       "users:read, channels:read, groups:read, im:read, and mpim:read"

@@ -4,10 +4,7 @@
 \alias{add_team_interactive}
 \title{Interactive Team Managment}
 \usage{
-add_team_interactive(
-  scopes = c("users:read", "channels:read", "groups:read", "im:read", "mpim:read"),
-  verbose = TRUE
-)
+add_team_interactive(scopes = scopes(which = "slackverse"), verbose = TRUE)
 }
 \arguments{
 \item{scopes}{character, scopes to request. Must include "users:read",
