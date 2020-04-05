@@ -3,15 +3,12 @@
 \name{activate_team}
 \alias{activate_team}
 \alias{add_team}
-\alias{add_team_token}
 \alias{remove_team}
 \title{Team Managment Functions}
 \usage{
 activate_team(team, verbose = TRUE)
 
 add_team(team, memberid, key)
-
-add_team_token(team, token)
 
 remove_team(team)
 }
@@ -23,8 +20,6 @@ remove_team(team)
 \item{memberid}{character, member id of user in the team}
 
 \item{key}{character, slackr-app key unique to the memberid}
-
-\item{token}{character, api token issued by slack}
 }
 \description{
 Manage teams that can be accessed

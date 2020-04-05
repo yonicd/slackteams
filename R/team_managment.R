@@ -4,7 +4,6 @@
 #' @param verbose logical, Print messages to console, Default: TRUE
 #' @param memberid character, member id of user in the team
 #' @param key character, slackr-app key unique to the memberid
-#' @param token character, api token issued by slack
 #' @details If the team credentials are last loaded via load_teams() then when
 #'   activating a team slackrapp will be called to retrieve private webhook
 #'   information needed to interact with Slack API. If the team credentials are
@@ -37,12 +36,20 @@ activate_team <- function(team, verbose = TRUE) {
 #' @rdname manage_team
 #' @export
 add_team <- function(team, memberid, key) {
-  new_team <- list(memberid = memberid, key = key)
+  new_team <- list(list(memberid = memberid, key = key))
   names(new_team) <- team
   .slack$teams <- append(.slack$teams, new_team)
 }
 
-#' @rdname manage_team
+
+#' @title Add team credentials
+#' @description Add a team with a user specified token
+#'  and the scopes for it.
+#' @param team character, team name
+#' @param token character, api token issued by slack
+#' @param scopes token scopes
+#' @return NULL
+#' @rdname add_team_token
 #' @export
 add_team_token <- function(team, token, scopes) {
   .slack$teams[[team]] <- "token"
@@ -57,7 +64,7 @@ add_team_token <- function(team, token, scopes) {
   )
 }
 
-#' @title Interactive Team Managment
+#' @title Interactive Team Management
 #' @description Add a team interactively
 #' @param scopes character, scopes to request. Must include "users:read",
 #'   "channels:read", "groups:read", "im:read", and "mpim:read" at minimum.
@@ -67,6 +74,7 @@ add_team_token <- function(team, token, scopes) {
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
 #' @return NULL
+#' @rdname add_team_interactive
 #' @export
 add_team_interactive <- function(scopes = scopes(),
                                  verbose = TRUE) {
@@ -120,8 +128,6 @@ remove_team <- function(team) {
 }
 
 slack_team_info <- function(team) {
-  # activeteam <- get_team_info()
-  # .slack$activeteam <- activeteam[['team']][['id']]
   .slack$users[[team]] <- clean_users(get_users_list())
   .slack$channels[[team]] <- clean_channel(get_conversations_list(), team)
 }

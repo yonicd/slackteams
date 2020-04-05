@@ -120,7 +120,7 @@ activeteam2dcf <- function(file = '~/.slackr', verbose = TRUE) {
 
   if(verbose){
     if(nzchar(file)){
-      message(sprintf("Converting and writing the active team ('%s') to a {slackr} compatible dcf file at %s",team,file))
+      message(sprintf("Converting and writing the active team '%s' to a slackr package compatible dcf file at:\n%s",team,normalizePath(file,mustWork = FALSE)))
     }else{
       message(sprintf("Converting the active team ('%s') to a {slackr} compatible dcf file",team))
     }

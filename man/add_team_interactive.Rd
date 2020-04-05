@@ -2,7 +2,7 @@
 % Please edit documentation in R/team_managment.R
 \name{add_team_interactive}
 \alias{add_team_interactive}
-\title{Interactive Team Managment}
+\title{Interactive Team Management}
 \usage{
 add_team_interactive(scopes = scopes(), verbose = TRUE)
 }

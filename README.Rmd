@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 # slackteams
 
 <!-- badges: start -->
-[![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_02_09-brightgreen.svg)](http://tinyurl.com/qq3vz59)
+[![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_04_05-brightgreen.svg)](http://tinyurl.com/qq3vz59)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R-win build status](https://github.com/yonicd/slackteams/workflows/R-win/badge.svg)](https://github.com/yonicd/slackteams)
 [![R-mac build status](https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackteams)
