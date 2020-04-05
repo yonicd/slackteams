@@ -44,7 +44,7 @@ add_team <- function(team, memberid, key) {
 
 #' @rdname manage_team
 #' @export
-add_team_token <- function(team, token) {
+add_team_token <- function(team, token, scopes) {
   .slack$teams[[team]] <- "token"
   .slack$file[[team]] <- ""
   .slack$creds <- list(
@@ -52,7 +52,8 @@ add_team_token <- function(team, token) {
     incoming_webhook_url = "",
     api_token = token,
     username = "",
-    icon_emoji = ""
+    icon_emoji = "",
+    scopes = scopes
   )
 }
 
@@ -67,8 +68,8 @@ add_team_token <- function(team, token) {
 #'   are exploring options to remedy this situation.
 #' @return NULL
 #' @export
-add_team_interactive <- function(scopes = scopes(which = "slackverse"),
-                                verbose = TRUE) {
+add_team_interactive <- function(scopes = scopes(),
+                                 verbose = TRUE) {
   min_scopes <- c(
     "users:read", "channels:read", "groups:read", "im:read", "mpim:read"
   )
@@ -98,7 +99,7 @@ add_team_interactive <- function(scopes = scopes(which = "slackverse"),
   )
   token <- full_token$credentials$authed_user$access_token
   team <- full_token$credentials$team$name
-  add_team_token(team, token)
+  add_team_token(team, token, scopes)
 
   if (verbose) {
     message(sprintf(
