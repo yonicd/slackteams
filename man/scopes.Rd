@@ -6,7 +6,7 @@
 \usage{
 scopes(
   file = system.file("scopes.yml", package = "slackteams"),
-  which = "base"
+  which = "slackverse"
 )
 }
 \arguments{
