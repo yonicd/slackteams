@@ -2,10 +2,24 @@ testthat::context('team management')
 
 testthat::describe('load team',{
 
+  it('validate team missing teams error',{
+    testthat::expect_error(
+       slackteams:::validate_team('foo'),
+       'teams are not loaded'
+    )
+  })
+
   it('slackteams verbose',{
     testthat::expect_message(
       load_teams(file = 'test_team'),
       regexp = 'test')
+  })
+
+  it('validate team bad name error',{
+    testthat::expect_error(
+      slackteams:::validate_team('foo'),
+      "team 'foo' not in loaded"
+    )
   })
 
   it('slackteams not verbose',{
@@ -53,6 +67,31 @@ testthat::describe('load team',{
   })
 
 })
+
+testthat::describe('active team channel info',{
+
+  chnl <- slackteams::validate_channel('random')
+
+  it('validate channel',{
+    testthat::expect_equal(chnl, "CNRKL1JLQ")
+  })
+
+  res <- slackteams:::get_channels_info(channel = chnl)
+
+  it('class',{
+    testthat::expect_s3_class(res,'channels.info')
+  })
+
+  it('validate channel id',{
+    testthat::expect_equal(slackteams::validate_channel(chnl),chnl)
+  })
+
+  it('validate bad channel',{
+    testthat::expect_error(slackteams::validate_channel('foo'),regexp = 'Unknown channel')
+  })
+
+})
+
 
 unlink('test_team_dcf')
 unlink('test_team')

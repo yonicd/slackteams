@@ -1,3 +1,4 @@
+#' @keywords internal
 tidy_slack <- function(res) {
   UseMethod("tidy_slack")
 }
