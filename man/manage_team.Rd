@@ -11,7 +11,7 @@ activate_team(team, verbose = TRUE)
 
 add_team(team, memberid, key)
 
-add_team_token(team, token)
+add_team_token(team, token, scopes)
 
 remove_team(team)
 }
