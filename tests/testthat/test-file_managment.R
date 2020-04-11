@@ -1,13 +1,31 @@
 testthat::context('team management')
 
-testthat::describe('load team',{
+testthat::describe('no active team',{
+
+  it('get_team_creds',{
+    testthat::expect_error(
+      get_team_creds(),
+      'No active team'
+    )
+  })
+
+  it('get_team_users',{
+    testthat::expect_error(
+      get_team_users(),
+      'No active team'
+    )
+  })
 
   it('validate team missing teams error',{
     testthat::expect_error(
-       slackteams:::validate_team('foo'),
-       'teams are not loaded'
+      slackteams:::validate_team('foo'),
+      'teams are not loaded'
     )
   })
+
+})
+
+testthat::describe('load team',{
 
   it('slackteams verbose',{
     testthat::expect_message(
@@ -33,6 +51,13 @@ testthat::describe('load team',{
       activate_team('test'),
       regexp = "variables are set to 'test'")
   })
+
+  # it('slackteams to dcf test',{
+  #   testthat::expect_message(
+  #     activeteam2dcf('test_team_dcf',file = ''),
+  #     'Converting'
+  #   )
+  # })
 
   it('slackteams to dcf',{
     activeteam2dcf('test_team_dcf')
@@ -65,6 +90,10 @@ testthat::describe('load team',{
       grepl('^xoxp',slackteams:::.slack$creds$api_token)
     )
   })
+
+  # it('update team file',{
+  #   update_team_file('test_team')
+  # })
 
 })
 
