@@ -1,16 +1,26 @@
 base:
-  - mpim:
-    - read
-  - im:
-    - read
-  - groups:
-    - read
   - channels:
     - read
   - users:
+    - read
+  - groups:
+    - read
+  - mpim:
+    - read
+  - im:
     - read
 
 slackverse:
+  - channels:
+    - history
+    - read
+    - write
+  - users:
+    - read
+  - groups:
+    - history
+  - read
+    - write
   - mpim:
     - history
     - read
@@ -19,16 +29,6 @@ slackverse:
     - history
     - read
     - write
-  - groups:
-    - history
-    - read
-    - write
-  - channels:
-    - history
-    - read
-    - write
-  - users:
-    - read
   - usergroups:
     - read
   - chat:
@@ -37,3 +37,5 @@ slackverse:
     - read
   - files:
     - read
+    - write
+
