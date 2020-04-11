@@ -19,7 +19,7 @@ slackverse:
     - read
   - groups:
     - history
-  - read
+    - read
     - write
   - mpim:
     - history
