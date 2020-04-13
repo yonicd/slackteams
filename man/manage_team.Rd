@@ -11,7 +11,7 @@ activate_team(team, verbose = TRUE)
 
 add_team(team, memberid, key)
 
-add_team_token(team, token, scopes)
+add_team_token(team, token, verbose)
 
 remove_team(team)
 }
@@ -36,4 +36,4 @@ information needed to interact with Slack API. If the team credentials are
 last loaded via load_team_dcf() the private webhook is assumed to be
 located in the file.
 }
-\concept{managment}
+\concept{management}
