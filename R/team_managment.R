@@ -43,7 +43,7 @@ add_team <- function(team, memberid, key) {
 
 #' @rdname manage_team
 #' @export
-add_team_token <- function(team, token, verbose) {
+add_team_token <- function(team, token, verbose = TRUE) {
   .slack$teams[[team]] <- "token"
   .slack$file[[team]] <- ""
   .slack$creds <- list(
