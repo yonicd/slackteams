@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">slackteams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -127,6 +127,8 @@
 
 <span class='fu'>add_team</span>(<span class='no'>team</span>, <span class='no'>memberid</span>, <span class='no'>key</span>)
 
+<span class='fu'>add_team_token</span>(<span class='no'>team</span>, <span class='no'>token</span>, <span class='no'>verbose</span>)
+
 <span class='fu'>remove_team</span>(<span class='no'>team</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -142,21 +144,25 @@
     </tr>
     <tr>
       <th>memberid</th>
-      <td><p>chracter, member id of user in the team</p></td>
+      <td><p>character, member id of user in the team</p></td>
     </tr>
     <tr>
       <th>key</th>
       <td><p>character, slackr-app key unique to the memberid</p></td>
     </tr>
+    <tr>
+      <th>token</th>
+      <td><p>character, api token issued by slack</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If the team credentials are last loaded via load_teams() then
-when activating a team slackrapp will be called to retrieve
-private webhook information needed to interact with Slack API.
-If the team credentials are last loaded via load_team_dcf() the
-private webhook is assumed to be located in the file.</p>
+    <p>If the team credentials are last loaded via load_teams() then when
+activating a team slackrapp will be called to retrieve private webhook
+information needed to interact with Slack API. If the team credentials are
+last loaded via load_team_dcf() the private webhook is assumed to be
+located in the file.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -172,7 +178,7 @@ private webhook is assumed to be located in the file.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Jonathan Sidi.</p>
+  <p>Developed by Jonathan Sidi, Jon Harmon.</p>
 </div>
 
 <div class="pkgdown">

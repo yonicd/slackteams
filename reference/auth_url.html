@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Validate Channel Label — validate_channel • slackteams</title>
+<title>Slack Authorization URL — auth_url • slackteams</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,9 @@
 
 
 
-<meta property="og:title" content="Validate Channel Label — validate_channel" />
-<meta property="og:description" content="Validate that channel label exists in active team and
-convert it to the corresponding slack channel ID" />
+<meta property="og:title" content="Slack Authorization URL — auth_url" />
+<meta property="og:description" content="Generate an authorization URL to add a team manually. Useful,
+for example, for authorizing a team in a Shiny app." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,37 +115,62 @@ convert it to the corresponding slack channel ID" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Validate Channel Label</h1>
+    <h1>Slack Authorization URL</h1>
     
-    <div class="hidden name"><code>validate_channel.Rd</code></div>
+    <div class="hidden name"><code>auth_url.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Validate that channel label exists in active team and
-convert it to the corresponding slack channel ID</p>
+    <p>Generate an authorization URL to add a team manually. Useful,
+for example, for authorizing a team in a Shiny app.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>validate_channel</span>(<span class='no'>channel</span>)</pre>
+    <pre class="usage"><span class='fu'>auth_url</span>(
+  <span class='kw'>scopes</span> <span class='kw'>=</span> <span class='fu'><a href='load_scopes.html'>load_scopes</a></span>(),
+  <span class='kw'>redirect_uri</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>team_code</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>state</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>channel</th>
-      <td><p>character, channel label</p></td>
+      <th>scopes</th>
+      <td><p>character, scopes to request.</p></td>
+    </tr>
+    <tr>
+      <th>redirect_uri</th>
+      <td><p>character, the uri to which the user should be directed
+after authorization. If this is NULL (default), the user will be directed
+to the default redirection set up in the app.</p></td>
+    </tr>
+    <tr>
+      <th>team_code</th>
+      <td><p>character, a team code to restrict the user to (in case they
+have multiple Slack teams authorized in their browser).</p></td>
+    </tr>
+    <tr>
+      <th>state</th>
+      <td><p>character, a code to send to your redirect_uri indicating a
+state. It is recommended to use a non-human-readable format for this
+string.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>character</p>
+    <p>character, an authorization URL.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>auth_url</span>()</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:history,channels:read,channels:write,users:read,groups:history,groups:read,groups:write,mpim:history,mpim:read,mpim:write,im:history,im:read,im:write,usergroups:read,chat:write,emoji:read,files:read,files:write&amp;client_id=232409461636.994370873922"</div><div class='input'><span class='fu'>auth_url</span>(<span class='kw'>redirect_uri</span> <span class='kw'>=</span> <span class='st'>"http://127.0.0.1:4242"</span>)</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:history,channels:read,channels:write,users:read,groups:history,groups:read,groups:write,mpim:history,mpim:read,mpim:write,im:history,im:read,im:write,usergroups:read,chat:write,emoji:read,files:read,files:write&amp;client_id=232409461636.994370873922&amp;redirect_uri=http://127.0.0.1:4242"</div><div class='input'><span class='fu'>auth_url</span>(<span class='kw'>redirect_uri</span> <span class='kw'>=</span> <span class='st'>"http://127.0.0.1:4242"</span>, <span class='kw'>team_code</span> <span class='kw'>=</span> <span class='st'>"T6UC1DKJQ"</span>)</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:history,channels:read,channels:write,users:read,groups:history,groups:read,groups:write,mpim:history,mpim:read,mpim:write,im:history,im:read,im:write,usergroups:read,chat:write,emoji:read,files:read,files:write&amp;client_id=232409461636.994370873922&amp;redirect_uri=http://127.0.0.1:4242&amp;team=T6UC1DKJQ"</div><div class='input'><span class='fu'>auth_url</span>(<span class='kw'>state</span> <span class='kw'>=</span> <span class='st'>"aabbCCddeeFF"</span>)</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:history,channels:read,channels:write,users:read,groups:history,groups:read,groups:write,mpim:history,mpim:read,mpim:write,im:history,im:read,im:write,usergroups:read,chat:write,emoji:read,files:read,files:write&amp;client_id=232409461636.994370873922&amp;state=aabbCCddeeFF"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
