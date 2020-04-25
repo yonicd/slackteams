@@ -26,7 +26,7 @@ get_team_env <- function() {
 #' @rdname get_methods
 #' @export
 get_active_team <- function() {
-  team <- .slack$current_team
+  team <- .slack$activeteam
 
   if (is.null(team)) {
     stop("No active team, to activate a team use activate_team()")

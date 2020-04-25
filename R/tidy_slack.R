@@ -7,17 +7,18 @@ tidy_slack.conversations_members <- function(res) {
 }
 
 #' @importFrom tibble as_tibble
+#' @importFrom purrr map_df
 tidy_slack.users_list <- function(res) {
   members <- res$members
 
   cols <- lapply(members, names)
 
-  member_info <- map_df(members, function(x) {
+  member_info <- purrr::map_df(members, function(x) {
     cols <- setdiff(names(x), c("profile", "real_name", "tz"))
     tibble::as_tibble(x[cols])
   })
 
-  member_profile <- map_df(members, function(x) {
+  member_profile <- purrr::map_df(members, function(x) {
     cols <- setdiff(names(x$profile), c("fields"))
     tibble::as_tibble(x$profile[cols])
   })
@@ -26,13 +27,14 @@ tidy_slack.users_list <- function(res) {
 }
 
 #' @importFrom tibble as_tibble
+#' @importFrom purrr map_df map_lgl
 tidy_slack.default <- function(res) {
   fields <- c("channel", "channels", "groups", "conversations","members")
 
   el <- intersect(names(res), fields)
 
-  map_df(res[[el]], function(x) {
-    cols <- !map_lgl(x, inherits, what = c("NULL", "list"))
+  purrr::map_df(res[[el]], function(x) {
+    cols <- !purrr::map_lgl(x, inherits, what = c("NULL", "list"))
     tibble::as_tibble(x[cols])
   })
 }

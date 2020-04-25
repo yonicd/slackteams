@@ -1,23 +1,29 @@
 Type: Package
 Package: slackteams
 Title: Manage Multiple Slack Teams
-Version: 0.1.5
-Authors@R: 
+Version: 0.2.1
+Authors@R: c( 
     person(given = "Jonathan",
            family = "Sidi",
            role = c("cre","aut"),
            email = "yonicd@gmail.com",
-           comment = c(ORCID = "0000-0002-4222-1819"))
+           comment = c(ORCID = "0000-0002-4222-1819")),
+    person(given = "Jon",
+           family = "Harmon",
+           role = c("aut"),
+           email = "jonthegeek@gmail.com",
+           comment = c(ORCID = "0000-0003-4781-4346"))
+    )
 Description: Users many times have multiple have accounts with multiple
     Slack teams. This package allows users to manage and 
     switch accounts to post to channels using the slackr package.
 License: MIT + file LICENSE
 Depends: R (>= 3.2.0)
-Imports: httr,jsonlite,slackcalls,tibble
-Suggests: slackr, emo, testthat (>= 2.1.0), knitr, rmarkdown
+Imports: httr,jsonlite,slackcalls,purrr,tibble,yaml
+Suggests: slackr, emo, testthat (>= 2.1.0), knitr, rmarkdown,details
 Remotes: yonicd/slackcalls, hadley/emo
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 VignetteBuilder: knitr

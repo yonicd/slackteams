@@ -42,6 +42,11 @@ load_team_dcf <- function(team = 'user',file = "~/.slackr", verbose = TRUE) {
     }
   }
 
+  # Set any that aren't set to "".
+  for (i in setdiff(.slack$cred_fields, colnames(res))) {
+    .slack$creds[[i]] <- ""
+  }
+
   .slack$teams[[team]] <- 'dcf'
   .slack$file[[team]] <- file
 

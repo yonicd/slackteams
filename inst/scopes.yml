@@ -1,0 +1,41 @@
+base:
+  - channels:
+    - read
+  - users:
+    - read
+  - groups:
+    - read
+  - mpim:
+    - read
+  - im:
+    - read
+
+slackverse:
+  - channels:
+    - history
+    - read
+    - write
+  - users:
+    - read
+  - groups:
+    - history
+    - read
+    - write
+  - mpim:
+    - history
+    - read
+    - write
+  - im:
+    - history
+    - read
+    - write
+  - usergroups:
+    - read
+  - chat:
+    - write
+  - emoji:
+    - read
+  - files:
+    - read
+    - write
+
