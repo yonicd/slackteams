@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-15 March, 2020 16:37:48
+25 April, 2020 18:02:53
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -13,21 +13,22 @@ This output is created by
 Coverage summary is created using the
 [covr](https://github.com/r-lib/covr) package.
 
-| Object                                       | Coverage (%) |
-| :------------------------------------------- | :----------: |
-| slackteams                                   |      0       |
-| [R/api\_utils.R](../R/api_utils.R)           |      0       |
-| [R/api.R](../R/api.R)                        |      0       |
-| [R/clean.R](../R/clean.R)                    |      0       |
-| [R/env.R](../R/env.R)                        |      0       |
-| [R/file\_managment.R](../R/file_managment.R) |      0       |
-| [R/get\_methods.R](../R/get_methods.R)       |      0       |
-| [R/mappers.R](../R/mappers.R)                |      0       |
-| [R/set\_methods.R](../R/set_methods.R)       |      0       |
-| [R/slackrapp.R](../R/slackrapp.R)            |      0       |
-| [R/team\_managment.R](../R/team_managment.R) |      0       |
-| [R/tidy\_slack.R](../R/tidy_slack.R)         |      0       |
-| [R/validate.R](../R/validate.R)              |      0       |
+| Object                                         | Coverage (%) |
+| :--------------------------------------------- | :----------: |
+| slackteams                                     |      0       |
+| [R/api\_utils.R](../R/api_utils.R)             |      0       |
+| [R/api.R](../R/api.R)                          |      0       |
+| [R/clean.R](../R/clean.R)                      |      0       |
+| [R/env.R](../R/env.R)                          |      0       |
+| [R/file\_managment.R](../R/file_managment.R)   |      0       |
+| [R/get\_methods.R](../R/get_methods.R)         |      0       |
+| [R/scope\_managment.R](../R/scope_managment.R) |      0       |
+| [R/set\_methods.R](../R/set_methods.R)         |      0       |
+| [R/slackrapp.R](../R/slackrapp.R)              |      0       |
+| [R/team\_managment.R](../R/team_managment.R)   |      0       |
+| [R/tidy\_slack.R](../R/tidy_slack.R)           |      0       |
+| [R/utils.R](../R/utils.R)                      |      0       |
+| [R/validate.R](../R/validate.R)                |      0       |
 
 <br>
 
@@ -38,7 +39,7 @@ Unit Test summary is created using the
 
 | file                                                     | n |  time | error | failed | skipped | warning |
 | :------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: |
-| [test-file\_managment.R](testthat/test-file_managment.R) | 1 | 0.032 |     0 |      0 |       0 |       0 |
+| [test-file\_managment.R](testthat/test-file_managment.R) | 1 | 0.033 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
@@ -46,7 +47,7 @@ Unit Test summary is created using the
 
 | file                                                        | context         | test                 | status | n |  time |
 | :---------------------------------------------------------- | :-------------- | :------------------- | :----- | -: | ----: |
-| [test-file\_managment.R](testthat/test-file_managment.R#L2) | file\_managment | multiplication works | PASS   | 1 | 0.032 |
+| [test-file\_managment.R](testthat/test-file_managment.R#L2) | file\_managment | multiplication works | PASS   | 1 | 0.033 |
 
 </details>
 
@@ -57,8 +58,8 @@ Unit Test summary is created using the
 | Field    | Value                               |                                                                                                                                                                                                                                                                    |
 | :------- | :---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Version  | R version 3.6.3 (2020-02-29)        |                                                                                                                                                                                                                                                                    |
-| Platform | x86\_64-apple-darwin15.6.0 (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/b0182f9201f34b9d55afb18ad5afd1272597bc57/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
-| Running  | macOS Catalina 10.15.3              |                                                                                                                                                                                                                                                                    |
+| Platform | x86\_64-apple-darwin15.6.0 (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/b03f08e85f1596198a1d79ae02d278cdb8dc0c59/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
+| Running  | macOS Catalina 10.15.4              |                                                                                                                                                                                                                                                                    |
 | Language | en\_US                              |                                                                                                                                                                                                                                                                    |
 | Timezone | UTC                                 |                                                                                                                                                                                                                                                                    |
 
