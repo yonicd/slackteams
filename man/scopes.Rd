@@ -20,3 +20,4 @@ A character vector of scopes.
 \description{
 Determine scopes from a file.
 }
+\concept{managment}

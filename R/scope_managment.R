@@ -17,6 +17,7 @@ yml2scopes <- function(y) {
 #' @param file character; a path to a yaml file with scopes defined.
 #' @param which character; the group of scopes to use within that yaml.
 #' @return A character vector of scopes.
+#' @concept managment
 #' @export
 scopes <- function(file = system.file("scopes.yml", package = "slackteams"),
                    which = "slackverse") {
