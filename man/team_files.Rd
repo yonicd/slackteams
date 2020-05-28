@@ -23,3 +23,4 @@ update_team_file(file, verbose = TRUE, auto_unbox = TRUE, pretty = TRUE, ...)
 \description{
 Upload or Update json file containing slackr-app keys
 }
+\concept{files}

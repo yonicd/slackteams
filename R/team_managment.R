@@ -72,6 +72,7 @@ add_team_token <- function(team, token, verbose = TRUE) {
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
 #' @return NULL
+#' @concept management
 #' @export
 add_team_interactive <- function(scopes = load_scopes(),
                                  verbose = TRUE) {
@@ -127,6 +128,7 @@ add_team_interactive <- function(scopes = load_scopes(),
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
 #' @return NULL
+#' @concept management
 #' @export
 add_team_code <- function(code, redirect_uri = NULL, verbose = TRUE) {
   access_url <- paste0(
@@ -190,6 +192,7 @@ update_cache <- function() {
 #'   string.
 #' @return character, an authorization URL.
 #' @export
+#' @concept management
 #' @examples
 #' auth_url()
 #' auth_url(redirect_uri = "http://127.0.0.1:4242")

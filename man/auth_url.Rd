@@ -38,3 +38,4 @@ auth_url(redirect_uri = "http://127.0.0.1:4242")
 auth_url(redirect_uri = "http://127.0.0.1:4242", team_code = "T6UC1DKJQ")
 auth_url(state = "aabbCCddeeFF")
 }
+\concept{management}

@@ -69,6 +69,7 @@ load_team_dcf <- function(team = 'user',file = "~/.slackr", verbose = TRUE) {
 #' @param ... arguments to pass to [write_json][jsonlite::write_json]
 #' @return NULL
 #' @rdname team_files
+#' @concept files
 #' @export
 #' @importFrom jsonlite read_json
 upload_team_file <- function(file) {

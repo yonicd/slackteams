@@ -24,7 +24,7 @@ navbar:
     href: http://twitter.com/yoniceedee
 reference:
 - title: Team Managment
-  contents: has_concept("managment")
+  contents: has_concept("management")
 - title: Team File Managment
   contents: has_concept("files")
 - title: Query Teams Information

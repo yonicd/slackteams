@@ -23,3 +23,4 @@ to act on your behalf on a Slack team.
 This function does not currently work in an Rstudio Server setup. We
 are exploring options to remedy this situation.
 }
+\concept{management}
