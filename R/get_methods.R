@@ -28,7 +28,7 @@ get_team_env <- function() {
 get_active_team <- function() {
   team <- .slack$activeteam
 
-  if (is.null(team)) {
+  if (is.null(team)|is.na(team)) {
     stop("No active team, to activate a team use activate_team()")
   }
 

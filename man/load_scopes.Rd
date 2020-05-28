@@ -6,7 +6,7 @@
 \usage{
 load_scopes(
   file = system.file("scopes.yml", package = "slackteams"),
-  which = "slackverse"
+  which = "base"
 )
 }
 \arguments{
@@ -20,3 +20,4 @@ A character vector of scopes.
 \description{
 Determine scopes from a file.
 }
+\concept{management}

@@ -17,9 +17,9 @@ yml2scopes <- function(y) {
 #' @param file character; a path to a yaml file with scopes defined.
 #' @param which character; the group of scopes to use within that yaml.
 #' @return A character vector of scopes.
+#' @concept management
 #' @export
-load_scopes <- function(file = system.file("scopes.yml", package = "slackteams"),
-                   which = "slackverse") {
+load_scopes <- function(file = system.file("scopes.yml", package = "slackteams"), which  = 'base'){
   yml <- yaml::read_yaml(file)
   ret <- lapply(yml, function(x) unlist(lapply(x, yml2scopes)))
   ret[[which]]
