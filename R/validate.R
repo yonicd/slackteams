@@ -20,7 +20,7 @@ validate_team <- function(team) {
 #'  convert it to the corresponding slack channel ID
 #' @param channel character, channel label
 #' @return character
-#' @concept managment
+#' @concept management
 #' @rdname validate_channel
 #' @export
 validate_channel <- function(channel){

@@ -16,4 +16,4 @@ character
 Validate that channel label exists in active team and
 convert it to the corresponding slack channel ID
 }
-\concept{managment}
+\concept{management}
