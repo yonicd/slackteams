@@ -30,11 +30,6 @@ coverage](https://codecov.io/gh/yonicd/slackteams/branch/master/graph/badge.svg)
 `slackteams` is an `R` package that allows the user to manage multiple
 Slack teams during a session.
 
-The package queries the
-[slackr-app](https://github.com/yonicd/slackr-app) database to set the
-environment variables needed by
-[slackr](https://github.com/hrbrmstr/slackr).
-
 ## Installation
 
 ``` r
@@ -103,7 +98,8 @@ slackteams::activate_team('r4ds')
 ### Post a Message
 
 ``` r
-slackr::slackr('My Spiffy Message')
+slackblocks::block_text(text = 'my message')%>%
+  slackblocks::post_block(channel = 'general')
 ```
 
 ### Activate Another Team
@@ -115,5 +111,6 @@ slackteams::activate_team('slackr')
 ### Post a Message
 
 ``` r
-slackr::slackr('My Other Spiffy Message')
+slackblocks::block_text(text = 'my other message')%>%
+  slackblocks::post_block(channel = 'general')
 ```
