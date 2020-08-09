@@ -50,6 +50,6 @@ Functions to extract information about teams
 }
 \details{
 Channels can be a public channel, a private channel a direct message or group direct message. To get the names of the channels
-the user has access to use \link[slackteams:get_team_channels]{get_team_channels(fields = 'name')}.
+the user has access to use \link[=get_team_channels]{get_team_channels(fields = 'name')}.
 }
 \concept{get}

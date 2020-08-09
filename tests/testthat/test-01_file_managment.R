@@ -1,5 +1,5 @@
 testthat::context('team management')
-
+source('setup_json.R')
 testthat::describe('no active team',{
 
   it('get_team_creds',{
@@ -54,7 +54,7 @@ testthat::describe('load team',{
 
   # it('slackteams to dcf test',{
   #   testthat::expect_message(
-  #     activeteam2dcf('test_team_dcf',file = ''),
+  #     activeteam2dcf(file = 'test_team_dcf'),
   #     'Converting'
   #   )
   # })
@@ -81,7 +81,7 @@ testthat::describe('load team',{
 
   it('cached slack creds channel',{
     testthat::expect_true(
-      grepl('^\\#random',slackteams:::.slack$creds$channel)
+      grepl('^\\#slack-r',slackteams:::.slack$creds$channel)
       )
   })
 

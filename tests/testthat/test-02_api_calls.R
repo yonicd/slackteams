@@ -6,7 +6,6 @@ res_channels_list <- slackteams:::get_channels_list()
 res_convo_list <- slackteams:::get_conversations_list()
 
 test_chnl         <- res_channels_list$id[res_channels_list$name=='slack-r']
-res_channels_info <- slackteams:::get_channels_info(channel = test_chnl)
 convo_info <- slackteams:::get_conversations_info(test_chnl)
 
 group_info <- slackteams:::get_groups_info(test_chnl)
@@ -35,9 +34,6 @@ testthat::describe('group info',{
     testthat::expect_s3_class(group_info,'groups.info')
   })
 
-  it('no groups',{
-    testthat::expect_equal(group_info[[1]],'channel_not_found')
-  })
 })
 
 testthat::describe('channel info',{
@@ -50,13 +46,6 @@ testthat::describe('channel info',{
     testthat::expect_equal(res_channels_list$name,c('general','random','slack-r'))
   })
 
-  it('channel info class',{
-    testthat::expect_s3_class(res_channels_info,'channels.info')
-  })
-
-  it('channel info id',{
-    testthat::expect_equal(res_channels_info$channel$id,'CNTFB9215')
-  })
 })
 
 testthat::describe('converstion info',{
