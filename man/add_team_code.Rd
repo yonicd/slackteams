@@ -14,6 +14,9 @@ the code was generated.}
 
 \item{verbose}{logical, Print messages to console, Default: TRUE}
 }
+\value{
+The token (invisibly).
+}
 \description{
 Add a team using a Slack response code.
 }

@@ -18,7 +18,7 @@ update_team_file(file, verbose = TRUE, auto_unbox = TRUE, pretty = TRUE, ...)
 
 \item{pretty}{logical adds indentation whitespace to JSON output, Default: TRUE}
 
-\item{...}{arguments to pass to \link[jsonlite:write_json]{write_json}}
+\item{...}{arguments to pass to \link[jsonlite:read_json]{write_json}}
 }
 \description{
 Upload or Update json file containing slackr-app keys

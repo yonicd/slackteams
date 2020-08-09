@@ -127,7 +127,7 @@ add_team_interactive <- function(scopes = load_scopes(),
 #'   to act on your behalf on a Slack team.
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
-#' @return NULL
+#' @return The token (invisibly).
 #' @concept management
 #' @export
 add_team_code <- function(code, redirect_uri = NULL, verbose = TRUE) {
@@ -149,6 +149,7 @@ add_team_code <- function(code, redirect_uri = NULL, verbose = TRUE) {
     token <- full_token$authed_user$access_token
     team <- full_token$team$name
     add_team_token(team, token, verbose)
+    invisible(token)
   } else {
     stop(
       "Failed to validate code. Slack returned: ",
