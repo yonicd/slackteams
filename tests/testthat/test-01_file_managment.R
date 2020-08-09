@@ -79,11 +79,11 @@ testthat::describe('load team',{
     )
   })
 
-  it('cached slack creds channel',{
-    testthat::expect_true(
-      grepl('^\\#slack-r',slackteams:::.slack$creds$channel)
-      )
-  })
+  # it('cached slack creds channel',{
+  #   testthat::expect_true(
+  #     grepl('^\\#slack-r',slackteams:::.slack$creds$channel)
+  #     )
+  # })
 
   it('cached slack creds token',{
     testthat::expect_true(
