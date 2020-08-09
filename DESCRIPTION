@@ -1,7 +1,7 @@
 Type: Package
 Package: slackteams
 Title: Manage Multiple Slack Teams
-Version: 0.3.2
+Version: 0.3.3
 Authors@R: c( 
     person(given = "Jonathan",
            family = "Sidi",
