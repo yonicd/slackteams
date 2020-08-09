@@ -106,6 +106,7 @@ get_channel_members <- function(channel) {
 #' @rdname get_methods
 #' @export
 get_channel_info <- function(channel) {
+
   team_channels <- get_team_channels(fields = c("id", "name"))
 
   id <- team_channels$id[team_channels$name == channel]
@@ -114,17 +115,8 @@ get_channel_info <- function(channel) {
     stop(sprintf("Channel '%s' not found",channel))
   }
 
-  switch(substr(id, 1, 1),
-    C = {
-      get_channels_info(id)$channel
-    },
-    G = {
-      get_groups_info(id)$group
-    },
-    D = {
-      get_conversations_info(id)$channel
-    }
-  )
+  get_conversations_info(id)$channel
+
 }
 
 #' @rdname get_methods

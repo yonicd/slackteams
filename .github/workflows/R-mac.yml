@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - { os: macOS-latest, r: '3.6', args: "--no-manual"}
+        - { os: macOS-latest, r: '4.0', args: "--no-manual"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -56,20 +56,25 @@ jobs:
       - name: covrpage
         if: github.ref == 'refs/heads/master'
         run: |
-          Rscript -e 'remotes::install_github("metrumresearchgroup/covrpage@actions")' \
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          Rscript -e 'remotes::install_github("yonicd/covrpage@actions")' \
                   -e 'covrpage::covrpage_ci()'
           git commit tests/README.md -m 'Update tests/README.Rmd' || echo "No changes to commit"
           git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+
+
       - name: Deploy package
         if: github.ref == 'refs/heads/master'
         run: |
-          Rscript -e 'remotes::install_github("metrumresearchgroup/pkgdown")' \
-                  -e "pkgdown:::deploy_local(new_process = FALSE, remote_url = 'https://x-access-token:${{secrets.GITHUB_PAT}}@github.com/${{github.repository}}.git')"
+          Rscript -e 'install.packages("pkgdown")' \
+                  -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+
 
       - name: slackthreads trigger
         uses: peter-evans/repository-dispatch@v1.0.0
         with:
-          token: ${{secrets.GITHUB_PAT}}
+          token: ${{secrets.GH_PAT}}
           repository: yonicd/slackthreads
           event-type: push
           client-payload: '{"repository": "${{ github.repository }}", "ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
@@ -77,7 +82,7 @@ jobs:
       - name: slackblocks trigger
         uses: peter-evans/repository-dispatch@v1.0.0
         with:
-          token: ${{secrets.GITHUB_PAT}}
+          token: ${{secrets.GH_PAT}}
           repository: yonicd/slackblocks
           event-type: push
           client-payload: '{"repository": "${{ github.repository }}", "ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
