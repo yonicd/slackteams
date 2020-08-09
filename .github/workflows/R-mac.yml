@@ -74,7 +74,7 @@ jobs:
       - name: slackthreads trigger
         uses: peter-evans/repository-dispatch@v1.0.0
         with:
-          token: ${{secrets.GITHUB_PAT}}
+          token: ${{secrets.GITHUB_TOKEN}}
           repository: yonicd/slackthreads
           event-type: push
           client-payload: '{"repository": "${{ github.repository }}", "ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
@@ -82,7 +82,7 @@ jobs:
       - name: slackblocks trigger
         uses: peter-evans/repository-dispatch@v1.0.0
         with:
-          token: ${{secrets.GITHUB_PAT}}
+          token: ${{secrets.GITHUB_TOKEN}}
           repository: yonicd/slackblocks
           event-type: push
           client-payload: '{"repository": "${{ github.repository }}", "ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
