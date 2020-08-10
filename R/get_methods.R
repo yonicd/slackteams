@@ -107,15 +107,7 @@ get_channel_members <- function(channel) {
 #' @export
 get_channel_info <- function(channel) {
 
-  team_channels <- get_team_channels(fields = c("id", "name"))
-
-  id <- team_channels$id[team_channels$name == channel]
-
-  if (!length(id)) {
-    stop(sprintf("Channel '%s' not found",channel))
-  }
-
-  get_conversations_info(id)$channel
+  get_conversations_info(validate_channel(channel))$channel
 
 }
 
