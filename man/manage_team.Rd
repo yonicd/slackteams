@@ -21,19 +21,8 @@ remove_team(team)
 \item{verbose}{logical, Print messages to console, Default: TRUE}
 
 \item{token}{character, api token issued by slack}
-
-\item{memberid}{character, member id of user in the team}
-
-\item{key}{character, slackr-app key unique to the memberid}
 }
 \description{
 Manage teams that can be accessed
-}
-\details{
-If the team credentials are last loaded via load_teams() then when
-activating a team slackrapp will be called to retrieve private webhook
-information needed to interact with Slack API. If the team credentials are
-last loaded via load_team_dcf() the private webhook is assumed to be
-located in the file.
 }
 \concept{management}

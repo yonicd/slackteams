@@ -2,14 +2,7 @@
 #' @description Manage teams that can be accessed
 #' @param team character, team name
 #' @param verbose logical, Print messages to console, Default: TRUE
-#' @param memberid character, member id of user in the team
-#' @param key character, slackr-app key unique to the memberid
 #' @param token character, api token issued by slack
-#' @details If the team credentials are last loaded via load_teams() then when
-#'   activating a team slackrapp will be called to retrieve private webhook
-#'   information needed to interact with Slack API. If the team credentials are
-#'   last loaded via load_team_dcf() the private webhook is assumed to be
-#'   located in the file.
 #' @return NULL
 #' @concept management
 #' @rdname manage_team
@@ -33,8 +26,8 @@ add_team <- function(team, token) {
   if(team%in%names(.slack$teams)){
     .slack$teams[[team]] <- token
   }else{
-    new_team <- setNames(list(token),team)
-
+    new_team <- list(token)
+    names(new_team) <- team
     .slack$teams <- append(.slack$teams, new_team)
   }
 
