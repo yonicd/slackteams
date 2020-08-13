@@ -4,13 +4,11 @@
 \alias{add_team_interactive}
 \title{Interactive Team Managment}
 \usage{
-add_team_interactive(scopes = load_scopes(), verbose = TRUE)
+add_team_interactive(scopes = load_scopes())
 }
 \arguments{
 \item{scopes}{character, scopes to request. Must include "users:read",
 "channels:read", "groups:read", "im:read", and "mpim:read" at minimum.}
-
-\item{verbose}{logical, Print messages to console, Default: TRUE}
 }
 \description{
 Add a team interactively

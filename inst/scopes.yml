@@ -9,6 +9,8 @@ base:
     - read
   - im:
     - read
+  - team:
+    - read
 
 slackverse:
   - channels:
@@ -38,4 +40,7 @@ slackverse:
   - files:
     - read
     - write
+  - team:
+    - read
+
 

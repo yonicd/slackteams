@@ -44,6 +44,13 @@ get_channels_list <- function(..., token = Sys.getenv("SLACK_API_TOKEN"), max_re
 }
 
 #' @importFrom slackcalls post_slack
+get_team_info <- function(team = NULL, ..., token = Sys.getenv("SLACK_API_TOKEN")) {
+  res <- slackcalls::post_slack(parse_call(), team = team, token = token, ...)
+
+  res
+}
+
+#' @importFrom slackcalls post_slack
 get_channels_info <- function(channel, ..., token = Sys.getenv("SLACK_API_TOKEN"), max_results = Inf, max_calls = Inf) {
   res <- slackcalls::post_slack(parse_call(), max_results = max_results, max_calls = max_calls, channel = channel, token = token, ...)
 

@@ -9,7 +9,7 @@
 \usage{
 activate_team(team, verbose = TRUE)
 
-add_team(team, memberid, key)
+add_team(team, token)
 
 add_team_token(team, token, verbose = TRUE)
 
@@ -20,11 +20,11 @@ remove_team(team)
 
 \item{verbose}{logical, Print messages to console, Default: TRUE}
 
+\item{token}{character, api token issued by slack}
+
 \item{memberid}{character, member id of user in the team}
 
 \item{key}{character, slackr-app key unique to the memberid}
-
-\item{token}{character, api token issued by slack}
 }
 \description{
 Manage teams that can be accessed
