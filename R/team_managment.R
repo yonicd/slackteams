@@ -12,7 +12,6 @@ activate_team <- function(team, verbose = TRUE) {
   validate_team(team)
 
   slack_setenv(team)
-  slack_team_info(team)
   .slack$activeteam <- team
   if (verbose) {
     slack_setenv_msg(team)
@@ -121,7 +120,7 @@ add_team_interactive <- function(scopes = load_scopes()) {
 #'   to act on your behalf on a Slack team.
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
-#' @return NULL
+#' @return The token (invisibly)
 #' @concept management
 #' @export
 add_team_code <- function(code, redirect_uri = NULL, verbose = TRUE) {
@@ -143,6 +142,7 @@ add_team_code <- function(code, redirect_uri = NULL, verbose = TRUE) {
     token <- full_token$authed_user$access_token
     team <- full_token$team$name
     add_team_token(team, token, verbose)
+    invisible(token)
   } else {
     stop(
       "Failed to validate code. Slack returned: ",
@@ -162,8 +162,6 @@ remove_team <- function(team) {
 }
 
 slack_team_info <- function(team) {
-  # activeteam <- get_team_info()
-  # .slack$activeteam <- activeteam[['team']][['id']]
   .slack$users[[team]] <- clean_users(get_users_list())
   .slack$channels[[team]] <- clean_channel(get_conversations_list(), team)
 }

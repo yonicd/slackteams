@@ -72,6 +72,8 @@ testthat::describe('load team',{
 
 testthat::describe('active team channel info',{
 
+  chnls <- get_team_channels(get_active_team())
+
   chnl <- slackteams::validate_channel('random')
 
   it('validate channel',{
