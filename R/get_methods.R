@@ -63,6 +63,10 @@ get_team_users <- function(team, fields = c("id", "name", "real_name")) {
     team <- get_active_team()
   }
 
+  if(is.null(.slack$users[[team]])){
+    .slack$users[[team]] <- clean_users(get_users_list())
+  }
+
   users <- .slack$users[[team]]
 
   if (!is.null(fields)) {
@@ -77,6 +81,14 @@ get_team_users <- function(team, fields = c("id", "name", "real_name")) {
 get_team_channels <- function(team, fields = NULL) {
   if (missing(team)) {
     team <- get_active_team()
+  }
+
+  if(is.null(.slack$users[[team]])){
+    .slack$users[[team]] <- clean_users(get_users_list())
+  }
+
+  if(is.null(.slack$channels[[team]])){
+    .slack$channels[[team]] <- clean_channel(get_conversations_list(), team)
   }
 
   chnls <- .slack$channels[[team]]
@@ -125,5 +137,5 @@ get_member_name <- function(id) {
 #' @rdname get_methods
 #' @export
 get_activeteam_id <- function(){
-  unique(get_team_users(get_active_team(),'team_id')[[1]])
+  get_team_info()[['team']][['id']]
 }

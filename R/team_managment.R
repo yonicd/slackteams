@@ -2,14 +2,7 @@
 #' @description Manage teams that can be accessed
 #' @param team character, team name
 #' @param verbose logical, Print messages to console, Default: TRUE
-#' @param memberid character, member id of user in the team
-#' @param key character, slackr-app key unique to the memberid
 #' @param token character, api token issued by slack
-#' @details If the team credentials are last loaded via load_teams() then when
-#'   activating a team slackrapp will be called to retrieve private webhook
-#'   information needed to interact with Slack API. If the team credentials are
-#'   last loaded via load_team_dcf() the private webhook is assumed to be
-#'   located in the file.
 #' @return NULL
 #' @concept management
 #' @rdname manage_team
@@ -18,15 +11,7 @@
 activate_team <- function(team, verbose = TRUE) {
   validate_team(team)
 
-  if (
-    .slack$file[[team]] != "" &&
-    jsonlite::validate(txt = readLines(.slack$file[[team]]))
-  ) {
-    get_slackrapp(team)
-  }
-
-  slack_setenv()
-  slack_team_info(team)
+  slack_setenv(team)
   .slack$activeteam <- team
   if (verbose) {
     slack_setenv_msg(team)
@@ -35,23 +20,27 @@ activate_team <- function(team, verbose = TRUE) {
 
 #' @rdname manage_team
 #' @export
-add_team <- function(team, memberid, key) {
-  new_team <- list(memberid = memberid, key = key)
-  names(new_team) <- team
-  .slack$teams <- append(.slack$teams, new_team)
+add_team <- function(team, token) {
+
+  if(team%in%names(.slack$teams)){
+    .slack$teams[[team]] <- token
+  }else{
+    new_team <- list(token)
+    names(new_team) <- team
+    .slack$teams <- append(.slack$teams, new_team)
+  }
+
+
 }
 
 #' @rdname manage_team
 #' @export
 add_team_token <- function(team, token, verbose = TRUE) {
-  .slack$teams[[team]] <- "token"
+
+  add_team(team = team,token = token)
   .slack$file[[team]] <- ""
   .slack$creds <- list(
-    channel = "",
-    incoming_webhook_url = "",
-    api_token = token,
-    username = "",
-    icon_emoji = ""
+    api_token = token
   )
 
   if (verbose) {
@@ -66,7 +55,6 @@ add_team_token <- function(team, token, verbose = TRUE) {
 #' @description Add a team interactively
 #' @param scopes character, scopes to request. Must include "users:read",
 #'   "channels:read", "groups:read", "im:read", and "mpim:read" at minimum.
-#' @inheritParams activate_team
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
 #' @note This function does not currently work in an Rstudio Server setup. We
@@ -74,10 +62,9 @@ add_team_token <- function(team, token, verbose = TRUE) {
 #' @return NULL
 #' @concept management
 #' @export
-add_team_interactive <- function(scopes = load_scopes(),
-                                 verbose = TRUE) {
+add_team_interactive <- function(scopes = load_scopes()) {
   min_scopes <- c(
-    "users:read", "channels:read", "groups:read", "im:read", "mpim:read"
+    "users:read", "channels:read", "groups:read", "im:read", "mpim:read","team:read"
   )
   if (!all(min_scopes %in% scopes)) {
     stop(
@@ -106,7 +93,13 @@ add_team_interactive <- function(scopes = load_scopes(),
   if (full_token$credentials$ok) {
     token <- full_token$credentials$authed_user$access_token
     team <- full_token$credentials$team$name
-    add_team_token(team, token, verbose)
+
+    message(sprintf('\nAdding %s to loaded teams ...',team))
+    add_team(team, token)
+
+    message(sprintf('\nActivating %s ...',team))
+    activate_team(team)
+
   } else {
     # I suspect httr might fail for us in this case, but it mirror the case that
     # ISN'T handled in add_team_code, so I added the safety in case.
@@ -127,7 +120,7 @@ add_team_interactive <- function(scopes = load_scopes(),
 #'   to act on your behalf on a Slack team.
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
-#' @return NULL
+#' @return The token (invisibly)
 #' @concept management
 #' @export
 add_team_code <- function(code, redirect_uri = NULL, verbose = TRUE) {
@@ -149,6 +142,7 @@ add_team_code <- function(code, redirect_uri = NULL, verbose = TRUE) {
     token <- full_token$authed_user$access_token
     team <- full_token$team$name
     add_team_token(team, token, verbose)
+    invisible(token)
   } else {
     stop(
       "Failed to validate code. Slack returned: ",
@@ -168,8 +162,6 @@ remove_team <- function(team) {
 }
 
 slack_team_info <- function(team) {
-  # activeteam <- get_team_info()
-  # .slack$activeteam <- activeteam[['team']][['id']]
   .slack$users[[team]] <- clean_users(get_users_list())
   .slack$channels[[team]] <- clean_channel(get_conversations_list(), team)
 }

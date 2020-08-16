@@ -1,5 +1,4 @@
 testthat::context('team management')
-source('setup_json.R')
 testthat::describe('no active team',{
 
   it('get_team_creds',{
@@ -25,13 +24,10 @@ testthat::describe('no active team',{
 
 })
 
-testthat::describe('load team',{
+info <- slackteams:::get_team_info(token = Sys.getenv('SLACK_API_TOKEN'))
+add_team(info$team$name,Sys.getenv('SLACK_API_TOKEN'))
 
-  it('slackteams verbose',{
-    testthat::expect_message(
-      load_teams(file = 'test_team'),
-      regexp = 'test')
-  })
+testthat::describe('load team',{
 
   it('validate team bad name error',{
     testthat::expect_error(
@@ -40,64 +36,43 @@ testthat::describe('load team',{
     )
   })
 
-  it('slackteams not verbose',{
-    testthat::expect_true(
-      length(capture.output(load_teams(file = 'test_team',verbose = FALSE)))==0
-    )
-  })
-
   it('activate team',{
     testthat::expect_message(
-      activate_team('test'),
-      regexp = "variables are set to 'test'")
+      activate_team('slackr'),
+      regexp = "variables are set to 'slackr'")
   })
 
-  # it('slackteams to dcf test',{
-  #   testthat::expect_message(
-  #     activeteam2dcf(file = 'test_team_dcf'),
-  #     'Converting'
-  #   )
-  # })
-
-  it('slackteams to dcf',{
-    activeteam2dcf('test_team_dcf')
+  it('slackteams to json',{
+    slackteams('test_team')
     testthat::expect_true(
-      file.exists('test_team_dcf')
+      file.exists('test_team')
     )
   })
 
   it('slackteams to dcf',{
     testthat::expect_message(
-      load_team_dcf(team = 'team_dcf',file = 'test_team_dcf'),
-      regexp = 'test, team_dcf')
+      load_teams(file = 'test_team'),
+      regexp = 'slackr')
   })
 
   it('get teams',{
     testthat::expect_equal(
       slackteams::get_teams(),
-      c('test','team_dcf')
+      c('slackr')
     )
   })
-
-  # it('cached slack creds channel',{
-  #   testthat::expect_true(
-  #     grepl('^\\#slack-r',slackteams:::.slack$creds$channel)
-  #     )
-  # })
 
   it('cached slack creds token',{
     testthat::expect_true(
-      grepl('^xoxp',slackteams:::.slack$creds$api_token)
+      grepl('^xoxp',slackteams:::.slack$teams$slackr)
     )
   })
-
-  # it('update team file',{
-  #   update_team_file('test_team')
-  # })
 
 })
 
 testthat::describe('active team channel info',{
+
+  chnls <- get_team_channels(get_active_team())
 
   chnl <- slackteams::validate_channel('random')
 
@@ -121,7 +96,5 @@ testthat::describe('active team channel info',{
 
 })
 
-
-unlink('test_team_dcf')
 unlink('test_team')
 

@@ -1,7 +1,7 @@
 Type: Package
 Package: slackteams
 Title: Manage Multiple Slack Teams
-Version: 0.3.2
+Version: 0.4.0
 Authors@R: c( 
     person(given = "Jonathan",
            family = "Sidi",
@@ -19,7 +19,7 @@ Description: Users many times have multiple have accounts with multiple
     switch accounts to post to channels using the slackr package.
 License: MIT + file LICENSE
 Depends: R (>= 3.2.0)
-Imports: httr,jsonlite,slackcalls,data.table,tibble,yaml
+Imports: httr,jsonlite,slackcalls (>= 0.0.5),data.table,tibble,yaml
 Suggests: slackblocks,emo,testthat (>= 2.1.0),knitr,rmarkdown,details
 Remotes: yonicd/slackcalls,yonicd/slackblocks,hadley/emo
 Encoding: UTF-8

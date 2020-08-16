@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Covrpage
-Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_05_28-brightgreen.svg)](http://tinyurl.com/qq3vz59)
+Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_08_13-brightgreen.svg)](http://tinyurl.com/qq3vz59)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R-win build

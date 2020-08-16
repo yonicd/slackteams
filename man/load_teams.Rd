@@ -4,14 +4,14 @@
 \alias{load_teams}
 \title{Load Team(s) From File}
 \usage{
-load_teams(file = "~/.slackteams", verbose = TRUE)
+load_teams(file = "~/slackteams", verbose = TRUE)
 }
 \arguments{
-\item{file}{character, Path to json containing slackr-app keys, Default: '~/.slackteams'}
+\item{file}{character, Path to json containing tokens, Default: '~/.slackteams'}
 
 \item{verbose}{logical, Print message after loading, Default: TRUE}
 }
 \description{
-Load teams from local file that contains slackr-app keys
+Load teams from local file that contains slack tokens
 }
 \concept{files}
