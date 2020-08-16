@@ -48,7 +48,7 @@ slackteams <- function(file, verbose = TRUE, auto_unbox = TRUE, pretty = TRUE, .
 #' @concept files
 #' @rdname load_teams
 #' @export
-load_teams <- function(file = "~/slackteams", verbose = TRUE) {
+load_teams <- function(file = "~/.slackteams", verbose = TRUE) {
 
   if (file.exists(file)) {
 
