@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">slackteams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -196,35 +196,39 @@
 <span id="cb1-10"><a href="#cb1-10"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">im</span><span class="kw">:</span></span>
 <span id="cb1-12"><a href="#cb1-12"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="fu">slackverse</span><span class="kw">:</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">channels</span><span class="kw">:</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">users</span><span class="kw">:</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">groups</span><span class="kw">:</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">mpim</span><span class="kw">:</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">im</span><span class="kw">:</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">usergroups</span><span class="kw">:</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">chat</span><span class="kw">:</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">emoji</span><span class="kw">:</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">files</span><span class="kw">:</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">team</span><span class="kw">:</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="fu">slackverse</span><span class="kw">:</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">users</span><span class="kw">:</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">groups</span><span class="kw">:</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">mpim</span><span class="kw">:</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">im</span><span class="kw">:</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">usergroups</span><span class="kw">:</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">chat</span><span class="kw">:</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">emoji</span><span class="kw">:</span></span>
 <span id="cb1-40"><a href="#cb1-40"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span></code></pre></div>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">files</span><span class="kw">:</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">team</span><span class="kw">:</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span></code></pre></div>
 </details><p><br></p>
 </div>
 <div id="slackr-app" class="section level3">

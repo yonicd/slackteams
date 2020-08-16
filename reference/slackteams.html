@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Team Managment Functions — activate_team • slackteams</title>
+<title>Manage slackteams File — slackteams • slackteams</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Team Managment Functions — activate_team" />
-<meta property="og:description" content="Manage teams that can be accessed" />
+<meta property="og:title" content="Manage slackteams File — slackteams" />
+<meta property="og:description" content="Upload or Update json file containing slack tokens" />
 
 
 
@@ -117,37 +117,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Team Managment Functions</h1>
+    <h1>Manage slackteams File</h1>
     
-    <div class="hidden name"><code>manage_team.Rd</code></div>
+    <div class="hidden name"><code>slackteams.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Manage teams that can be accessed</p>
+    <p>Upload or Update json file containing slack tokens</p>
     </div>
 
-    <pre class="usage"><span class='fu'>activate_team</span>(<span class='no'>team</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='fu'>add_team</span>(<span class='no'>team</span>, <span class='no'>token</span>)
-
-<span class='fu'>add_team_token</span>(<span class='no'>team</span>, <span class='no'>token</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='fu'>remove_team</span>(<span class='no'>team</span>)</pre>
+    <pre class="usage"><span class='fu'>slackteams</span>(<span class='no'>file</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>auto_unbox</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>pretty</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>team</th>
-      <td><p>character, team name</p></td>
+      <th>file</th>
+      <td><p>character, path to file</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>logical, Print messages to console, Default: TRUE</p></td>
+      <td><p>logical, print to console, Default: TRUE</p></td>
     </tr>
     <tr>
-      <th>token</th>
-      <td><p>character, api token issued by slack</p></td>
+      <th>auto_unbox</th>
+      <td><p>logical, automatically unbox all atomic vectors of length 1, Default: TRUE</p></td>
+    </tr>
+    <tr>
+      <th>pretty</th>
+      <td><p>logical adds indentation whitespace to JSON output, Default: TRUE</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>arguments to pass to <a href='https://jeroen.cran.dev/jsonlite/reference/read_json.html'>write_json</a></p></td>
     </tr>
     </table>
 

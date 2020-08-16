@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">slackteams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -196,7 +196,7 @@
 <p>If you have a JSON file already created and want to add a team that you generated credentials via the <code>slackr-app</code> via the console you can use <code><a href="../reference/manage_team.html">slackteams::add_team</a></code> to manually update the slackteams environment with the new team.</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">slackteams</span><span class="kw ns">::</span><span class="fu"><a href="../reference/manage_team.html">add_team</a></span>(<span class="no">MY_NEW_TEAM</span>,<span class="no">memberid</span>,<span class="no">key</span>)</pre></body></html></div>
 <p>If you want to store this information in your JSON file you can use, which will either update (teams that exists) or append (new teams) to the local JSON.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">slackteams</span><span class="kw ns">::</span><span class="fu"><a href="../reference/team_files.html">update_team_file</a></span>(<span class="no">PATH_TO_JSON</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">slackteams</span><span class="kw ns">::</span><span class="fu">update_team_file</span>(<span class="no">PATH_TO_JSON</span>)</pre></body></html></div>
 </div>
 </div>
 <div id="dcf" class="section level2">
@@ -205,7 +205,7 @@
 <div id="loading-a-team-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#loading-a-team-1" class="anchor"></a>Loading A Team</h3>
-<p>A different session persistent method to set the correct environment variables is via <code><a href="../reference/load_team_dcf.html">slackteams::load_team_dcf(team = TEAM,file = PATH_TO_DCF)</a></code>. This function expects a name for the team that you are loading and the path to the DCF file containing the following information:</p>
+<p>A different session persistent method to set the correct environment variables is via <code>slackteams::load_team_dcf(team = TEAM,file = PATH_TO_DCF)</code>. This function expects a name for the team that you are loading and the path to the DCF file containing the following information:</p>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Variable</th>
@@ -240,7 +240,7 @@
 <div id="converting-json-to-dcf" class="section level3">
 <h3 class="hasAnchor">
 <a href="#converting-json-to-dcf" class="anchor"></a>Converting JSON to DCF</h3>
-<p>For convenience after you activate a team you can convert the credentials of the active team to a local DCF file using <code><a href="../reference/activeteam2dcf.html">slackteams::activeteam2dcf()</a></code>.</p>
+<p>For convenience after you activate a team you can convert the credentials of the active team to a local DCF file using <code>slackteams::activeteam2dcf()</code>.</p>
 <ul>
 <li><p>This can be useful if you know that you activate one team most of the time and want to manage your own credentials.</p></li>
 <li><p>It is also useful if you have unit testing that is dependent on Slack, in which case depending on an external server is over-burdensome.</p></li>
