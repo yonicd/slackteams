@@ -18,10 +18,10 @@ Description: Users many times have multiple have accounts with multiple
     Slack teams. This package allows users to manage and 
     switch accounts to post to channels using the slackr package.
 License: MIT + file LICENSE
-Depends: R (>= 3.2.0)
-Imports: httr,jsonlite,slackcalls (>= 0.0.5),data.table,tibble,yaml
-Suggests: slackblocks,emo,testthat (>= 2.1.0),knitr,rmarkdown,details
-Remotes: yonicd/slackcalls,yonicd/slackblocks,hadley/emo
+Depends: R (>= 3.6.0)
+Imports: httr,jsonlite,data.table,tibble,yaml,slackcalls
+Suggests: testthat,knitr,rmarkdown,details
+Remotes: yonicd/slackcalls@refactor
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

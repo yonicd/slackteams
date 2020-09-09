@@ -1,5 +1,5 @@
 ---
-title: "Managing Tokens"
+title: "Managing Scopes"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Managing Scopes}
@@ -17,10 +17,9 @@ library(details)
 
 ## Overview
 
-`slackteams` uses incoming webhook tokens to interact with the Slack API. There are three main methods to create a token.
+`slackteams` uses incoming webhook tokens to interact with the Slack API. There are two main methods to create a token.
 
 1. Use `slackteams::add_team_interactive` to interactively create a token for the R session.
-2. Use [slackr-app](https://github.com/yonicd/slackr-app) Slack application button to create a token.
 3. BYOT (Bring your own token) You are a super user or work at a company that supplied you a token. 
 
 Each has their own pros and cons depending on what type of usage you may have
@@ -28,12 +27,7 @@ Each has their own pros and cons depending on what type of usage you may have
 Token Type|User Level|Session Persistent|Manage Multiple Teams in Session|Store Credentials Locally|Depend on External Server
 :--:|:--:|:--:|:--:|:--:|:--:
 Interactive | All | No|Yes | No | No
-slackr-app | All | Yes|Yes | No | Yes
 BYOT  | Intermediate | Yes|No | Yes | No 
-
-```{r setup,echo=FALSE}
-library(slackteams)
-```
 
 ### Interactive
 
@@ -58,6 +52,7 @@ The main piece that the user controls are the [permission scopes](https://api.sl
   - `files`: files shared in channels and conversations that your slack app has been added to
   - `usergroups`: user groups in the workspace
   - `chat`: messages in approved channels & conversations
+  - `team`: team metainformation
 
 **permissions**
 
@@ -73,22 +68,9 @@ Click the triangle to view the scopes and the permission of each of these roles:
 system.file("scopes.yml", package = "slackteams")
 ```
 
-### Slackr-app
-
- <a href="https://slack.com/oauth/authorize?client_id=220157155520.220159943344&scope=incoming-webhook,files:read,files:write:user,chat:write:bot,chat:write:user,mpim:write,mpim:read,mpim:history,im:write,im:read,im:history,groups:write,groups:read,groups:history,channels:write,channels:read,channels:history,emoji:read,usergroups:read,users:read" target="_blank"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a>
-
-1. Click the button
-2. Select the team to install the application
-3. Select the default channel to post to (this can be changed later)
-4. If successful a `SLACK_KEY_ID` will be returned. `r emo::ji('point_left')` `r emo::ji('rotating_light')` __Keep this Key__ `r emo::ji('rotating_light')`
-5. If not successful an error message will be returned.
-6. To keep the data safe you need your team `MEMBERID` to authenticate the `SLACK_KEY_ID`. [How to locate your Member ID](https://medium.com/@moshfeu/how-to-find-my-member-id-in-slack-workspace-d4bba942e38c)
-7. Paste the output into a json file. Default path that `slackteams` looks for the file is `~/.slackteams`.
-
 ### BYOT
 
 This is useful if you:
 
-  - Are a [slackr](https://github.com/hrbrmstr/slackr) and have your own token in a `.slackr` dcf file
   - Have a token that is maintained by your work slack team
   - Are an expert user and have your own incoming webhook that you maintain.

@@ -50,73 +50,71 @@ names(badges) <- pkgs
 remotes::install_github("yonicd/slackteams")
 ```
 
-## Create an Incoming Webhook
+## Tokens
 
-The following button will create a Slack incoming webhook with the correct scope to your Slack team.
+Creating a token is simple using 
 
- <a href="https://slack.com/oauth/authorize?client_id=220157155520.220159943344&scope=incoming-webhook,files:read,files:write:user,chat:write:bot,chat:write:user,mpim:write,mpim:read,mpim:history,im:write,im:read,im:history,groups:write,groups:read,groups:history,channels:write,channels:read,channels:history,emoji:read,usergroups:read,users:read" target="_blank"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a>
-
-#### Button Directions
-
-1. Click the button
-2. Select the team to install the application
-3. Select the default channel to post to (this can be changed later)
-4. If successful a `SLACK_KEY_ID` will be returned. `r emo::ji('point_left')` `r emo::ji('rotating_light')` __Keep this Key__ `r emo::ji('rotating_light')`
-5. If not successful an error message will be returned.
-6. To keep the data safe you need your team `MEMBERID` to authenticate the `SLACK_KEY_ID`. [How to locate your Member ID](https://medium.com/@moshfeu/how-to-find-my-member-id-in-slack-workspace-d4bba942e38c)
-7. Paste the output into a json file. Default path that `slackteams` looks for the file is `~/.slackteams`.
-
-#### .slackteams
-
-This is an example of the json file. Here we have 2 teams: `slackr` and `r4ds`. Each one contains a `key` (from [slackr-app](https://github.com/yonicd/slackr-app)) and the paired user `memberid`.
-
-```json
-{
-  "slackr": {
-    "key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "memberid": "UABC123"
-  },
-  "r4ds": {
-    "key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "memberid": "UXYZ456"
-  }
-}
+```r
+slackteams::add_team_interactive()
 ```
+
+This will generate a minimal Slack api token for you to interact with the Slack. For more information on the different permissions the token can take refer to the [Managing Tokens Vignette](articles/scopes.html)
+
+The token team will be created, loaded and activated for you, so you can start working right away. To store this token for future sessions refer to [Storing A Token](articles/manage.html#storing-a-token).
 
 ## Basic Usage
 
-```{r}
+```r
 library(slackteams)
 ```
 
 ### Load the teams
 
-```{r}
+```r
 slackteams::load_teams()
+# The following teams are loaded:
+#   slackr, R4ds
 ```
+
 
 ### Activate a Team
 
-```{r}
-slackteams::activate_team('r4ds')
+```r
+slackteams::activate_team('R4ds')
+# slack environment variables are set to 'R4ds' supplied definitions
 ```
 
 ### Post a Message
 
-```{r}
-slackblocks::block_text(text = 'my message')%>%
-  slackblocks::post_block(channel = 'general')
+```r
+slackcalls::post_message(channel = validate_channel('random'),text = 'my message')
 ```
 
 ### Activate Another Team
 
-```{r}
+```r
 slackteams::activate_team('slackr')
+# slack environment variables are set to 'slackr' supplied definitions
 ```
 
 ### Post a Message
 
-```{r}
-slackblocks::block_text(text = 'my other message')%>%
-  slackblocks::post_block(channel = 'general')
+```r
+slackcalls::post_message(channel = validate_channel('random'),text = 'my other message')
+```
+
+### Editing/Deleting Posts
+
+All messages that are posted to slack within a session are logged so you can easily edit or delete them.
+
+#### Query posted messages
+
+```r
+slackcalls::rm_last_post()
+```
+
+#### Deleting the last message
+
+```r
+slackcalls::rm_last_post()
 ```

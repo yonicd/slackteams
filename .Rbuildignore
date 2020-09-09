@@ -9,3 +9,5 @@
 ^codecov.yml$
 ^\.httr-oauth$
 ^data-raw$
+^doc$
+^Meta$
