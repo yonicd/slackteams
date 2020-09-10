@@ -92,10 +92,15 @@
 <tr class="even">
 <td align="center">slackthreads<br><a href="https://github.com/yonicd/slackthreads"><img src="https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg"></a>
 </td>
-<td align="center">slackteams<br><a href="https://github.com/yonicd/slackteams"><img src="https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg"></a><br>⬅️➡️</td>
-<td align="center">slackblocks<br><a href="https://github.com/yonicd/slackblocks"><img src="https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg"></a><br>⬇️</td>
+<td align="center">slackteams<br><a href="https://github.com/yonicd/slackteams"><img src="https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg"></a><br>⬅️↘️</td>
+<td align="center">slackposts<br><a href="https://github.com/yonicd/slackposts"><img src="https://github.com/yonicd/slackposts/workflows/R-mac/badge.svg"></a><br>⬇️</td>
 </tr>
 <tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">slackblocks<br><a href="https://github.com/yonicd/slackblocks"><img src="https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg"></a><br>⬇️</td>
+</tr>
+<tr class="even">
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">slackreprex<br><a href="https://github.com/yonicd/slackreprex"><img src="https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg"></a>
@@ -143,46 +148,27 @@
 <span class="co"># slack environment variables are set to 'R4ds' supplied definitions</span>
 </pre></div>
 </div>
-<div id="post-a-message" class="section level3">
+<div id="query-active-team-channels" class="section level3">
 <h3 class="hasAnchor">
-<a href="#post-a-message" class="anchor"></a>Post a Message</h3>
+<a href="#query-active-team-channels" class="anchor"></a>Query Active Team Channels</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">slackcalls</span>::<span class="fu">post_message</span>(channel = <span class="fu"><a href="reference/validate_channel.html">validate_channel</a></span>(<span class="st">'random'</span>),text = <span class="st">'my message'</span>)
+<span class="kw">slackteams</span>::<span class="fu"><a href="reference/get_teams.html">get_team_channels</a></span>()
+</pre></div>
+</div>
+<div id="query-active-team-members" class="section level3">
+<h3 class="hasAnchor">
+<a href="#query-active-team-members" class="anchor"></a>Query Active Team Members</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="kw">slackteams</span>::<span class="fu"><a href="reference/get_teams.html">get_team_users</a></span>()
 </pre></div>
 </div>
 <div id="activate-another-team" class="section level3">
 <h3 class="hasAnchor">
 <a href="#activate-another-team" class="anchor"></a>Activate Another Team</h3>
-<div class="sourceCode" id="cb7"><pre class="downlit">
+<div class="sourceCode" id="cb8"><pre class="downlit">
 <span class="kw">slackteams</span>::<span class="fu"><a href="reference/activate_team.html">activate_team</a></span>(<span class="st">'slackr'</span>)
 <span class="co"># slack environment variables are set to 'slackr' supplied definitions</span>
 </pre></div>
-</div>
-<div id="post-a-message-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#post-a-message-1" class="anchor"></a>Post a Message</h3>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">slackcalls</span>::<span class="fu">post_message</span>(channel = <span class="fu"><a href="reference/validate_channel.html">validate_channel</a></span>(<span class="st">'random'</span>),text = <span class="st">'my other message'</span>)
-</pre></div>
-</div>
-<div id="editingdeleting-posts" class="section level3">
-<h3 class="hasAnchor">
-<a href="#editingdeleting-posts" class="anchor"></a>Editing/Deleting Posts</h3>
-<p>All messages that are posted to slack within a session are logged so you can easily edit or delete them.</p>
-<div id="query-posted-messages" class="section level4">
-<h4 class="hasAnchor">
-<a href="#query-posted-messages" class="anchor"></a>Query posted messages</h4>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="kw">slackcalls</span>::<span class="fu">rm_last_post</span>()
-</pre></div>
-</div>
-<div id="deleting-the-last-message" class="section level4">
-<h4 class="hasAnchor">
-<a href="#deleting-the-last-message" class="anchor"></a>Deleting the last message</h4>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="kw">slackcalls</span>::<span class="fu">rm_last_post</span>()
-</pre></div>
-</div>
 </div>
 </div>
 </div>
