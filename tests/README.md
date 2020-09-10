@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-16 August, 2020 15:24:07
+10 September, 2020 00:21:25
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -38,8 +38,8 @@ Unit Test summary is created using the
 
 | file                                                            |  n |  time | error | failed | skipped | warning |
 | :-------------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R) | 13 | 0.102 |     0 |      0 |       0 |       0 |
-| [test-02\_api\_calls.R](testthat/test-02_api_calls.R)           | 13 | 0.013 |     0 |      0 |       0 |       0 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R) | 13 | 0.109 |     0 |      0 |       0 |       0 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R)           | 13 | 0.017 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
@@ -47,20 +47,20 @@ Unit Test summary is created using the
 
 | file                                                                    | context         | test                                              | status | n |  time |
 | :---------------------------------------------------------------------- | :-------------- | :------------------------------------------------ | :----- | -: | ----: |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L5_L8)   | team management | no active team: get\_team\_creds                  | PASS   | 1 | 0.051 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L12_L15) | team management | no active team: get\_team\_users                  | PASS   | 1 | 0.008 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L19_L22) | team management | no active team: validate team missing teams error | PASS   | 1 | 0.008 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L33_L36) | team management | load team: validate team bad name error           | PASS   | 1 | 0.008 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L5_L8)   | team management | no active team: get\_team\_creds                  | PASS   | 1 | 0.044 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L12_L15) | team management | no active team: get\_team\_users                  | PASS   | 1 | 0.010 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L19_L22) | team management | no active team: validate team missing teams error | PASS   | 1 | 0.012 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L33_L36) | team management | load team: validate team bad name error           | PASS   | 1 | 0.017 |
 | [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L40_L42) | team management | load team: activate team                          | PASS   | 1 | 0.002 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L47_L49) | team management | load team: slackteams to json                     | PASS   | 1 | 0.002 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L53_L55) | team management | load team: slackteams to dcf                      | PASS   | 1 | 0.002 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L59_L62) | team management | load team: get teams                              | PASS   | 1 | 0.002 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L47_L49) | team management | load team: slackteams to json                     | PASS   | 1 | 0.005 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L53_L55) | team management | load team: slackteams to dcf                      | PASS   | 1 | 0.003 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L59_L62) | team management | load team: get teams                              | PASS   | 1 | 0.001 |
 | [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L66_L68) | team management | load team: cached slack creds token               | PASS   | 1 | 0.001 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L80)     | team management | active team channel info: validate channel        | PASS   | 1 | 0.001 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L86)     | team management | active team channel info: class                   | PASS   | 1 | 0.001 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L90)     | team management | active team channel info: validate channel id     | PASS   | 1 | 0.007 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L80)     | team management | active team channel info: validate channel        | PASS   | 1 | 0.002 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L86)     | team management | active team channel info: class                   | PASS   | 1 | 0.002 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L90)     | team management | active team channel info: validate channel id     | PASS   | 1 | 0.001 |
 | [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L94)     | team management | active team channel info: validate bad channel    | PASS   | 1 | 0.009 |
-| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L18)               | API calls       | team info: class                                  | PASS   | 1 | 0.001 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L18)               | API calls       | team info: class                                  | PASS   | 1 | 0.003 |
 | [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L22)               | API calls       | team info: user names                             | PASS   | 1 | 0.001 |
 | [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L30)               | API calls       | group info: group list                            | PASS   | 1 | 0.002 |
 | [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L34)               | API calls       | group info: class                                 | PASS   | 1 | 0.001 |
@@ -70,8 +70,8 @@ Unit Test summary is created using the
 | [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L58)               | API calls       | converstion info: convo id                        | PASS   | 1 | 0.001 |
 | [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L62)               | API calls       | converstion info: convo channel count             | PASS   | 1 | 0.001 |
 | [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L66)               | API calls       | converstion info: convo im count                  | PASS   | 1 | 0.001 |
-| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L70)               | API calls       | converstion info: convo members                   | PASS   | 1 | 0.001 |
-| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L74)               | API calls       | converstion info: convo info class                | PASS   | 1 | 0.000 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L70)               | API calls       | converstion info: convo members                   | PASS   | 1 | 0.002 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L74)               | API calls       | converstion info: convo info class                | PASS   | 1 | 0.001 |
 | [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L78)               | API calls       | converstion info: convo info id                   | PASS   | 1 | 0.001 |
 
 </details>
@@ -83,7 +83,7 @@ Unit Test summary is created using the
 | Field    | Value                             |                                                                                                                                                                                                                                                                    |
 | :------- | :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Version  | R version 4.0.2 (2020-06-22)      |                                                                                                                                                                                                                                                                    |
-| Platform | x86\_64-apple-darwin17.0 (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/298dc78da0078905037fffbf5a88e730c04c293a/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
+| Platform | x86\_64-apple-darwin17.0 (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/caada654c913546512182bad83329dbde2c041df/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
 | Running  | macOS Catalina 10.15.6            |                                                                                                                                                                                                                                                                    |
 | Language | en\_US                            |                                                                                                                                                                                                                                                                    |
 | Timezone | UTC                               |                                                                                                                                                                                                                                                                    |
