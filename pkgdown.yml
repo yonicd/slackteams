@@ -1,9 +1,6 @@
 pandoc: 2.7.3
-pkgdown: 1.5.1
+pkgdown: 1.6.0
 pkgdown_sha: ~
-articles:
-  manage: manage.html
-  scopes: scopes.html
-  tests_and_coverage: tests_and_coverage.html
-last_built: 2020-08-16T15:24Z
+articles: []
+last_built: 2020-09-10T00:22Z
 

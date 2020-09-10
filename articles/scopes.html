@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Managing Tokens • slackteams</title>
+<title>Managing Scopes • slackteams</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Managing Tokens">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Managing Scopes">
 <meta property="og:description" content="slackteams">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -76,7 +76,7 @@
       </header><script src="scopes_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Managing Tokens</h1>
+      <h1 data-toc-skip>Managing Scopes</h1>
             
       
       
@@ -89,10 +89,9 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p><code>slackteams</code> uses incoming webhook tokens to interact with the Slack API. There are three main methods to create a token.</p>
+<p><code>slackteams</code> uses incoming webhook tokens to interact with the Slack API. There are two main methods to create a token.</p>
 <ol style="list-style-type: decimal">
 <li>Use <code><a href="../reference/add_team_interactive.html">slackteams::add_team_interactive</a></code> to interactively create a token for the R session.</li>
-<li>Use <a href="https://github.com/yonicd/slackr-app">slackr-app</a> Slack application button to create a token.</li>
 <li>BYOT (Bring your own token) You are a super user or work at a company that supplied you a token.</li>
 </ol>
 <p>Each has their own pros and cons depending on what type of usage you may have</p>
@@ -123,14 +122,6 @@
 <td align="center">No</td>
 </tr>
 <tr class="even">
-<td align="center">slackr-app</td>
-<td align="center">All</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-</tr>
-<tr class="odd">
 <td align="center">BYOT</td>
 <td align="center">Intermediate</td>
 <td align="center">Yes</td>
@@ -171,6 +162,8 @@
 <code>usergroups</code>: user groups in the workspace</li>
 <li>
 <code>chat</code>: messages in approved channels &amp; conversations</li>
+<li>
+<code>team</code>: team metainformation</li>
 </ul>
 <p><strong>permissions</strong></p>
 <ul>
@@ -231,27 +224,11 @@
 <span id="cb1-45"><a href="#cb1-45"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span></code></pre></div>
 </details><p><br></p>
 </div>
-<div id="slackr-app" class="section level3">
-<h3 class="hasAnchor">
-<a href="#slackr-app" class="anchor"></a>Slackr-app</h3>
-<p><a href="https://slack.com/oauth/authorize?client_id=220157155520.220159943344&amp;scope=incoming-webhook,files:read,files:write:user,chat:write:bot,chat:write:user,mpim:write,mpim:read,mpim:history,im:write,im:read,im:history,groups:write,groups:read,groups:history,channels:write,channels:read,channels:history,emoji:read,usergroups:read,users:read" target="_blank"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a></p>
-<ol style="list-style-type: decimal">
-<li>Click the button</li>
-<li>Select the team to install the application</li>
-<li>Select the default channel to post to (this can be changed later)</li>
-<li>If successful a <code>SLACK_KEY_ID</code> will be returned. 👈 🚨 <strong>Keep this Key</strong> 🚨</li>
-<li>If not successful an error message will be returned.</li>
-<li>To keep the data safe you need your team <code>MEMBERID</code> to authenticate the <code>SLACK_KEY_ID</code>. <a href="https://medium.com/@moshfeu/how-to-find-my-member-id-in-slack-workspace-d4bba942e38c">How to locate your Member ID</a>
-</li>
-<li>Paste the output into a json file. Default path that <code>slackteams</code> looks for the file is <code>~/.slackteams</code>.</li>
-</ol>
-</div>
 <div id="byot" class="section level3">
 <h3 class="hasAnchor">
 <a href="#byot" class="anchor"></a>BYOT</h3>
 <p>This is useful if you:</p>
 <ul>
-<li>Are a <a href="https://github.com/hrbrmstr/slackr">slackr</a> and have your own token in a <code>.slackr</code> dcf file</li>
 <li>Have a token that is maintained by your work slack team</li>
 <li>Are an expert user and have your own incoming webhook that you maintain.</li>
 </ul>
@@ -274,7 +251,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

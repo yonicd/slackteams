@@ -129,10 +129,10 @@ for example, for authorizing a team in a Shiny app.</p>
     </div>
 
     <pre class="usage"><span class='fu'>auth_url</span>(
-  <span class='kw'>scopes</span> <span class='kw'>=</span> <span class='fu'><a href='load_scopes.html'>load_scopes</a></span>(),
-  <span class='kw'>redirect_uri</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>team_code</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>state</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  scopes = <span class='fu'><a href='load_scopes.html'>load_scopes</a></span>(),
+  redirect_uri = <span class='kw'>NULL</span>,
+  team_code = <span class='kw'>NULL</span>,
+  state = <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -166,7 +166,11 @@ string.</p></td>
     <p>character, an authorization URL.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>auth_url</span>()</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922"</div><div class='input'><span class='fu'>auth_url</span>(<span class='kw'>redirect_uri</span> <span class='kw'>=</span> <span class='st'>"http://127.0.0.1:4242"</span>)</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922&amp;redirect_uri=http://127.0.0.1:4242"</div><div class='input'><span class='fu'>auth_url</span>(<span class='kw'>redirect_uri</span> <span class='kw'>=</span> <span class='st'>"http://127.0.0.1:4242"</span>, <span class='kw'>team_code</span> <span class='kw'>=</span> <span class='st'>"T6UC1DKJQ"</span>)</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922&amp;redirect_uri=http://127.0.0.1:4242&amp;team=T6UC1DKJQ"</div><div class='input'><span class='fu'>auth_url</span>(<span class='kw'>state</span> <span class='kw'>=</span> <span class='st'>"aabbCCddeeFF"</span>)</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922&amp;state=aabbCCddeeFF"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>auth_url</span>()
+</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922"</div><div class='input'><span class='fu'>auth_url</span>(redirect_uri = <span class='st'>"http://127.0.0.1:4242"</span>)
+</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922&amp;redirect_uri=http://127.0.0.1:4242"</div><div class='input'><span class='fu'>auth_url</span>(redirect_uri = <span class='st'>"http://127.0.0.1:4242"</span>, team_code = <span class='st'>"T6UC1DKJQ"</span>)
+</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922&amp;redirect_uri=http://127.0.0.1:4242&amp;team=T6UC1DKJQ"</div><div class='input'><span class='fu'>auth_url</span>(state = <span class='st'>"aabbCCddeeFF"</span>)
+</div><div class='output co'>#&gt; [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922&amp;state=aabbCCddeeFF"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -182,7 +186,7 @@ string.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
