@@ -24,7 +24,8 @@ coverage](https://codecov.io/gh/yonicd/slackteams/branch/master/graph/badge.svg)
 |                                                                                                                                 |                                                                                                                                     |                                                                                                                                    |
 | :-----------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: |
 |                                                                                                                                 | slackcalls<br>[![](https://github.com/yonicd/slackcalls/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackcalls)<br>↙️⬇️↘️ |                                                                                                                                    |
-| slackthreads<br>[![](https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackthreads) |  slackteams<br>[![](https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackteams)<br>⬅️➡️  | slackblocks<br>[![](https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackblocks)<br>⬇️ |
+| slackthreads<br>[![](https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackthreads) |  slackteams<br>[![](https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackteams)<br>⬅️↘️  |  slackposts<br>[![](https://github.com/yonicd/slackposts/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackposts)<br>⬇️   |
+|                                                                                                                                 |                                                                                                                                     | slackblocks<br>[![](https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackblocks)<br>⬇️ |
 |                                                                                                                                 |                                                                                                                                     |    slackreprex<br>[![](https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackreprex)    |
 
 `slackteams` is an `R` package that allows the user to manage multiple
@@ -73,10 +74,16 @@ slackteams::activate_team('R4ds')
 # slack environment variables are set to 'R4ds' supplied definitions
 ```
 
-### Post a Message
+### Query Active Team Channels
 
 ``` r
-slackcalls::post_message(channel = validate_channel('random'),text = 'my message')
+slackteams::get_team_channels()
+```
+
+### Query Active Team Members
+
+``` r
+slackteams::get_team_users()
 ```
 
 ### Activate Another Team
@@ -84,27 +91,4 @@ slackcalls::post_message(channel = validate_channel('random'),text = 'my message
 ``` r
 slackteams::activate_team('slackr')
 # slack environment variables are set to 'slackr' supplied definitions
-```
-
-### Post a Message
-
-``` r
-slackcalls::post_message(channel = validate_channel('random'),text = 'my other message')
-```
-
-### Editing/Deleting Posts
-
-All messages that are posted to slack within a session are logged so you
-can easily edit or delete them.
-
-#### Query posted messages
-
-``` r
-slackcalls::rm_last_post()
-```
-
-#### Deleting the last message
-
-``` r
-slackcalls::rm_last_post()
 ```
