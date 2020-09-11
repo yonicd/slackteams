@@ -1,14 +1,11 @@
 testthat::context('API calls')
 
 res_users_list <- slackteams:::get_users_list()
-res_groups_list <- slackteams:::get_groups_list()
-res_channels_list <- slackteams:::get_channels_list()
 res_convo_list <- slackteams:::get_conversations_list()
 
-test_chnl         <- res_channels_list$id[res_channels_list$name=='slack-r']
-convo_info <- slackteams:::get_conversations_info(test_chnl)
+test_chnl         <- res_convo_list$id[which(res_convo_list$name=='slack-r')]
 
-group_info <- slackteams:::get_groups_info(test_chnl)
+convo_info <- slackteams:::get_conversations_info(test_chnl)
 
 convo_members <- slackteams:::get_conversations_members(test_chnl)
 
@@ -20,30 +17,6 @@ testthat::describe('team info',{
 
   it('user names',{
     testthat::expect_equal(res_users_list$name,c('slackbot','yonicd','jonthegeek'))
-  })
-
-})
-
-testthat::describe('group info',{
-
-  it('group list',{
-    testthat::expect_equal(nrow(res_groups_list),0L)
-  })
-
-  it('class',{
-    testthat::expect_s3_class(group_info,'groups.info')
-  })
-
-})
-
-testthat::describe('channel info',{
-
-  it('class',{
-    testthat::expect_s3_class(res_channels_list,'data.frame')
-  })
-
-  it('channel names',{
-    testthat::expect_equal(res_channels_list$name,c('general','random','slack-r'))
   })
 
 })

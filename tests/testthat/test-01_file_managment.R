@@ -1,4 +1,5 @@
 testthat::context('team management')
+
 testthat::describe('no active team',{
 
   it('get_team_creds',{
@@ -78,12 +79,6 @@ testthat::describe('active team channel info',{
 
   it('validate channel',{
     testthat::expect_equal(chnl, "CNRKL1JLQ")
-  })
-
-  res <- slackteams:::get_channels_info(channel = chnl)
-
-  it('class',{
-    testthat::expect_s3_class(res,'channels.info')
   })
 
   it('validate channel id',{
