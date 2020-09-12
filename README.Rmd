@@ -38,9 +38,9 @@ names(badges) <- pkgs
 
 ||||
 |:-:|:-:|:-:|
-||`r badges[pkgs[1]]`<br>`r emo::ji('down_left_arrow')``r emo::ji('down_arrow')``r emo::ji('down_right_arrow')`||
-|`r badges[pkgs[5]]`|`r badges[pkgs[2]]`<br>`r emo::ji('left_arrow')``r emo::ji('down_right_arrow')`|`r badges[pkgs[3]]`<br>`r emo::ji('down_arrow')`|
-|||`r badges[pkgs[4]]`<br>`r emo::ji('down_arrow')`|
+||`r badges[pkgs[1]]`||
+|`r badges[pkgs[5]]`|`r badges[pkgs[2]]`|`r badges[pkgs[3]]`|
+|||`r badges[pkgs[4]]`|
 |||`r badges[pkgs[6]]`|
 
 `slackteams` is an `R` package that allows the user to manage multiple Slack teams during a session. 
