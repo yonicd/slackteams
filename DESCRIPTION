@@ -21,7 +21,7 @@ License: MIT + file LICENSE
 Depends: R (>= 3.6.0)
 Imports: httr,jsonlite,data.table,tibble,yaml,slackcalls
 Suggests: testthat,knitr,rmarkdown,details
-Remotes: yonicd/slackcalls@refactor
+Remotes: yonicd/slackcalls
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
