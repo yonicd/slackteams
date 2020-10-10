@@ -1,7 +1,7 @@
 testthat::context('API calls')
 
 res_users_list <- slackteams:::get_users_list()
-res_convo_list <- slackteams:::get_conversations_list()
+res_convo_list <- slackteams::get_conversations_list()
 
 test_chnl         <- res_convo_list$id[which(res_convo_list$name=='slack-r')]
 
