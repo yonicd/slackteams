@@ -77,17 +77,17 @@ slackteams::add_team_interactive(scopes=load_scopes(system.file("scopes.yml", pa
 and corresponds to
 
 ```
-slackteams::add_team_interactive(scopes=load_scopes()
+slackteams::add_team_interactive(scopes=load_scopes())
 ```
 
 To be able to use the `slackverse` role use
 
 ```
-slackteams::add_team_interactive(scopes=load_scopes(system.file("scopes.yml", package = "slackteams"),"slackverse"))
+slackteams::add_team_interactive(which = "slackverse"))
 
 ```
 
-It is also possible to define custom roles. To do this, define a scopes file, for example "custom_scopes.yml" which can
+It is also possible to define custom roles. To do this, define a scopes file, for example "custom_scopes.yml" which
 should have scopes defined following the Slack [permission scopes](https://api.slack.com/scopes), for example
 
 ```
@@ -140,7 +140,7 @@ postanalysis:
 The resulting file can then be used, for example as 
 
 ```
-slackteams::add_team_interactive(scopes=load_scopes("/path/to/custom_scopes.yml","analyze"))
+slackteams::add_team_interactive(scopes=load_scopes("/path/to/custom_scopes.yml",which = "analyze"))
 
 ```
 
