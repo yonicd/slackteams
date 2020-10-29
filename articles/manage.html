@@ -73,7 +73,8 @@
 
       
 
-      </header><script src="manage_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="manage_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="manage_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="manage_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Manage Your Slack Teams</h1>
@@ -92,8 +93,7 @@
 <a href="#interactive" class="anchor"></a>Interactive</h2>
 <p>To create a new token in an interactive session:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw">slackteams</span>::<span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span>()
-</pre></div>
+<span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>This will generate a minimal slack api token for you to interact with the slack. For more information on the different permissions the token can take refer to the <a href="scopes.html">Managing Tokens Vignette</a></p>
 <p>The token team will be created, loaded and activated for you, so you can start working right away. To store this token for future sessions refer to <a href="#storing-a-token">Storing A Token</a>.</p>
 </div>
@@ -127,16 +127,14 @@
 <a href="#adding-a-team-within-session" class="anchor"></a>Adding A Team Within Session</h3>
 <p>If you have a JSON file already created and want to add a team api token you can use <code><a href="../reference/activate_team.html">slackteams::add_team</a></code> to manually update the slackteams environment with the new team.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw">slackteams</span>::<span class="fu"><a href="../reference/activate_team.html">add_team</a></span>(team = <span class="kw">MY_NEW_TEAM</span>, token = <span class="kw">token</span>)
-</pre></div>
+<span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/activate_team.html">add_team</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">MY_NEW_TEAM</span>, token <span class="op">=</span> <span class="va">token</span><span class="op">)</span></pre></div>
 </div>
 <div id="storing-a-token" class="section level3">
 <h3 class="hasAnchor">
 <a href="#storing-a-token" class="anchor"></a>Storing a Token</h3>
 <p>If you want to store this information in your JSON file you can use, which will either update (teams that exists) or append (new teams) to the local JSON.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">slackteams</span>::<span class="fu"><a href="../reference/slackteams.html">slackteams</a></span>(file = <span class="kw">PATH_TO_JSON</span>)
-</pre></div>
+<span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/slackteams.html">slackteams</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">PATH_TO_JSON</span><span class="op">)</span></pre></div>
 </div>
 </div>
   </div>
