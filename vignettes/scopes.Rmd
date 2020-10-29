@@ -68,6 +68,84 @@ Click the triangle to view the scopes and the permission of each of these roles:
 system.file("scopes.yml", package = "slackteams")
 ```
 
+The default scope is called by
+
+```
+slackteams::add_team_interactive(scopes=load_scopes(system.file("scopes.yml", package = "slackteams"),"base"))
+```
+
+and corresponds to
+
+```
+slackteams::add_team_interactive(scopes=load_scopes()
+```
+
+To be able to use the `slackverse` role use
+
+```
+slackteams::add_team_interactive(scopes=load_scopes(system.file("scopes.yml", package = "slackteams"),"slackverse"))
+
+```
+
+It is also possible to define custom roles. To do this, define a scopes file, for example "custom_scopes.yml" which can
+should have scopes defined following the Slack [permission scopes](https://api.slack.com/scopes), for example
+
+```
+base:
+  - channels:
+    - read
+  - users:
+    - read
+  - groups:
+    - read
+  - mpim:
+    - read
+  - im:
+    - read
+  - team:
+    - read
+analyze:
+  - channels:
+    - read
+    - history
+  - users:
+    - read
+  - groups:
+    - read
+    - history
+  - mpim:
+    - read
+  - im:
+    - read
+    - history
+  - team:
+    - read
+  - links:
+    - read
+postanalysis:
+  - channels:
+    - read
+  - users:
+    - read
+  - groups:
+    - read
+  - mpim:
+    - read
+  - im:
+    - write
+  - team:
+    - read
+  ```
+  
+The resulting file can then be used, for example as 
+
+```
+slackteams::add_team_interactive(scopes=load_scopes("/path/to/custom_scopes.yml","analyze"))
+
+```
+
+
+
 ### BYOT
 
 This is useful if you:
