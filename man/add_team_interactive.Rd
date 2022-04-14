@@ -4,11 +4,21 @@
 \alias{add_team_interactive}
 \title{Interactive Team Managment}
 \usage{
-add_team_interactive(scopes = load_scopes())
+add_team_interactive(
+  scopes = load_scopes(),
+  client_id = NULL,
+  client_secret = NULL
+)
 }
 \arguments{
 \item{scopes}{character, scopes to request. Must include "users:read",
 "channels:read", "groups:read", "im:read", and "mpim:read" at minimum.}
+
+\item{client_id}{character, the client_id of a Slack app. If this is not
+provided, the function will use the built-in R4DS Slack app.}
+
+\item{client_secret}{character, the client_secret of a Slack app. If this is
+not provided, the function will use the built-in R4DS Slack app.}
 }
 \description{
 Add a team interactively

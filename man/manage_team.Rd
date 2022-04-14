@@ -11,7 +11,13 @@ activate_team(team, verbose = TRUE)
 
 add_team(team, token)
 
-add_team_token(team, token, verbose = TRUE)
+add_team_token(
+  team,
+  token,
+  verbose = TRUE,
+  client_id = NULL,
+  client_secret = NULL
+)
 
 remove_team(team)
 }
@@ -21,6 +27,12 @@ remove_team(team)
 \item{verbose}{logical, Print messages to console, Default: TRUE}
 
 \item{token}{character, api token issued by slack}
+
+\item{client_id}{character, the client_id of a Slack app. If this is not
+provided, the function will use the built-in R4DS Slack app.}
+
+\item{client_secret}{character, the client_secret of a Slack app. If this is
+not provided, the function will use the built-in R4DS Slack app.}
 }
 \description{
 Manage teams that can be accessed

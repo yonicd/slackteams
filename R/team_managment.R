@@ -3,6 +3,7 @@
 #' @param team character, team name
 #' @param verbose logical, Print messages to console, Default: TRUE
 #' @param token character, api token issued by slack
+#' @inheritParams add_team_code
 #' @return NULL
 #' @concept management
 #' @rdname manage_team
@@ -35,8 +36,13 @@ add_team <- function(team, token) {
 
 #' @rdname manage_team
 #' @export
-add_team_token <- function(team, token, verbose = TRUE) {
-
+add_team_token <- function(team,
+                           token,
+                           verbose = TRUE,
+                           client_id = NULL,
+                           client_secret = NULL) {
+  client_id <- client_id %||% builtin_client_id
+  client_secret <- client_secret %||% builtin_client_secret
   add_team(team = team,token = token)
   .slack$file[[team]] <- ""
   .slack$creds <- list(
@@ -55,6 +61,7 @@ add_team_token <- function(team, token, verbose = TRUE) {
 #' @description Add a team interactively
 #' @param scopes character, scopes to request. Must include "users:read",
 #'   "channels:read", "groups:read", "im:read", and "mpim:read" at minimum.
+#' @inheritParams add_team_code
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
 #' @note This function does not currently work in an Rstudio Server setup. We
@@ -62,7 +69,11 @@ add_team_token <- function(team, token, verbose = TRUE) {
 #' @return NULL
 #' @concept management
 #' @export
-add_team_interactive <- function(scopes = load_scopes()) {
+add_team_interactive <- function(scopes = load_scopes(),
+                                 client_id = NULL,
+                                 client_secret = NULL) {
+  client_id <- client_id %||% builtin_client_id
+  client_secret <- client_secret %||% builtin_client_secret
   min_scopes <- c(
     "users:read", "channels:read", "groups:read", "im:read", "mpim:read","team:read"
   )
@@ -115,6 +126,10 @@ add_team_interactive <- function(scopes = load_scopes()) {
 #' @param code character, a code returned by the slack oauth2 v2 api.
 #' @param redirect_uri character, the uri to which the user was redirected when
 #'   the code was generated.
+#' @param client_id character, the client_id of a Slack app. If this is not
+#'   provided, the function will use the built-in R4DS Slack app.
+#' @param client_secret character, the client_secret of a Slack app. If this is
+#'   not provided, the function will use the built-in R4DS Slack app.
 #' @inheritParams activate_team
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
@@ -123,7 +138,13 @@ add_team_interactive <- function(scopes = load_scopes()) {
 #' @return The token (invisibly)
 #' @concept management
 #' @export
-add_team_code <- function(code, redirect_uri = NULL, verbose = TRUE) {
+add_team_code <- function(code,
+                          redirect_uri = NULL,
+                          verbose = TRUE,
+                          client_id = NULL,
+                          client_secret = NULL) {
+  client_id <- client_id %||% builtin_client_id
+  client_secret <- client_secret %||% builtin_client_secret
   access_url <- paste0(
     access_root,
     "?code=", code,
@@ -182,6 +203,8 @@ update_cache <- function() {
 #' @param state character, a code to send to your redirect_uri indicating a
 #'   state. It is recommended to use a non-human-readable format for this
 #'   string.
+#' @param client_id character, the client_id of a Slack app. If this is not
+#'   provided, the function will use the built-in R4DS Slack app.
 #' @return character, an authorization URL.
 #' @export
 #' @concept management
@@ -193,7 +216,10 @@ update_cache <- function() {
 auth_url <- function(scopes = load_scopes(),
                      redirect_uri = NULL,
                      team_code = NULL,
-                     state = NULL) {
+                     state = NULL,
+                     client_id = NULL) {
+  client_id <- client_id %||% builtin_client_id
+
   paste0(
     auth_root,
     "?user_scope=", paste(scopes, collapse = ","),

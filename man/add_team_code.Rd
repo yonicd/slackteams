@@ -4,7 +4,13 @@
 \alias{add_team_code}
 \title{Semi-Interactive Team Management}
 \usage{
-add_team_code(code, redirect_uri = NULL, verbose = TRUE)
+add_team_code(
+  code,
+  redirect_uri = NULL,
+  verbose = TRUE,
+  client_id = NULL,
+  client_secret = NULL
+)
 }
 \arguments{
 \item{code}{character, a code returned by the slack oauth2 v2 api.}
@@ -13,6 +19,12 @@ add_team_code(code, redirect_uri = NULL, verbose = TRUE)
 the code was generated.}
 
 \item{verbose}{logical, Print messages to console, Default: TRUE}
+
+\item{client_id}{character, the client_id of a Slack app. If this is not
+provided, the function will use the built-in R4DS Slack app.}
+
+\item{client_secret}{character, the client_secret of a Slack app. If this is
+not provided, the function will use the built-in R4DS Slack app.}
 }
 \value{
 The token (invisibly)
