@@ -21,7 +21,7 @@ activate_team <- function(team, verbose = TRUE) {
 #' @export
 add_team <- function(team, token) {
 
-  if(team%in%names(.slack$teams)){
+  if(team %in% names(.slack$teams)){
     .slack$teams[[team]] <- token
   }else{
     new_team <- list(token)
@@ -57,6 +57,15 @@ add_team_token <- function(team,
 #'   "channels:read", "groups:read", "im:read", and "mpim:read" at minimum.
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
+#'
+#'   Two global package options control this function:
+#'   \itemize{
+#'     \item{slack_client_id: character, the client_id of a Slack app. If this
+#'       is not provided, the function will use the built-in R4DS Slack app.}
+#'     \item{slack_client_secret: character, the client_secret of a Slack app.
+#'       If this is not provided, the function will use the built-in R4DS Slack
+#'       app.}
+#'   }
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
 #' @return NULL
@@ -118,11 +127,15 @@ add_team_interactive <- function(scopes = load_scopes()) {
 #' @inheritParams activate_team
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
-#' two global package options control this function
-#' slack_client_id character, the client_id of a Slack app. If this is not
-#'   provided, the function will use the built-in R4DS Slack app.
-#' slack_client_secret character, the client_secret of a Slack app. If this is
-#'   not provided, the function will use the built-in R4DS Slack app.
+#'
+#'   Two global package options control this function:
+#'   \itemize{
+#'     \item{slack_client_id: character, the client_id of a Slack app. If this
+#'       is not provided, the function will use the built-in R4DS Slack app.}
+#'     \item{slack_client_secret: character, the client_secret of a Slack app.
+#'       If this is not provided, the function will use the built-in R4DS Slack
+#'       app.}
+#'   }
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
 #' @return The token (invisibly)
@@ -191,6 +204,12 @@ update_cache <- function() {
 #'   state. It is recommended to use a non-human-readable format for this
 #'   string.
 #' @return character, an authorization URL.
+#' @details A global package option controls this function:
+#'   \itemize{
+#'     \item{slack_client_id: character, the client_id of a Slack app. If this
+#'       is not provided, the function will use the built-in R4DS Slack app.}
+#'   }
+
 #' @export
 #' @concept management
 #' @examples
@@ -202,7 +221,6 @@ auth_url <- function(scopes = load_scopes(),
                      redirect_uri = NULL,
                      team_code = NULL,
                      state = NULL) {
-
   paste0(
     auth_root,
     "?user_scope=", paste(scopes, collapse = ","),

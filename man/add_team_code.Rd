@@ -23,11 +23,15 @@ Add a team using a Slack response code.
 \details{
 Launch a browser window to interactively grant slackteams permission
 to act on your behalf on a Slack team.
-two global package options control this function
-slack_client_id character, the client_id of a Slack app. If this is not
-provided, the function will use the built-in R4DS Slack app.
-slack_client_secret character, the client_secret of a Slack app. If this is
-not provided, the function will use the built-in R4DS Slack app.
+
+Two global package options control this function:
+\itemize{
+\item{slack_client_id: character, the client_id of a Slack app. If this
+is not provided, the function will use the built-in R4DS Slack app.}
+\item{slack_client_secret: character, the client_secret of a Slack app.
+If this is not provided, the function will use the built-in R4DS Slack
+app.}
+}
 }
 \note{
 This function does not currently work in an Rstudio Server setup. We

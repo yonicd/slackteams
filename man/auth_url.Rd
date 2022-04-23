@@ -32,6 +32,13 @@ character, an authorization URL.
 Generate an authorization URL to add a team manually. Useful,
 for example, for authorizing a team in a Shiny app.
 }
+\details{
+A global package option controls this function:
+\itemize{
+\item{slack_client_id: character, the client_id of a Slack app. If this
+is not provided, the function will use the built-in R4DS Slack app.}
+}
+}
 \examples{
 auth_url()
 auth_url(redirect_uri = "http://127.0.0.1:4242")
