@@ -75,8 +75,8 @@ add_team_interactive <- function(scopes = load_scopes()) {
 
   slack_oauth_app <- httr::oauth_app(
     appname = "slackteams",
-    key = getOption('slack_client_id', default = builtin_client_id),
-    secret = getOption('slack_client_secret', default = builtin_client_secret)
+    key = getOption('slack_client_id', default = client_id),
+    secret = getOption('slack_client_secret', default = client_secret)
   )
   full_token <- httr::oauth2.0_token(
     endpoint = slack_oauth_endpoint,
@@ -136,8 +136,8 @@ add_team_code <- function(code,
     access_root,
     "?code=", code,
     query_piece(redirect_uri, "redirect_uri"),
-    query_piece(getOption('slack_client_id', default = builtin_client_id), "client_id"),
-    query_piece(getOption('slack_client_secret', default = builtin_client_secret), "client_secret")
+    query_piece(getOption('slack_client_id', default = client_id), "client_id"),
+    query_piece(getOption('slack_client_secret', default = client_secret), "client_secret")
   )
 
   response <- httr::GET(
@@ -206,7 +206,7 @@ auth_url <- function(scopes = load_scopes(),
   paste0(
     auth_root,
     "?user_scope=", paste(scopes, collapse = ","),
-    "&client_id=", getOption('slack_client_id', default = builtin_client_id),
+    "&client_id=", getOption('slack_client_id', default = client_id),
     query_piece(redirect_uri, "redirect_uri"),
     query_piece(team_code, "team"),
     query_piece(state, "state")
