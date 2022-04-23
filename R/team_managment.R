@@ -2,8 +2,6 @@
 #' @description Manage teams that can be accessed
 #' @param team character, team name
 #' @param verbose logical, Print messages to console, Default: TRUE
-#' @param token character, api token issued by slack
-#' @inheritParams add_team_code
 #' @return NULL
 #' @concept management
 #' @rdname manage_team
@@ -38,11 +36,7 @@ add_team <- function(team, token) {
 #' @export
 add_team_token <- function(team,
                            token,
-                           verbose = TRUE,
-                           client_id = NULL,
-                           client_secret = NULL) {
-  client_id <- client_id %||% builtin_client_id
-  client_secret <- client_secret %||% builtin_client_secret
+                           verbose = TRUE) {
   add_team(team = team,token = token)
   .slack$file[[team]] <- ""
   .slack$creds <- list(
@@ -61,7 +55,6 @@ add_team_token <- function(team,
 #' @description Add a team interactively
 #' @param scopes character, scopes to request. Must include "users:read",
 #'   "channels:read", "groups:read", "im:read", and "mpim:read" at minimum.
-#' @inheritParams add_team_code
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
 #' @note This function does not currently work in an Rstudio Server setup. We
@@ -69,11 +62,7 @@ add_team_token <- function(team,
 #' @return NULL
 #' @concept management
 #' @export
-add_team_interactive <- function(scopes = load_scopes(),
-                                 client_id = NULL,
-                                 client_secret = NULL) {
-  client_id <- client_id %||% builtin_client_id
-  client_secret <- client_secret %||% builtin_client_secret
+add_team_interactive <- function(scopes = load_scopes()) {
   min_scopes <- c(
     "users:read", "channels:read", "groups:read", "im:read", "mpim:read","team:read"
   )
@@ -86,8 +75,8 @@ add_team_interactive <- function(scopes = load_scopes(),
 
   slack_oauth_app <- httr::oauth_app(
     appname = "slackteams",
-    key = client_id,
-    secret = client_secret
+    key = getOption('slack_client_id', default = builtin_client_id),
+    secret = getOption('slack_client_secret', default = builtin_client_secret)
   )
   full_token <- httr::oauth2.0_token(
     endpoint = slack_oauth_endpoint,
@@ -126,13 +115,14 @@ add_team_interactive <- function(scopes = load_scopes(),
 #' @param code character, a code returned by the slack oauth2 v2 api.
 #' @param redirect_uri character, the uri to which the user was redirected when
 #'   the code was generated.
-#' @param client_id character, the client_id of a Slack app. If this is not
-#'   provided, the function will use the built-in R4DS Slack app.
-#' @param client_secret character, the client_secret of a Slack app. If this is
-#'   not provided, the function will use the built-in R4DS Slack app.
 #' @inheritParams activate_team
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
+#' two global package options control this function
+#' slack_client_id character, the client_id of a Slack app. If this is not
+#'   provided, the function will use the built-in R4DS Slack app.
+#' slack_client_secret character, the client_secret of a Slack app. If this is
+#'   not provided, the function will use the built-in R4DS Slack app.
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
 #' @return The token (invisibly)
@@ -140,17 +130,14 @@ add_team_interactive <- function(scopes = load_scopes(),
 #' @export
 add_team_code <- function(code,
                           redirect_uri = NULL,
-                          verbose = TRUE,
-                          client_id = NULL,
-                          client_secret = NULL) {
-  client_id <- client_id %||% builtin_client_id
-  client_secret <- client_secret %||% builtin_client_secret
+                          verbose = TRUE) {
+
   access_url <- paste0(
     access_root,
     "?code=", code,
     query_piece(redirect_uri, "redirect_uri"),
-    query_piece(client_id, "client_id"),
-    query_piece(client_secret, "client_secret")
+    query_piece(getOption('slack_client_id', default = builtin_client_id), "client_id"),
+    query_piece(getOption('slack_client_secret', default = builtin_client_secret), "client_secret")
   )
 
   response <- httr::GET(
@@ -203,8 +190,6 @@ update_cache <- function() {
 #' @param state character, a code to send to your redirect_uri indicating a
 #'   state. It is recommended to use a non-human-readable format for this
 #'   string.
-#' @param client_id character, the client_id of a Slack app. If this is not
-#'   provided, the function will use the built-in R4DS Slack app.
 #' @return character, an authorization URL.
 #' @export
 #' @concept management
@@ -216,14 +201,12 @@ update_cache <- function() {
 auth_url <- function(scopes = load_scopes(),
                      redirect_uri = NULL,
                      team_code = NULL,
-                     state = NULL,
-                     client_id = NULL) {
-  client_id <- client_id %||% builtin_client_id
+                     state = NULL) {
 
   paste0(
     auth_root,
     "?user_scope=", paste(scopes, collapse = ","),
-    "&client_id=", client_id,
+    "&client_id=", getOption('slack_client_id', default = builtin_client_id),
     query_piece(redirect_uri, "redirect_uri"),
     query_piece(team_code, "team"),
     query_piece(state, "state")

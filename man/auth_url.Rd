@@ -8,8 +8,7 @@ auth_url(
   scopes = load_scopes(),
   redirect_uri = NULL,
   team_code = NULL,
-  state = NULL,
-  client_id = NULL
+  state = NULL
 )
 }
 \arguments{
@@ -25,9 +24,6 @@ have multiple Slack teams authorized in their browser).}
 \item{state}{character, a code to send to your redirect_uri indicating a
 state. It is recommended to use a non-human-readable format for this
 string.}
-
-\item{client_id}{character, the client_id of a Slack app. If this is not
-provided, the function will use the built-in R4DS Slack app.}
 }
 \value{
 character, an authorization URL.

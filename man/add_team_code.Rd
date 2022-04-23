@@ -4,13 +4,7 @@
 \alias{add_team_code}
 \title{Semi-Interactive Team Management}
 \usage{
-add_team_code(
-  code,
-  redirect_uri = NULL,
-  verbose = TRUE,
-  client_id = NULL,
-  client_secret = NULL
-)
+add_team_code(code, redirect_uri = NULL, verbose = TRUE)
 }
 \arguments{
 \item{code}{character, a code returned by the slack oauth2 v2 api.}
@@ -19,12 +13,6 @@ add_team_code(
 the code was generated.}
 
 \item{verbose}{logical, Print messages to console, Default: TRUE}
-
-\item{client_id}{character, the client_id of a Slack app. If this is not
-provided, the function will use the built-in R4DS Slack app.}
-
-\item{client_secret}{character, the client_secret of a Slack app. If this is
-not provided, the function will use the built-in R4DS Slack app.}
 }
 \value{
 The token (invisibly)
@@ -35,6 +23,11 @@ Add a team using a Slack response code.
 \details{
 Launch a browser window to interactively grant slackteams permission
 to act on your behalf on a Slack team.
+two global package options control this function
+slack_client_id character, the client_id of a Slack app. If this is not
+provided, the function will use the built-in R4DS Slack app.
+slack_client_secret character, the client_secret of a Slack app. If this is
+not provided, the function will use the built-in R4DS Slack app.
 }
 \note{
 This function does not currently work in an Rstudio Server setup. We
