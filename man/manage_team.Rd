@@ -5,7 +5,7 @@
 \alias{add_team}
 \alias{add_team_token}
 \alias{remove_team}
-\title{Team Managment Functions}
+\title{Team Management Functions}
 \usage{
 activate_team(team, verbose = TRUE)
 

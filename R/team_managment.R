@@ -1,4 +1,4 @@
-#' @title Team Managment Functions
+#' @title Team Management Functions
 #' @description Manage teams that can be accessed
 #' @param team character, team name
 #' @param verbose logical, Print messages to console, Default: TRUE
@@ -51,7 +51,7 @@ add_team_token <- function(team,
   }
 }
 
-#' @title Interactive Team Managment
+#' @title Interactive Team Management
 #' @description Add a team interactively
 #' @param scopes character, scopes to request. Must include "users:read",
 #'   "channels:read", "groups:read", "im:read", and "mpim:read" at minimum.
@@ -197,7 +197,7 @@ update_cache <- function() {
 #' @param scopes character, scopes to request.
 #' @param redirect_uri character, the uri to which the user should be directed
 #'   after authorization. If this is NULL (default), the user will be directed
-#'   to the default redirection set up in the app.
+#'   to the default redirection set up in the Slack app.
 #' @param team_code character, a team code to restrict the user to (in case they
 #'   have multiple Slack teams authorized in their browser).
 #' @param state character, a code to send to your redirect_uri indicating a
@@ -209,7 +209,6 @@ update_cache <- function() {
 #'     \item{slack_client_id: character, the client_id of a Slack app. If this
 #'       is not provided, the function will use the built-in R4DS Slack app.}
 #'   }
-
 #' @export
 #' @concept management
 #' @examples

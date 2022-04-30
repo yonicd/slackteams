@@ -16,7 +16,7 @@ auth_url(
 
 \item{redirect_uri}{character, the uri to which the user should be directed
 after authorization. If this is NULL (default), the user will be directed
-to the default redirection set up in the app.}
+to the default redirection set up in the Slack app.}
 
 \item{team_code}{character, a team code to restrict the user to (in case they
 have multiple Slack teams authorized in their browser).}
