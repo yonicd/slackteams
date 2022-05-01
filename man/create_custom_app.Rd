@@ -29,8 +29,8 @@ parameter is NULL, an adequate long description is provided.}
 The app manifest as an editable R object, invisibly.
 }
 \description{
-Create a manifest for a custom Slack App. See the Slack Clients vignette for
-details about using custom clients.
+Create a manifest for a custom Slack App. See the Slack Apps vignette for
+details about using custom Slack Apps.
 }
 \examples{
 create_custom_app(

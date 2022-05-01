@@ -58,11 +58,11 @@ add_team_token <- function(team,
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
 #'
-#'   Two global package options control this function:
+#'   Two environment variables control this function:
 #'   \itemize{
-#'     \item{slack_client_id: character, the client_id of a Slack app. If this
+#'     \item{SLACK_CLIENT_ID: character, the client_id of a Slack app. If this
 #'       is not provided, the function will use the built-in R4DS Slack app.}
-#'     \item{slack_client_secret: character, the client_secret of a Slack app.
+#'     \item{SLACK_CLIENT_SECRET: character, the client_secret of a Slack app.
 #'       If this is not provided, the function will use the built-in R4DS Slack
 #'       app.}
 #'   }
@@ -84,8 +84,8 @@ add_team_interactive <- function(scopes = load_scopes()) {
 
   slack_oauth_app <- httr::oauth_app(
     appname = "slackteams",
-    key = getOption('slack_client_id', default = client_id),
-    secret = getOption('slack_client_secret', default = client_secret)
+    key = Sys.getenv('SLACK_CLIENT_ID', unset = client_id),
+    secret = Sys.getenv('SLACK_CLIENT_SECRET', unset = client_secret)
   )
   full_token <- httr::oauth2.0_token(
     endpoint = slack_oauth_endpoint,
@@ -128,11 +128,11 @@ add_team_interactive <- function(scopes = load_scopes()) {
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
 #'
-#'   Two global package options control this function:
+#'   Two environment variables control this function:
 #'   \itemize{
-#'     \item{slack_client_id: character, the client_id of a Slack app. If this
+#'     \item{SLACK_CLIENT_ID: character, the client_id of a Slack app. If this
 #'       is not provided, the function will use the built-in R4DS Slack app.}
-#'     \item{slack_client_secret: character, the client_secret of a Slack app.
+#'     \item{SLACK_CLIENT_SECRET: character, the client_secret of a Slack app.
 #'       If this is not provided, the function will use the built-in R4DS Slack
 #'       app.}
 #'   }
@@ -149,8 +149,12 @@ add_team_code <- function(code,
     access_root,
     "?code=", code,
     query_piece(redirect_uri, "redirect_uri"),
-    query_piece(getOption('slack_client_id', default = client_id), "client_id"),
-    query_piece(getOption('slack_client_secret', default = client_secret), "client_secret")
+    query_piece(
+      Sys.getenv('SLACK_CLIENT_ID', unset = client_id), "client_id"
+    ),
+    query_piece(
+      Sys.getenv('SLACK_CLIENT_SECRET', unset = client_secret), "client_secret"
+    )
   )
 
   response <- httr::GET(
@@ -204,9 +208,9 @@ update_cache <- function() {
 #'   state. It is recommended to use a non-human-readable format for this
 #'   string.
 #' @return character, an authorization URL.
-#' @details A global package option controls this function:
+#' @details An environment variable controls this function:
 #'   \itemize{
-#'     \item{slack_client_id: character, the client_id of a Slack app. If this
+#'     \item{SLACK_CLIENT_ID: character, the client_id of a Slack app. If this
 #'       is not provided, the function will use the built-in R4DS Slack app.}
 #'   }
 #' @export
@@ -223,7 +227,7 @@ auth_url <- function(scopes = load_scopes(),
   paste0(
     auth_root,
     "?user_scope=", paste(scopes, collapse = ","),
-    "&client_id=", getOption('slack_client_id', default = client_id),
+    "&client_id=", Sys.getenv('SLACK_CLIENT_ID', unset = client_id),
     query_piece(redirect_uri, "redirect_uri"),
     query_piece(team_code, "team"),
     query_piece(state, "state")

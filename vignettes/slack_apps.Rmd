@@ -72,3 +72,11 @@ If you would like, you can further edit this manifest, and then print it using `
 my_app$`_metadata`$minor_version <- 1L
 custom_app_yaml(my_app)
 ```
+
+### Use the App
+
+Function in `{slackteams}` that use a Slack App (`add_team_interactive()`, `add_team_code()`, and `auth_url()`) consult two environment variables to decide which Slack App to use: `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
+If these variable are set, the functions will use the specified Slack App.
+Otherwise, the functions use the built-in Slack App.
+
+We recommend setting these variables in your `.Renviron` file.
