@@ -1,0 +1,82 @@
+---
+title: "Slack Apps"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Slack Apps}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(slackteams)
+```
+
+To connect to a Slack workspace using `add_team_interactive()` or `add_team_code()`, you need a Slack App.
+The Slack App must be installed on the Slack workspace.
+There are two options for this Slack App:
+
+1. The built-in Slack App for this package, `slackteams`. 
+2. Your own custom Slack App.
+
+Below we detail how and why you might want to utilize each option.
+
+## Built-in `slackteams` App
+
+By default, `add_team_interactive()` uses the built-in app.
+When you call that function, if the `slackteams` App is not already installed on your workspace, Slack will prompt you to install it, or to ask your workspace administrator to do so.
+
+Note that you may wish to carefully refine the `scopes` requested by the App to minimize what the App can do.
+It may be valuable to explore the [Slack API methods](https://api.slack.com/methods) that you wish to use and/or the documentation of the [{slackverse}](https://github.com/yonicd/slackcalls) functions you plan to use to determine a subset of scopes to request.
+While the App only has access to information that you have permission to view (as the user who authorized it), your workspace administrator will likely appreciate it if you minimize the things the App is approved to do.
+If you need more scopes in the future, the App will have to be approved again.
+
+The App requires these scopes, at a minimum (requested by default): `"users:read", "channels:read", "groups:read", "im:read",` and `"mpim:read"`. 
+To request additional scopes, use `add_team_interactive(scopes = c(<your-scopes>))`. 
+A useful set is available via `add_team_interactive(scopes = load_scopes(which = "slackverse"))`. 
+
+## Your own custom Slack App
+
+For some purposes, you may wish to create your own Slack App.
+
+1. If you wish to use `{slackteams}` for authentication on a website, you will need to configure custom `Redirect URLs`.
+2. Your workspace administrator may wish to use a private App for security. While you need to authenticate yourself to use the App, it might be more convenient to have full control over the App distribution.
+
+The Slack App creation process is relatively straightforward, but it can be daunting the first time you do so.
+Here we will walk through the necessary steps.
+
+### Create the App
+
+To create the Slack App, visit the [Slack API App Page](https://api.slack.com/apps).
+Choose "Create New App".
+The easiest way to create an app is to use the "From an app manifest" token.
+We can help you build this manifest.
+
+```{r create_custom_app}
+my_app <- create_custom_app(
+  app_name = "myCoolApp",
+  redirect_urls = c(
+    "http://127.0.0.1:4242",
+    "https://myaccount.shinyapps.io"
+  )
+)
+```
+
+In addition to printing the manifest to the console, `create_custom_app()` invisibly returns the app manifest as an R object.
+If you would like, you can further edit this manifest, and then print it using `custom_app_yaml()`.
+
+```{r custom_app_yaml}
+my_app$`_metadata`$minor_version <- 1L
+custom_app_yaml(my_app)
+```
+
+### Use the App
+
+Function in `{slackteams}` that use a Slack App (`add_team_interactive()`, `add_team_code()`, and `auth_url()`) consult two environment variables to decide which Slack App to use: `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
+If these variable are set, the functions will use the specified Slack App.
+Otherwise, the functions use the built-in Slack App.
+
+We recommend setting these variables in your `.Renviron` file.
