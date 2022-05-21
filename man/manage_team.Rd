@@ -19,6 +19,8 @@ remove_team(team)
 \item{team}{character, team name}
 
 \item{verbose}{logical, Print messages to console, Default: TRUE}
+
+\item{token}{character, SLACK_API_TOKEN value}
 }
 \description{
 Manage teams that can be accessed

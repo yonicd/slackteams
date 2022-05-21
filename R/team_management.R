@@ -2,6 +2,7 @@
 #' @description Manage teams that can be accessed
 #' @param team character, team name
 #' @param verbose logical, Print messages to console, Default: TRUE
+#' @param token character, SLACK_API_TOKEN value
 #' @return NULL
 #' @concept management
 #' @rdname manage_team
