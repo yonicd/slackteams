@@ -20,6 +20,7 @@ jobs:
       SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
       SLACK_SKIPLOAD: ${{ secrets.SLACK_SKIPLOAD }}
       GITHUB_PAT: ${{ secrets.GH_PAT }}
+      RENV_PATHS_ROOT: ~/.local/share/renv
 
     steps:
       - uses: actions/checkout@master
@@ -33,14 +34,21 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
-      - name: Cache R packages
+      - name: Cache packages
         uses: actions/cache@v1
         with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('DESCRIPTION') }}
+          path: ${{ env.PAK_PATHS_ROOT }}
+          key: ${{ runner.os }}-pak-${{ hashFiles('**/pkg.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pak-
 
-      - name: Install dependencies
-        run: Rscript -e "install.packages('remotes')" -e "remotes::install_deps(dependencies = TRUE)" -e "remotes::install_cran('rcmdcheck')"
+      - name: Restore packages
+        shell: Rscript {0}
+        run: |
+          pak_repo <- sprintf("https://r-lib.github.io/p/pak/stable/%s/%s/%s", .Platform$pkgType, R.Version()$os, R.Version()$arch)
+          if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak", repos = pak_repo)
+          pak::lockfile_install()
+          pak::pkg_install('rcmdcheck')
 
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '${{ matrix.config.args }}', error_on = 'warning', check_dir = 'check')"
@@ -70,7 +78,6 @@ jobs:
         run: |
           Rscript -e 'install.packages("pkgdown")' \
                   -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
-
 
       - name: slackthreads trigger
         uses: peter-evans/repository-dispatch@v1.0.0
