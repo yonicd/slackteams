@@ -46,7 +46,7 @@ jobs:
         shell: Rscript {0}
         run: |
           pak_repo <- sprintf("https://r-lib.github.io/p/pak/stable/%s/%s/%s", .Platform$pkgType, R.Version()$os, R.Version()$arch)
-          if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak", repos = pak_repo)
+          if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak")
           pak::lockfile_install()
           pak::pkg_install('rcmdcheck')
 
