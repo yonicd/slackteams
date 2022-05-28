@@ -35,7 +35,7 @@ This is similar to oauth2 implementation you would see in [googlesheets4](https:
 
 1. Call the function from the `R` console
 2. Authorize the creation of the token in a browser.
-3. Get redirected by to the R console.
+3. Get redirected back to the R console.
 
 This is by far the easiest method.
 
@@ -67,6 +67,89 @@ Click the triangle to view the scopes and the permission of each of these roles:
 ```{details,details.lang = 'yml',details.summary = 'Scopes',echo= FALSE}
 system.file("scopes.yml", package = "slackteams")
 ```
+
+The default scope is called by
+
+```
+slackteams::add_team_interactive(
+  scopes = load_scopes(
+    system.file("scopes.yml", package = "slackteams"),
+    "base"
+  )
+)
+```
+
+and corresponds to
+
+```
+slackteams::add_team_interactive(scopes = load_scopes())
+```
+
+To use the `slackverse` role, use
+
+```
+slackteams::add_team_interactive(which = "slackverse"))
+```
+
+It is also possible to define custom roles. To do this, define a scopes file, for example "custom_scopes.yml", which should have scopes defined following the Slack [permission scopes](https://api.slack.com/scopes).
+For example
+
+```{details,details.lang = 'yml',details.summary = 'Custom Scopes',echo= FALSE}`
+base:
+  - channels:
+    - read
+  - users:
+    - read
+  - groups:
+    - read
+  - mpim:
+    - read
+  - im:
+    - read
+  - team:
+    - read
+analyze:
+  - channels:
+    - read
+    - history
+  - users:
+    - read
+  - groups:
+    - read
+    - history
+  - mpim:
+    - read
+  - im:
+    - read
+    - history
+  - team:
+    - read
+  - links:
+    - read
+postanalysis:
+  - channels:
+    - read
+  - users:
+    - read
+  - groups:
+    - read
+  - mpim:
+    - read
+  - im:
+    - write
+  - team:
+    - read
+```
+  
+The resulting file can then be used, for example as 
+
+```
+slackteams::add_team_interactive(
+  scopes = load_scopes("/path/to/custom_scopes.yml", which = "analyze")
+)
+```
+
+
 
 ### BYOT
 
