@@ -13,7 +13,6 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - {os: ubuntu-18.04, r: '4.0', cran: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest", args: "--no-manual"}
         - {os: ubuntu-20.04, r: '4.0', cran: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", args: "--no-manual"}
 
     env:
@@ -39,7 +38,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('DESCRIPTION') }}
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('DESCRIPTION') }}-1
 
       - name: Install system dependencies
         if: runner.os == 'Linux'

@@ -47,11 +47,11 @@ slackteams::add_team_interactive()
 
 This will generate a minimal Slack api token for you to interact with
 the Slack. For more information on the different permissions the token
-can take refer to the [Managing Tokens Vignette](articles/scopes.html)
+can take refer to the [Managing Tokens Vignette](https://yonicd.github.io/slackteams/articles/scopes.html)
 
 The token team will be created, loaded and activated for you, so you can
 start working right away. To store this token for future sessions refer
-to [Storing A Token](articles/manage.html#storing-a-token).
+to [Storing A Token](https://yonicd.github.io/slackteams/articles/manage.html#storing-a-token).
 
 ## Basic Usage
 

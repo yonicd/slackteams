@@ -25,8 +25,7 @@ testthat::describe('no active team',{
 
 })
 
-info <- slackteams:::get_team_info(token = Sys.getenv('SLACK_API_TOKEN'))
-add_team(info$team$name,Sys.getenv('SLACK_API_TOKEN'))
+add_team(team = 'slackr', token = Sys.getenv('SLACK_API_TOKEN'))
 
 testthat::describe('load team',{
 
