@@ -1,0 +1,22 @@
+_metadata:
+  major_version: 1
+  minor_version: 0
+display_information:
+  name: YOUR_APPNAME
+  long_description: This app is used by the [{slackteams} R
+    package](https://github.com/yonicd/slackteams) to connect R to Slack
+    workspaces. Use the app to authenticate yourself and generate a token,
+    which allows you to interact with the Slack API. See the {slackteams}
+    documentation for more information.
+  description: A custom app for use with the {slackteams} R package.
+  background_color: "#000000"
+settings:
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
+oauth_config:
+  redirect_urls:
+    - http://127.0.0.1:4242
+  scopes:
+    user:
+      - team:read

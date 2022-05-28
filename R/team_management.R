@@ -1,8 +1,7 @@
-#' @title Team Managment Functions
+#' @title Team Management Functions
 #' @description Manage teams that can be accessed
 #' @param team character, team name
 #' @param verbose logical, Print messages to console, Default: TRUE
-#' @param token character, api token issued by slack
 #' @return NULL
 #' @concept management
 #' @rdname manage_team
@@ -22,7 +21,7 @@ activate_team <- function(team, verbose = TRUE) {
 #' @export
 add_team <- function(team, token) {
 
-  if(team%in%names(.slack$teams)){
+  if(team %in% names(.slack$teams)){
     .slack$teams[[team]] <- token
   }else{
     new_team <- list(token)
@@ -35,8 +34,9 @@ add_team <- function(team, token) {
 
 #' @rdname manage_team
 #' @export
-add_team_token <- function(team, token, verbose = TRUE) {
-
+add_team_token <- function(team,
+                           token,
+                           verbose = TRUE) {
   add_team(team = team,token = token)
   .slack$file[[team]] <- ""
   .slack$creds <- list(
@@ -51,12 +51,21 @@ add_team_token <- function(team, token, verbose = TRUE) {
   }
 }
 
-#' @title Interactive Team Managment
+#' @title Interactive Team Management
 #' @description Add a team interactively
 #' @param scopes character, scopes to request. Must include "users:read",
 #'   "channels:read", "groups:read", "im:read", and "mpim:read" at minimum.
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
+#'
+#'   Two environment variables control this function:
+#'   \itemize{
+#'     \item{SLACK_CLIENT_ID: character, the client_id of a Slack app. If this
+#'       is not provided, the function will use the built-in R4DS Slack app.}
+#'     \item{SLACK_CLIENT_SECRET: character, the client_secret of a Slack app.
+#'       If this is not provided, the function will use the built-in R4DS Slack
+#'       app.}
+#'   }
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
 #' @return NULL
@@ -75,8 +84,8 @@ add_team_interactive <- function(scopes = load_scopes()) {
 
   slack_oauth_app <- httr::oauth_app(
     appname = "slackteams",
-    key = client_id,
-    secret = client_secret
+    key = Sys.getenv('SLACK_CLIENT_ID', unset = client_id),
+    secret = Sys.getenv('SLACK_CLIENT_SECRET', unset = client_secret)
   )
   full_token <- httr::oauth2.0_token(
     endpoint = slack_oauth_endpoint,
@@ -118,18 +127,34 @@ add_team_interactive <- function(scopes = load_scopes()) {
 #' @inheritParams activate_team
 #' @details Launch a browser window to interactively grant slackteams permission
 #'   to act on your behalf on a Slack team.
+#'
+#'   Two environment variables control this function:
+#'   \itemize{
+#'     \item{SLACK_CLIENT_ID: character, the client_id of a Slack app. If this
+#'       is not provided, the function will use the built-in R4DS Slack app.}
+#'     \item{SLACK_CLIENT_SECRET: character, the client_secret of a Slack app.
+#'       If this is not provided, the function will use the built-in R4DS Slack
+#'       app.}
+#'   }
 #' @note This function does not currently work in an Rstudio Server setup. We
 #'   are exploring options to remedy this situation.
 #' @return The token (invisibly)
 #' @concept management
 #' @export
-add_team_code <- function(code, redirect_uri = NULL, verbose = TRUE) {
+add_team_code <- function(code,
+                          redirect_uri = NULL,
+                          verbose = TRUE) {
+
   access_url <- paste0(
     access_root,
     "?code=", code,
     query_piece(redirect_uri, "redirect_uri"),
-    query_piece(client_id, "client_id"),
-    query_piece(client_secret, "client_secret")
+    query_piece(
+      Sys.getenv('SLACK_CLIENT_ID', unset = client_id), "client_id"
+    ),
+    query_piece(
+      Sys.getenv('SLACK_CLIENT_SECRET', unset = client_secret), "client_secret"
+    )
   )
 
   response <- httr::GET(
@@ -176,13 +201,18 @@ update_cache <- function() {
 #' @param scopes character, scopes to request.
 #' @param redirect_uri character, the uri to which the user should be directed
 #'   after authorization. If this is NULL (default), the user will be directed
-#'   to the default redirection set up in the app.
+#'   to the default redirection set up in the Slack app.
 #' @param team_code character, a team code to restrict the user to (in case they
 #'   have multiple Slack teams authorized in their browser).
 #' @param state character, a code to send to your redirect_uri indicating a
 #'   state. It is recommended to use a non-human-readable format for this
 #'   string.
 #' @return character, an authorization URL.
+#' @details An environment variable controls this function:
+#'   \itemize{
+#'     \item{SLACK_CLIENT_ID: character, the client_id of a Slack app. If this
+#'       is not provided, the function will use the built-in R4DS Slack app.}
+#'   }
 #' @export
 #' @concept management
 #' @examples
@@ -197,7 +227,7 @@ auth_url <- function(scopes = load_scopes(),
   paste0(
     auth_root,
     "?user_scope=", paste(scopes, collapse = ","),
-    "&client_id=", client_id,
+    "&client_id=", Sys.getenv('SLACK_CLIENT_ID', unset = client_id),
     query_piece(redirect_uri, "redirect_uri"),
     query_piece(team_code, "team"),
     query_piece(state, "state")
