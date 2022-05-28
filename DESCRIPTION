@@ -1,6 +1,6 @@
 Type: Package
 Package: slackteams
-Title: Manage Multiple Slack Teams
+Title: Manage Slack Teams
 Version: 0.4.3
 Authors@R: c( 
     person(given = "Jonathan",
@@ -15,11 +15,20 @@ Authors@R: c(
            comment = c(ORCID = "0000-0003-4781-4346"))
     )
 Description: Users many times have multiple have accounts with multiple
-    Slack teams. This package allows users to manage and 
-    switch accounts to post to channels using the slackr package.
+    Slack teams. Even without that burden, authorizing R to access the Slack API
+    can be complicated and painful. This package allows users to manage and 
+    switch accounts to interact with the Slack API.
 License: MIT + file LICENSE
+URL: https://github.com/yonicd/slackteams
+BugReports: https://github.com/yonicd/slackteams/issues
 Depends: R (>= 3.6.0)
-Imports: httr,jsonlite,data.table,tibble,yaml,slackcalls
+Imports: 
+    httr,
+    jsonlite,
+    data.table,
+    tibble,
+    yaml,
+    slackcalls
 Suggests: testthat,knitr,rmarkdown,details
 Remotes: yonicd/slackcalls
 Encoding: UTF-8
