@@ -18,6 +18,7 @@ activate_team <- function(team, verbose = TRUE) {
 }
 
 #' @rdname manage_team
+#' @param token character, a token returned from Slack
 #' @export
 add_team <- function(team, token) {
 
