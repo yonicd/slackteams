@@ -16,8 +16,7 @@ jobs:
       fail-fast: false
 
     runs-on: macOS-latest
-    name: macOS-latest (4.0)
-    if: "!contains(github.event.head_commit.message, 'skip osx')"
+    if: "!contains(github.event.head_commit.message, 'osx nocache')"
 
     steps:
 
@@ -38,8 +37,8 @@ jobs:
           needs: check
 
   check:
-    needs: setup
     runs-on: macOS-latest
+    if: "!contains(github.event.head_commit.message, 'osx nocheck')"
     steps:
 
       - uses: actions/checkout@v2
