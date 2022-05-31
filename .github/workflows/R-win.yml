@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
 
-    runs-on: winOS-latest
+    runs-on: windows-latest
     if: "!contains(github.event.head_commit.message, 'winos nocache')"
 
     steps:
@@ -35,7 +35,7 @@ jobs:
           needs: check
 
   check:
-    runs-on: winOS-latest
+    runs-on: windows-latest
     if: "!contains(github.event.head_commit.message, 'winos nocheck')"
     steps:
 
