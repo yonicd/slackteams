@@ -97,6 +97,7 @@ jobs:
 
   dispatches:
     needs: [check]
+    runs-on: ${{ matrix.config.os }}
     steps:
       - name: slackthreads trigger
         uses: peter-evans/repository-dispatch@v1.0.0
