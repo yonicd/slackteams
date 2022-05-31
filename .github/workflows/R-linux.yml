@@ -9,14 +9,13 @@ env:
   GITHUB_PAT: ${{ secrets.GH_PAT }}
 
 jobs:
-  matrix:
+
+  setup:
     strategy:
       fail-fast: false
       matrix:
         config:
         - {os: ubuntu-20.04, r: '4.0', cran: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", args: "--no-manual"}
-
-  setup:
     runs-on: ${{ matrix.config.os }}
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
     if: "!contains(github.event.head_commit.message, 'skip linux')"

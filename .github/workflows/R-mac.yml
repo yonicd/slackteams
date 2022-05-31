@@ -10,14 +10,13 @@ env:
 
 
 jobs:
-  matrix:
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-        - { os: macOS-latest, r: '4.0', args: "--no-manual"}
 
   setup:
+    strategy:
+    fail-fast: false
+    matrix:
+      config:
+      - { os: macOS-latest, r: '4.0', args: "--no-manual"}
     runs-on: ${{ matrix.config.os }}
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
     if: "!contains(github.event.head_commit.message, 'skip osx')"
