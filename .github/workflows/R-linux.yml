@@ -1,27 +1,25 @@
-on:
-  push:
-    branches: master
+on: [push]
 
-name: R-linux
+name: R-mac
+
+env:
+  R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+  SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
+  SLACK_SKIPLOAD: ${{ secrets.SLACK_SKIPLOAD }}
+  GITHUB_PAT: ${{ secrets.GH_PAT }}
 
 jobs:
-  check:
-    runs-on: ${{ matrix.config.os }}
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-    if: "!contains(github.event.head_commit.message, 'skip linux')"
-
+  matrix:
     strategy:
       fail-fast: false
       matrix:
         config:
         - {os: ubuntu-20.04, r: '4.0', cran: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", args: "--no-manual"}
 
-    env:
-      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      CRAN: ${{ matrix.config.cran }}
-      SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
-      SLACK_SKIPLOAD: ${{ secrets.SLACK_SKIPLOAD }}
-      GITHUB_PAT: ${{ secrets.GH_PAT }}
+  setup:
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    if: "!contains(github.event.head_commit.message, 'skip linux')"
 
     steps:
       - uses: actions/checkout@master
@@ -41,17 +39,77 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('DESCRIPTION') }}
 
-      - name: Install system dependencies
-        if: runner.os == 'Linux'
-        env:
-          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
-        run: |
-          Rscript -e "install.packages('remotes')" -e "remotes::install_github('r-hub/sysreqs')"
-          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
-          sudo -s eval "$sysreqs"
-
       - name: Install dependencies
         run: Rscript -e "install.packages('remotes')" -e "remotes::install_deps(dependencies = TRUE)" -e "remotes::install_cran('rcmdcheck')"
 
+  check:
+    needs: setup
+    runs-on: ${{ matrix.config.os }}
+    steps:
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '${{ matrix.config.args }}', error_on = 'warning', check_dir = 'check')"
+
+  covr:
+    needs: [check]
+    runs-on: ${{ matrix.config.os }}
+    steps:
+      - name: covr
+        run: |
+          Rscript -e 'remotes::install_github("r-lib/covr@gh-actions")' \
+                  -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'
+  covrpage:
+    needs: [check]
+    runs-on: ${{ matrix.config.os }}
+    steps:
+      - name: Install package
+        run: R CMD INSTALL .
+
+      - name: covrpage
+        if: github.ref == 'refs/heads/master'
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          Rscript -e 'remotes::install_github("hadley/emo")' \
+                  -e 'remotes::install_github("yonicd/covrpage@actions")' \
+                  -e 'covrpage::covrpage_ci()'
+          git commit tests/README.md -m 'Update tests/README.Rmd' || echo "No changes to commit"
+          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+  publish:
+    needs: [covrpage]
+    runs-on: ${{ matrix.config.os }}
+    steps:
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::pkgdown, local::.
+          needs: website
+
+      - name: Build site
+        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+        shell: Rscript {0}
+
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          clean: false
+          branch: gh-pages
+          folder: docs
+
+  dispatches:
+    needs: [check]
+    steps:
+      - name: slackthreads trigger
+        uses: peter-evans/repository-dispatch@v1.0.0
+        with:
+          token: ${{secrets.GH_PAT}}
+          repository: yonicd/slackthreads
+          event-type: push
+          client-payload: '{"repository": "${{ github.repository }}", "ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+
+      - name: slackblocks trigger
+        uses: peter-evans/repository-dispatch@v1.0.0
+        with:
+          token: ${{secrets.GH_PAT}}
+          repository: yonicd/slackblocks
+          event-type: push
+          client-payload: '{"repository": "${{ github.repository }}", "ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
