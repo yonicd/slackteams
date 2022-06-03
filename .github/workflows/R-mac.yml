@@ -29,6 +29,13 @@ jobs:
           r-version: release
           use-public-rspm: true
 
+      - name: cache R dir
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./R
+          key: check-files-${{ hashFiles('R/**') }}
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
