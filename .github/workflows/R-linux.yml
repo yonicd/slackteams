@@ -74,6 +74,7 @@ jobs:
           needs: coverage
 
   covrpage:
+    if: github.ref_name == 'master'
     needs: [check]
     runs-on: ubuntu-latest
     steps:
@@ -92,7 +93,6 @@ jobs:
           extra-packages: local::.
 
       - name: covrpage
-        if: github.ref == 'refs/heads/master'
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
@@ -103,6 +103,7 @@ jobs:
           git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
 
   publish:
+    if: github.ref_name == 'master'
     needs: [covrpage]
     runs-on: ubuntu-latest
 
