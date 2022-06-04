@@ -29,10 +29,13 @@ jobs:
             ./R
           key: check-files-${{ hashFiles('R/**') }}
 
+      - name: test-output
+        run: "::set-output name=my_value::hello"
+
   eval:
     runs-on: ubuntu-latest
     needs: setup
     steps:
       - name: checkme
-        run: echo "${{ needs.setup.outputs.cache_status }}"
+        run: echo "${{ needs.setup.outputs.test-output }}"
 
