@@ -30,7 +30,7 @@ jobs:
           key: check-files-${{ hashFiles('R/**') }}
 
       - id: test-output
-        run: "::set-output name=my_value::hello"
+        run: echo "::set-output name=my_value::hello"
 
   eval:
     runs-on: ubuntu-latest
