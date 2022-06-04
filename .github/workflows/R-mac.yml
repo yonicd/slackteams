@@ -24,6 +24,8 @@ jobs:
         with:
           path: |
             ./R
+            DESCRIPTION
+            tests
           key: check-files-${{ hashFiles('R/**') }}
 
   eval:
