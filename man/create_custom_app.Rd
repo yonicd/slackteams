@@ -38,3 +38,4 @@ create_custom_app(
   redirect_urls = c("http://127.0.0.1:4242", "myapp.shinyapps.io")
 )
 }
+\concept{management}

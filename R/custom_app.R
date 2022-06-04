@@ -14,6 +14,7 @@
 #'   parameter is NULL, an adequate long description is provided.
 #'
 #' @return The app manifest as an editable R object, invisibly.
+#' @concept management
 #' @export
 #'
 #' @examples
@@ -57,6 +58,7 @@ create_custom_app <- function(app_name,
 #'   \code{\link{create_custom_app}}.
 #'
 #' @return The manifest in yaml format (invisibly).
+#' @concept management
 #' @export
 #'
 #' @examples
