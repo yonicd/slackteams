@@ -33,8 +33,10 @@ reference:
   contents: has_concept("set")
 articles:
 - title: Managing Teams
-  contents: manage
+  contents: manage_slack_teams
 - title: Managing Tokens
   contents: scopes
+- title: Managing Apps
+  contents: slack_apps
 - title: Unit Tests
   contents: tests_and_coverage

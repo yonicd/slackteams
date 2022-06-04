@@ -21,3 +21,4 @@ my_manifest <- create_custom_app("myApp")
 my_manifest$`_metadata`$minor_version <- 1L
 custom_app_yaml(my_manifest)
 }
+\concept{management}
