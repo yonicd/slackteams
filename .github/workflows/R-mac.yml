@@ -44,4 +44,4 @@ jobs:
       - name: dummy check
         run: echo "${{ needs.setup.outputs.dummy }}"
       - name: cache check
-        run: echo "${{ needs.setup.outputs.cache_status }}"
+        run: echo "${{ steps.cache-R-dir.outputs.cache-hit }}"
