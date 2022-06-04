@@ -60,6 +60,6 @@ jobs:
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
-        if: steps.cache-R-dir.outputs.cache-hit != 'true'
+        if: jobs.setup.steps.cache-R-dir.outputs.cache-hit != 'true'
         with:
           upload-snapshots: true
