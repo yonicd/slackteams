@@ -16,8 +16,8 @@ jobs:
       fail-fast: false
     outputs:
       dirs_unchanged: ${{ steps.cache-dirs.outputs.cache-hit }}
+      desc_unchanged: ${{ steps.cache-desc.outputs.cache-hit }}
     runs-on: macOS-latest
-    if: "!contains(github.event.head_commit.message, 'osx nocache')"
 
     steps:
 
@@ -30,16 +30,24 @@ jobs:
           r-version: release
           use-public-rspm: true
 
+      - id: cache-desc
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./DESCRIPTION
+          key: check-desc-${{ hashFiles('DESCRIPTION') }}
+
       - id: cache-dirs
         uses: actions/cache@v2
         with:
           path: |
             ./R
-            ./DESCRIPTION
             ./tests
-          key: check-files-${{ hashFiles('R/**') }}-${{ hashFiles('DESCRIPTION') }} -${{ hashFiles('tests/**') }}
+            ./vignettes
+          key: check-files-${{ hashFiles('R/**') }}-${{ hashFiles('vignettes/**') }} -${{ hashFiles('tests/**') }}
 
       - uses: r-lib/actions/setup-r-dependencies@v2
+        if: steps.cache-desc.outputs.cache-hit != 'true'
         with:
           extra-packages: any::rcmdcheck
           needs: check
@@ -47,7 +55,7 @@ jobs:
   check:
     runs-on: macOS-latest
     needs: setup
-    if: needs.setup.outputs.dirs_unchanged != 'true'
+    if: needs.setup.outputs.dirs_unchanged != 'true' && needs.setup.outputs.desc_unchanged != 'true'
 
     steps:
 
