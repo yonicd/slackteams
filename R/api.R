@@ -53,5 +53,3 @@ get_team_info <- function(team = NULL, ..., token = Sys.getenv("SLACK_API_TOKEN"
 
   res
 }
-
-# adding a comment
