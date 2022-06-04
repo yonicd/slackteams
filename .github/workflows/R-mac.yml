@@ -29,7 +29,7 @@ jobs:
           r-version: release
           use-public-rspm: true
 
-      - name: cache R dir
+      - name: cache-R-dir
         uses: actions/cache@v2
         with:
           path: |
@@ -43,7 +43,7 @@ jobs:
 
   check:
     runs-on: macOS-latest
-    if: "!contains(github.event.head_commit.message, 'osx nocheck')"
+    if: steps.cache-R-dir.outputs.cache-hit != 'true' && "!contains(github.event.head_commit.message, 'osx nocheck')"
     steps:
 
       - uses: actions/checkout@v2
