@@ -30,8 +30,11 @@ jobs:
       - id: test-output
         run: echo "::set-output name=my_value::hello"
 
-      - name: Display
+      - name: Display Dummy
         run: echo "${{ steps.test-output.outputs.my_value }}"
+
+      - name: Display Cache Hit
+        run: echo "${{ steps.cache-R-dir.outputs.cache-hit }}"
 
   eval:
     runs-on: ubuntu-latest
