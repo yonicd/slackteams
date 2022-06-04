@@ -34,5 +34,5 @@ jobs:
     needs: setup
     steps:
       - name: checkme
-        run: echo ${{ needs.setup.outputs.cache_status }}
+        run: echo "${{ needs.setup.outputs.cache_status }}"
 
