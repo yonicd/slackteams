@@ -24,9 +24,9 @@ jobs:
         with:
           path: |
             ./R
-            DESCRIPTION
-            tests
-          key: check-files-${{ hashFiles('R/**') }}
+            ./DESCRIPTION
+            ./tests
+          key: check-files-${{ hashFiles('R/**') }}-${{ hashFiles('DESCRIPTION')-${{ hashFiles('tests/**') }}
 
   eval:
     runs-on: ubuntu-latest
