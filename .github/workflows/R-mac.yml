@@ -62,7 +62,7 @@ jobs:
 
   check:
     runs-on: macOS-latest
-    needs: [deps]
+    needs: [setup]
     if: needs.setup.outputs.dirs_unchanged != 'true' && needs.setup.outputs.desc_unchanged != 'true'
 
     steps:
