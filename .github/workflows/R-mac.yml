@@ -14,7 +14,8 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
-      cache-status: ${{ steps.test-output.outputs.my_value }}
+      dummy: ${{ steps.test-output.outputs.my_value }}
+      cache_status: ${{ steps.cache-R-dir.outputs.cache-hit }}
 
     steps:
 
@@ -36,6 +37,7 @@ jobs:
     needs: setup
 
     steps:
-      - name: checkme
-        run: echo "${{ needs.setup.outputs.cache-status }}"
-
+      - name: dummy check
+        run: echo "${{ needs.setup.outputs.dummy }}"
+      - name: cache check
+        run: echo "${{ needs.setup.outputs.cache-check }}"
