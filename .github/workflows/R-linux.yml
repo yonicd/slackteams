@@ -92,7 +92,7 @@ jobs:
           extra-packages: local::., any::covr
 
       - name: covrpage-setup
-        run: pkg_install(c('hadley/emo','yonicd/covrpage@actions'), ask = FALSE)
+        run: pak::pkg_install(c('hadley/emo','yonicd/covrpage@actions'), ask = FALSE)
         shell: Rscript {0}
 
       - name: covrpage-run
