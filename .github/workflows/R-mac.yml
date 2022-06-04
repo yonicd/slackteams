@@ -33,8 +33,7 @@ jobs:
         run: echo "::set-output name=my_value::hello"
 
       - name: Display
-        run: |
-        echo "Step 1 test: ${{ steps.test-output.outputs.my_value }}"
+        run: echo "Step 1 test: ${{ steps.test-output.outputs.my_value }}"
 
   eval:
     runs-on: ubuntu-latest
