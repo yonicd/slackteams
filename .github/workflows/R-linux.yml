@@ -30,7 +30,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: any::rcmdcheck, any::covr
           needs: check
   check:
     runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: any::rcmdcheck, any::covr
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
@@ -69,9 +69,10 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::covr
-          needs: coverage
+
+      - name: Test coverage
+        run: covr::codecov(quiet = FALSE)
+        shell: Rscript {0}
 
   covrpage:
     needs: [check]
@@ -89,7 +90,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: local::., any::covr
+          extra-packages: local::.
 
       - name: covrpage-setup
         run: pak::pkg_install(c('hadley/emo','yonicd/covrpage@actions'), ask = FALSE)
