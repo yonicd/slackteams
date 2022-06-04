@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: cache-R-dir
+      - id: cache-R-dir
         uses: actions/cache@v2
         with:
           path: |
