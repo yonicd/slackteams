@@ -46,6 +46,7 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
+        if: jobs.setup.steps.cache-R-dir.outputs.cache-hit == 'true'
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -60,6 +61,5 @@ jobs:
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
-        if: jobs.setup.steps.cache-R-dir.outputs.cache-hit != 'true'
         with:
           upload-snapshots: true
