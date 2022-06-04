@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">slackteams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -52,13 +48,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/yonicd/slackteams">
+  <a href="https://github.com/yonicd/slackteams" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="http://twitter.com/yoniceedee">
+  <a href="http://twitter.com/yoniceedee" class="external-link">
     <span class="fa fa-lg fa-twitter"></span>
      
   </a>
@@ -73,30 +69,29 @@
 
       
 
-      </header><script src="scopes_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="scopes_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="scopes_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Managing Scopes</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/yonicd/slackteams/blob/HEAD/vignettes/scopes.Rmd" class="external-link"><code>vignettes/scopes.Rmd</code></a></small>
       <div class="hidden name"><code>scopes.Rmd</code></div>
 
     </div>
 
     
     
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p><code>slackteams</code> uses incoming webhook tokens to interact with the Slack API. There are two main methods to create a token.</p>
 <ol style="list-style-type: decimal">
 <li>Use <code><a href="../reference/add_team_interactive.html">slackteams::add_team_interactive</a></code> to interactively create a token for the R session.</li>
 <li>BYOT (Bring your own token) You are a super user or work at a company that supplied you a token.</li>
 </ol>
 <p>Each has their own pros and cons depending on what type of usage you may have</p>
-<table class="table">
+<table style="width:100%;" class="table">
 <colgroup>
 <col width="16%">
 <col width="16%">
@@ -132,17 +127,17 @@
 </tr>
 </tbody>
 </table>
-<div id="interactive" class="section level3">
-<h3 class="hasAnchor">
-<a href="#interactive" class="anchor"></a>Interactive</h3>
-<p>This is similar to oauth2 implementation you would see in <a href="https://github.com/tidyverse/googlesheets4">googlesheets4</a>. The steps are:</p>
+<div class="section level3">
+<h3 id="interactive">Interactive<a class="anchor" aria-label="anchor" href="#interactive"></a>
+</h3>
+<p>This is similar to oauth2 implementation you would see in <a href="https://github.com/tidyverse/googlesheets4" class="external-link">googlesheets4</a>. The steps are:</p>
 <ol style="list-style-type: decimal">
 <li>Call the function from the <code>R</code> console</li>
 <li>Authorize the creation of the token in a browser.</li>
-<li>Get redirected by to the R console.</li>
+<li>Get redirected back to the R console.</li>
 </ol>
 <p>This is by far the easiest method.</p>
-<p>The main piece that the user controls are the <a href="https://api.slack.com/scopes">permission scopes</a> the token has attached to it. To help with this we use a yaml file to allow users to define locally what scopes they want to define. {slackteams} comes with its own yaml file with the scopes that are needed to use all of <code>slackverse</code>.</p>
+<p>The main piece that the user controls are the <a href="https://api.slack.com/scopes" class="external-link">permission scopes</a> the token has attached to it. To help with this we use a yaml file to allow users to define locally what scopes they want to define. {slackteams} comes with its own yaml file with the scopes that are needed to use all of <code>slackverse</code>.</p>
 <p><strong>scopes</strong></p>
 <ul>
 <li>
@@ -177,57 +172,74 @@
 </ul>
 <p>The following yaml contains a <code>base</code> role which contains only read access permissions and <code>slackverse</code> role containing permissions needed for the packages in <code>slackverse</code>.</p>
 <p>Click the triangle to view the scopes and the permission of each of these roles:</p>
-<details closed><p><summary><span title="Click to Open"> Scopes </span> </summary></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">base</span><span class="kw">:</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">channels</span><span class="kw">:</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">users</span><span class="kw">:</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">groups</span><span class="kw">:</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">mpim</span><span class="kw">:</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">im</span><span class="kw">:</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">team</span><span class="kw">:</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="fu">slackverse</span><span class="kw">:</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">channels</span><span class="kw">:</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">users</span><span class="kw">:</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">groups</span><span class="kw">:</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">mpim</span><span class="kw">:</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">im</span><span class="kw">:</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">usergroups</span><span class="kw">:</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">chat</span><span class="kw">:</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">emoji</span><span class="kw">:</span></span>
-<span id="cb1-40"><a href="#cb1-40"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">files</span><span class="kw">:</span></span>
-<span id="cb1-42"><a href="#cb1-42"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
-<span id="cb1-43"><a href="#cb1-43"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
-<span id="cb1-44"><a href="#cb1-44"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">team</span><span class="kw">:</span></span>
-<span id="cb1-45"><a href="#cb1-45"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span></code></pre></div>
+<details closed><summary><span title="Click to Open"> Scopes </span>
+</summary><div class="sourceCode" id="cb1"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">base</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">users</span><span class="kw">:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">groups</span><span class="kw">:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">mpim</span><span class="kw">:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">im</span><span class="kw">:</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">team</span><span class="kw">:</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">slackverse</span><span class="kw">:</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">users</span><span class="kw">:</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">groups</span><span class="kw">:</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">mpim</span><span class="kw">:</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">im</span><span class="kw">:</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> history</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">usergroups</span><span class="kw">:</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">chat</span><span class="kw">:</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">emoji</span><span class="kw">:</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">files</span><span class="kw">:</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> write</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">team</span><span class="kw">:</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span></code></pre></div>
 </details><p><br></p>
+<p>The default scope is called by</p>
+<pre><code><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span>
+  scopes <span class="op">=</span> <span class="fu"><a href="../reference/load_scopes.html">load_scopes</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"scopes.yml"</span>, package <span class="op">=</span> <span class="st">"slackteams"</span><span class="op">)</span>,
+    <span class="st">"base"</span>
+  <span class="op">)</span>
+<span class="op">)</span></code></pre>
+<p>and corresponds to</p>
+<pre><code><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span>scopes <span class="op">=</span> <span class="fu"><a href="../reference/load_scopes.html">load_scopes</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre>
+<p>To use the <code>slackverse</code> role, use</p>
+<pre><code>slackteams::add_team_interactive(which = "slackverse"))</code></pre>
+<p>It is also possible to define custom roles. To do this, define a scopes file, for example “custom_scopes.yml”, which should have scopes defined following the Slack <a href="https://api.slack.com/scopes" class="external-link">permission scopes</a>. For example</p>
+<p><code>{details,details.lang = 'yml',details.summary = 'Custom Scopes',echo= FALSE}` base:   - channels:     - read   - users:     - read   - groups:     - read   - mpim:     - read   - im:     - read   - team:     - read analyze:   - channels:     - read     - history   - users:     - read   - groups:     - read     - history   - mpim:     - read   - im:     - read     - history   - team:     - read   - links:     - read postanalysis:   - channels:     - read   - users:     - read   - groups:     - read   - mpim:     - read   - im:     - write   - team:     - read</code></p>
+<p>The resulting file can then be used, for example as</p>
+<pre><code><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span>
+  scopes <span class="op">=</span> <span class="fu"><a href="../reference/load_scopes.html">load_scopes</a></span><span class="op">(</span><span class="st">"/path/to/custom_scopes.yml"</span>, which <span class="op">=</span> <span class="st">"analyze"</span><span class="op">)</span>
+<span class="op">)</span></code></pre>
 </div>
-<div id="byot" class="section level3">
-<h3 class="hasAnchor">
-<a href="#byot" class="anchor"></a>BYOT</h3>
+<div class="section level3">
+<h3 id="byot">BYOT<a class="anchor" aria-label="anchor" href="#byot"></a>
+</h3>
 <p>This is useful if you:</p>
 <ul>
 <li>Have a token that is maintained by your work slack team</li>
@@ -248,11 +260,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Jonathan Sidi, Jon Harmon.</p>
+  <p></p>
+<p>Developed by Jonathan Sidi, Jon Harmon.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -260,6 +274,8 @@
 
   
 
+
+  
 
   </body>
 </html>

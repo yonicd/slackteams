@@ -5,22 +5,25 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manage Multiple Slack Teams • slackteams</title>
+<title>Manage Slack Teams • slackteams</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Manage Multiple Slack Teams">
+<script src="pkgdown.js"></script><meta property="og:title" content="Manage Slack Teams">
 <meta property="og:description" content="Users many times have multiple have accounts with multiple
-    Slack teams. This package allows users to manage and 
-    switch accounts to post to channels using the slackr package.">
+    Slack teams. Even without that burden, authorizing R to access the Slack API
+    can be complicated and painful. This package allows users to manage and 
+    switch accounts to interact with the Slack API.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,18 +36,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">slackteams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -54,13 +51,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/yonicd/slackteams">
+  <a href="https://github.com/yonicd/slackteams" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="http://twitter.com/yoniceedee">
+  <a href="http://twitter.com/yoniceedee" class="external-link">
     <span class="fa fa-lg fa-twitter"></span>
      
   </a>
@@ -77,136 +74,155 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="slackteams" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#slackteams" class="anchor"></a>slackteams</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="slackteams">slackteams<a class="anchor" aria-label="anchor" href="#slackteams"></a>
+</h1></div>
 <!-- badges: start -->
-
 <p><code>slackteams</code> is a part of <code>slackverse</code></p>
 <table class="table"><tbody>
 <tr class="odd">
 <td align="center"></td>
-<td align="center">slackcalls<br><a href="https://github.com/yonicd/slackcalls"><img src="https://github.com/yonicd/slackcalls/workflows/R-mac/badge.svg"></a>
+<td align="center">slackcalls<br><a href="https://github.com/yonicd/slackcalls" class="external-link"><img src="https://github.com/yonicd/slackcalls/workflows/R-mac/badge.svg"></a>
 </td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td align="center">slackthreads<br><a href="https://github.com/yonicd/slackthreads"><img src="https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg"></a>
+<td align="center">slackthreads<br><a href="https://github.com/yonicd/slackthreads" class="external-link"><img src="https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg"></a>
 </td>
-<td align="center">slackteams<br><a href="https://github.com/yonicd/slackteams"><img src="https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg"></a>
+<td align="center">slackteams<br><a href="https://github.com/yonicd/slackteams" class="external-link"><img src="https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg"></a>
 </td>
-<td align="center">slackposts<br><a href="https://github.com/yonicd/slackposts"><img src="https://github.com/yonicd/slackposts/workflows/R-mac/badge.svg"></a>
+<td align="center">slackposts<br><a href="https://github.com/yonicd/slackposts" class="external-link"><img src="https://github.com/yonicd/slackposts/workflows/R-mac/badge.svg"></a>
 </td>
 </tr>
 <tr class="odd">
 <td align="center"></td>
 <td align="center"></td>
-<td align="center">slackblocks<br><a href="https://github.com/yonicd/slackblocks"><img src="https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg"></a>
+<td align="center">slackblocks<br><a href="https://github.com/yonicd/slackblocks" class="external-link"><img src="https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg"></a>
 </td>
 </tr>
 <tr class="even">
 <td align="center"></td>
 <td align="center"></td>
-<td align="center">slackreprex<br><a href="https://github.com/yonicd/slackreprex"><img src="https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg"></a>
+<td align="center">slackreprex<br><a href="https://github.com/yonicd/slackreprex" class="external-link"><img src="https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg"></a>
 </td>
 </tr>
 </tbody></table>
 <p><code>slackteams</code> is an <code>R</code> package that allows the user to manage multiple Slack teams during a session.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"yonicd/slackteams"</span><span class="op">)</span></pre></div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"yonicd/slackteams"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="tokens" class="section level2">
-<h2 class="hasAnchor">
-<a href="#tokens" class="anchor"></a>Tokens</h2>
+<div class="section level2">
+<h2 id="tokens">Tokens<a class="anchor" aria-label="anchor" href="#tokens"></a>
+</h2>
 <p>Creating a token is simple using</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span><span class="op">)</span></pre></div>
-<p>This will generate a minimal Slack api token for you to interact with the Slack. For more information on the different permissions the token can take refer to the <a href="articles/scopes.html">Managing Tokens Vignette</a></p>
-<p>The token team will be created, loaded and activated for you, so you can start working right away. To store this token for future sessions refer to <a href="articles/manage.html#storing-a-token">Storing A Token</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>This will generate a minimal Slack api token for you to interact with the Slack. For more information on the different permissions the token can take refer to the <a href="https://yonicd.github.io/slackteams/articles/scopes.html" class="external-link">Managing Tokens Vignette</a></p>
+<p>The token team will be created, loaded and activated for you, so you can start working right away. To store this token for future sessions refer to <a href="https://yonicd.github.io/slackteams/articles/manage.html#storing-a-token" class="external-link">Storing A Token</a>.</p>
 </div>
-<div id="basic-usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basic-usage" class="anchor"></a>Basic Usage</h2>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">slackteams</span><span class="op">)</span></pre></div>
-<div id="load-the-teams" class="section level3">
-<h3 class="hasAnchor">
-<a href="#load-the-teams" class="anchor"></a>Load the teams</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/load_teams.html">load_teams</a></span><span class="op">(</span><span class="op">)</span>
+<div class="section level2">
+<h2 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yonicd/slackteams" class="external-link">slackteams</a></span><span class="op">)</span></code></pre></div>
+<div class="section level3">
+<h3 id="load-the-teams">Load the teams<a class="anchor" aria-label="anchor" href="#load-the-teams"></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/load_teams.html">load_teams</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co"># The following teams are loaded:</span>
-<span class="co">#   slackr, R4ds</span></pre></div>
+<span class="co">#   slackr, R4ds</span></code></pre></div>
 </div>
-<div id="activate-a-team" class="section level3">
-<h3 class="hasAnchor">
-<a href="#activate-a-team" class="anchor"></a>Activate a Team</h3>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/activate_team.html">activate_team</a></span><span class="op">(</span><span class="st">'R4ds'</span><span class="op">)</span>
-<span class="co"># slack environment variables are set to 'R4ds' supplied definitions</span></pre></div>
+<div class="section level3">
+<h3 id="activate-a-team">Activate a Team<a class="anchor" aria-label="anchor" href="#activate-a-team"></a>
+</h3>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/manage_team.html">activate_team</a></span><span class="op">(</span><span class="st">'R4ds'</span><span class="op">)</span>
+<span class="co"># slack environment variables are set to 'R4ds' supplied definitions</span></code></pre></div>
 </div>
-<div id="query-active-team-channels" class="section level3">
-<h3 class="hasAnchor">
-<a href="#query-active-team-channels" class="anchor"></a>Query Active Team Channels</h3>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/get_teams.html">get_team_channels</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<div class="section level3">
+<h3 id="query-active-team-channels">Query Active Team Channels<a class="anchor" aria-label="anchor" href="#query-active-team-channels"></a>
+</h3>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/get_methods.html">get_team_channels</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="query-active-team-members" class="section level3">
-<h3 class="hasAnchor">
-<a href="#query-active-team-members" class="anchor"></a>Query Active Team Members</h3>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/get_teams.html">get_team_users</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<div class="section level3">
+<h3 id="query-active-team-members">Query Active Team Members<a class="anchor" aria-label="anchor" href="#query-active-team-members"></a>
+</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/get_methods.html">get_team_users</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="activate-another-team" class="section level3">
-<h3 class="hasAnchor">
-<a href="#activate-another-team" class="anchor"></a>Activate Another Team</h3>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/activate_team.html">activate_team</a></span><span class="op">(</span><span class="st">'slackr'</span><span class="op">)</span>
-<span class="co"># slack environment variables are set to 'slackr' supplied definitions</span></pre></div>
+<div class="section level3">
+<h3 id="activate-another-team">Activate Another Team<a class="anchor" aria-label="anchor" href="#activate-another-team"></a>
+</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/manage_team.html">activate_team</a></span><span class="op">(</span><span class="st">'slackr'</span><span class="op">)</span>
+<span class="co"># slack environment variables are set to 'slackr' supplied definitions</span></code></pre></div>
 </div>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="license">
-<h2>License</h2>
+    <div class="links">
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Jonathan Sidi <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0002-4222-1819" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Jon Harmon <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-4781-4346" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="https://github.com/yonicd/slackteams/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/yonicd/slackteams/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="http://tinyurl.com/qq3vz59"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_11_02-brightgreen.svg" alt="Covrpage Summary"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/yonicd/slackteams"><img src="https://github.com/yonicd/slackteams/workflows/R-win/badge.svg" alt="R-win build status"></a></li>
-<li><a href="https://github.com/yonicd/slackteams"><img src="https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg" alt="R-mac build status"></a></li>
-<li><a href="https://github.com/yonicd/slackteams"><img src="https://github.com/yonicd/slackteams/workflows/R-linux/badge.svg" alt="R-linux build status"></a></li>
-<li><a href="https://codecov.io/gh/yonicd/slackteams?branch=master"><img src="https://codecov.io/gh/yonicd/slackteams/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing slackteams</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Jonathan Sidi <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0002-4222-1819" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Jon Harmon <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-4781-4346" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="http://tinyurl.com/qq3vz59" class="external-link"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_08_13-brightgreen.svg" alt="Covrpage Summary"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/yonicd/slackteams" class="external-link"><img src="https://github.com/yonicd/slackteams/workflows/R-win/badge.svg" alt="R-win build status"></a></li>
+<li><a href="https://github.com/yonicd/slackteams" class="external-link"><img src="https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg" alt="R-mac build status"></a></li>
+<li><a href="https://github.com/yonicd/slackteams" class="external-link"><img src="https://github.com/yonicd/slackteams/workflows/R-linux/badge.svg" alt="R-linux build status"></a></li>
+<li><a href="https://codecov.io/gh/yonicd/slackteams?branch=master" class="external-link"><img src="https://codecov.io/gh/yonicd/slackteams/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Jonathan Sidi, Jon Harmon.</p>
+  <p></p>
+<p>Developed by Jonathan Sidi, Jon Harmon.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -214,6 +230,8 @@
 
   
 
+
+  
 
   </body>
 </html>

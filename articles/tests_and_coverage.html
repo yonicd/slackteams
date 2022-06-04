@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">slackteams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -52,13 +48,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/yonicd/slackteams">
+  <a href="https://github.com/yonicd/slackteams" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="http://twitter.com/yoniceedee">
+  <a href="http://twitter.com/yoniceedee" class="external-link">
     <span class="fa fa-lg fa-twitter"></span>
      
   </a>
@@ -73,15 +69,14 @@
 
       
 
-      </header><script src="tests_and_coverage_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="tests_and_coverage_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="tests_and_coverage_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Tests and Coverage</h1>
             
-            <h4 class="date">02 November, 2020 18:04:55</h4>
+            <h4 data-toc-skip class="date">04 June, 2022 18:55:48</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/yonicd/slackteams/blob/HEAD/vignettes/tests_and_coverage.Rmd" class="external-link"><code>vignettes/tests_and_coverage.Rmd</code></a></small>
       <div class="hidden name"><code>tests_and_coverage.Rmd</code></div>
 
     </div>
@@ -93,11 +88,11 @@
 <li><a href="#coverage">Coverage</a></li>
 <li><a href="#unit-tests">Unit Tests</a></li>
 </ul>
-<p>This output is created by <a href="https://github.com/metrumresearchgroup/covrpage">covrpage</a>.</p>
-<div id="coverage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#coverage" class="anchor"></a>Coverage</h2>
-<p>Coverage summary is created using the <a href="https://github.com/r-lib/covr">covr</a> package.</p>
+<p>This output is created by <a href="https://github.com/metrumresearchgroup/covrpage" class="external-link">covrpage</a>.</p>
+<div class="section level2">
+<h2 id="coverage">Coverage<a class="anchor" aria-label="anchor" href="#coverage"></a>
+</h2>
+<p>Coverage summary is created using the <a href="https://github.com/r-lib/covr" class="external-link">covr</a> package.</p>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Object</th>
@@ -106,64 +101,68 @@
 <tbody>
 <tr class="odd">
 <td align="left">slackteams</td>
-<td align="center">39.30</td>
+<td align="center">46.31</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/scope_managment.R">R/scope_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/scope_managment.R" class="external-link">R/scope_managment.R</a></td>
 <td align="center">0.00</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/set_methods.R">R/set_methods.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/set_methods.R" class="external-link">R/set_methods.R</a></td>
 <td align="center">0.00</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/utils.R">R/utils.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/utils.R" class="external-link">R/utils.R</a></td>
 <td align="center">0.00</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/zzz.R">R/zzz.R</a></td>
-<td align="center">0.00</td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/team_managment.R" class="external-link">R/team_managment.R</a></td>
+<td align="center">11.83</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/team_managment.R">R/team_managment.R</a></td>
-<td align="center">9.89</td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/get_methods.R" class="external-link">R/get_methods.R</a></td>
+<td align="center">30.61</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/get_methods.R">R/get_methods.R</a></td>
-<td align="center">35.42</td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/tidy_slack.R" class="external-link">R/tidy_slack.R</a></td>
+<td align="center">36.84</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/tidy_slack.R">R/tidy_slack.R</a></td>
-<td align="center">36.36</td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/file_managment.R" class="external-link">R/file_managment.R</a></td>
+<td align="center">76.36</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/api.R">R/api.R</a></td>
-<td align="center">81.82</td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/slackrapp.R" class="external-link">R/slackrapp.R</a></td>
+<td align="center">80.00</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/file_managment.R">R/file_managment.R</a></td>
-<td align="center">86.67</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/clean.R">R/clean.R</a></td>
-<td align="center">100.00</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/env.R">R/env.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/api_utils.R" class="external-link">R/api_utils.R</a></td>
 <td align="center">100.00</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/R/validate.R">R/validate.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/api.R" class="external-link">R/api.R</a></td>
+<td align="center">100.00</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/clean.R" class="external-link">R/clean.R</a></td>
+<td align="center">100.00</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/env.R" class="external-link">R/env.R</a></td>
+<td align="center">100.00</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/R/validate.R" class="external-link">R/validate.R</a></td>
 <td align="center">100.00</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 </div>
-<div id="unit-tests" class="section level2">
-<h2 class="hasAnchor">
-<a href="#unit-tests" class="anchor"></a>Unit Tests</h2>
-<p>Unit Test summary is created using the <a href="https://github.com/r-lib/testthat">testthat</a> package.</p>
+<div class="section level2">
+<h2 id="unit-tests">Unit Tests<a class="anchor" aria-label="anchor" href="#unit-tests"></a>
+</h2>
+<p>Unit Test summary is created using the <a href="https://github.com/r-lib/testthat" class="external-link">testthat</a> package.</p>
 <table class="table">
 <thead><tr class="header">
 <th align="left">file</th>
@@ -176,18 +175,18 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R">test-01_file_managment.R</a></td>
-<td align="right">12</td>
-<td align="right">0.198</td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R" class="external-link">test-api_calls.R</a></td>
+<td align="right">16</td>
+<td align="right">0.029</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R">test-02_api_calls.R</a></td>
-<td align="right">9</td>
-<td align="right">0.011</td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R" class="external-link">test-file_managment.R</a></td>
+<td align="right">16</td>
+<td align="right">0.385</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
@@ -195,12 +194,13 @@
 </tr>
 </tbody>
 </table>
-<details closed><p><summary> Show Detailed Test Results </summary></p>
-<table class="table">
+<details closed><summary>
+Show Detailed Test Results
+</summary><table class="table">
 <colgroup>
-<col width="47%">
+<col width="45%">
 <col width="10%">
-<col width="33%">
+<col width="34%">
 <col width="4%">
 <col width="1%">
 <col width="3%">
@@ -215,7 +215,135 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L6_L9">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L19" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">team info: class</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.015</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L23" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">team info: user names</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L31" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">group info: group list</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.002</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L35" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">group info: class</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L39" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">group info: no groups</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L46" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">channel info: class</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L50" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">channel info: channel names</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L54" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">channel info: channel info class</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L58" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">channel info: channel info id</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L65" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">converstion info: class</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L69" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">converstion info: convo id</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L73" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">converstion info: convo channel count</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L77" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">converstion info: convo im count</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.002</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L81" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">converstion info: convo members</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L85" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">converstion info: convo info class</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-api_calls.R#L89" class="external-link">test-api_calls.R</a></td>
+<td align="left">API calls</td>
+<td align="left">converstion info: convo info id</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.001</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L6_L9" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">no active team: get_team_creds</td>
 <td align="left">PASS</td>
@@ -223,47 +351,63 @@
 <td align="right">0.012</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L13_L16">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L13_L16" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">no active team: get_team_users</td>
 <td align="left">PASS</td>
 <td align="right">1</td>
-<td align="right">0.015</td>
+<td align="right">0.009</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L20_L23">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L20_L23" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">no active team: validate team missing teams error</td>
 <td align="left">PASS</td>
 <td align="right">1</td>
-<td align="right">0.008</td>
+<td align="right">0.009</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L33_L36">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L31_L33" class="external-link">test-file_managment.R</a></td>
+<td align="left">team management</td>
+<td align="left">load team: slackteams verbose</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.002</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L37_L40" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">load team: validate team bad name error</td>
 <td align="left">PASS</td>
 <td align="right">1</td>
 <td align="right">0.008</td>
 </tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L44_L46" class="external-link">test-file_managment.R</a></td>
+<td align="left">team management</td>
+<td align="left">load team: slackteams not verbose</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.002</td>
+</tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L40_L42">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L50_L52" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">load team: activate team</td>
 <td align="left">PASS</td>
 <td align="right">1</td>
-<td align="right">0.003</td>
+<td align="right">0.327</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L47_L49">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L64_L66" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
-<td align="left">load team: slackteams to json</td>
+<td align="left">load team: slackteams to dcf</td>
 <td align="left">PASS</td>
 <td align="right">1</td>
-<td align="right">0.134</td>
+<td align="right">0.004</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L53_L55">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L70_L72" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">load team: slackteams to dcf</td>
 <td align="left">PASS</td>
@@ -271,7 +415,7 @@
 <td align="right">0.002</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L59_L62">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L76_L79" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">load team: get teams</td>
 <td align="left">PASS</td>
@@ -279,23 +423,39 @@
 <td align="right">0.001</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L66_L68">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L83_L85" class="external-link">test-file_managment.R</a></td>
+<td align="left">team management</td>
+<td align="left">load team: cached slack creds channel</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L89_L91" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">load team: cached slack creds token</td>
 <td align="left">PASS</td>
 <td align="right">1</td>
-<td align="right">0.005</td>
+<td align="right">0.001</td>
 </tr>
-<tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L80">test-01_file_managment.R</a></td>
+<tr class="odd">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L105" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">active team channel info: validate channel</td>
 <td align="left">PASS</td>
 <td align="right">1</td>
-<td align="right">0.002</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L111" class="external-link">test-file_managment.R</a></td>
+<td align="left">team management</td>
+<td align="left">active team channel info: class</td>
+<td align="left">PASS</td>
+<td align="right">1</td>
+<td align="right">0.000</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L84">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L115" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">active team channel info: validate channel id</td>
 <td align="left">PASS</td>
@@ -303,118 +463,41 @@
 <td align="right">0.001</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-01_file_managment.R#L88">test-01_file_managment.R</a></td>
+<td align="left"><a href="https://github.com/yonicd/slackteams/tree/tests/tests/testthat/test-file_managment.R#L119" class="external-link">test-file_managment.R</a></td>
 <td align="left">team management</td>
 <td align="left">active team channel info: validate bad channel</td>
 <td align="left">PASS</td>
 <td align="right">1</td>
 <td align="right">0.007</td>
 </tr>
-<tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R#L15">test-02_api_calls.R</a></td>
-<td align="left">API calls</td>
-<td align="left">team info: class</td>
-<td align="left">PASS</td>
-<td align="right">1</td>
-<td align="right">0.001</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R#L19">test-02_api_calls.R</a></td>
-<td align="left">API calls</td>
-<td align="left">team info: user names</td>
-<td align="left">PASS</td>
-<td align="right">1</td>
-<td align="right">0.002</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R#L27">test-02_api_calls.R</a></td>
-<td align="left">API calls</td>
-<td align="left">converstion info: class</td>
-<td align="left">PASS</td>
-<td align="right">1</td>
-<td align="right">0.001</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R#L31">test-02_api_calls.R</a></td>
-<td align="left">API calls</td>
-<td align="left">converstion info: convo id</td>
-<td align="left">PASS</td>
-<td align="right">1</td>
-<td align="right">0.001</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R#L35">test-02_api_calls.R</a></td>
-<td align="left">API calls</td>
-<td align="left">converstion info: convo channel count</td>
-<td align="left">PASS</td>
-<td align="right">1</td>
-<td align="right">0.002</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R#L39">test-02_api_calls.R</a></td>
-<td align="left">API calls</td>
-<td align="left">converstion info: convo im count</td>
-<td align="left">PASS</td>
-<td align="right">1</td>
-<td align="right">0.001</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R#L43">test-02_api_calls.R</a></td>
-<td align="left">API calls</td>
-<td align="left">converstion info: convo members</td>
-<td align="left">PASS</td>
-<td align="right">1</td>
-<td align="right">0.001</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R#L47">test-02_api_calls.R</a></td>
-<td align="left">API calls</td>
-<td align="left">converstion info: convo info class</td>
-<td align="left">PASS</td>
-<td align="right">1</td>
-<td align="right">0.001</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="https://github.com/yonicd/slackteams/tree/master/tests/testthat/test-02_api_calls.R#L51">test-02_api_calls.R</a></td>
-<td align="left">API calls</td>
-<td align="left">converstion info: convo info id</td>
-<td align="left">PASS</td>
-<td align="right">1</td>
-<td align="right">0.001</td>
-</tr>
 </tbody>
-</table></details><details><p><summary> Session Info </summary></p>
-<table class="table">
+</table></details><details><summary>
+Session Info
+</summary><table class="table">
 <thead><tr class="header">
 <th align="left">Field</th>
 <th align="left">Value</th>
-<th align="left"></th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Version</td>
-<td align="left">R version 4.0.3 (2020-10-10)</td>
-<td align="left"></td>
+<td align="left">R version 3.6.3 (2020-02-29)</td>
 </tr>
 <tr class="even">
 <td align="left">Platform</td>
-<td align="left">x86_64-apple-darwin17.0 (64-bit)</td>
-<td align="left"><a href="https://github.com/yonicd/slackteams/commit/096cfb9cecb2b6784e10f5afa0d4efeb8e899ade/checks" target="_blank"><span title="Built on Github Actions"><img src="https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true"></span></a></td>
+<td align="left">x86_64-apple-darwin15.6.0 (64-bit)</td>
 </tr>
 <tr class="odd">
 <td align="left">Running</td>
-<td align="left">macOS Catalina 10.15.7</td>
-<td align="left"></td>
+<td align="left">macOS Mojave 10.14.5</td>
 </tr>
 <tr class="even">
 <td align="left">Language</td>
 <td align="left">en_US</td>
-<td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">Timezone</td>
-<td align="left">UTC</td>
-<td align="left"></td>
+<td align="left">America/New_York</td>
 </tr>
 </tbody>
 </table>
@@ -426,15 +509,15 @@
 <tbody>
 <tr class="odd">
 <td align="left">testthat</td>
-<td align="left">3.0.0</td>
+<td align="left">2.3.2</td>
 </tr>
 <tr class="even">
 <td align="left">covr</td>
-<td align="left">3.3.2</td>
+<td align="left">3.5.0</td>
 </tr>
 <tr class="odd">
 <td align="left">covrpage</td>
-<td align="left">0.0.71</td>
+<td align="left">0.0.70</td>
 </tr>
 </tbody>
 </table></details><!--- Final Status : pass --->
@@ -452,11 +535,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Jonathan Sidi, Jon Harmon.</p>
+  <p></p>
+<p>Developed by Jonathan Sidi, Jon Harmon.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -464,6 +549,8 @@
 
   
 
+
+  
 
   </body>
 </html>
