@@ -14,7 +14,6 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
-      dummy: ${{ steps.test-output.outputs.my_value }}
       cache_status: ${{ steps.cache-R-dir.outputs.cache-hit }}
 
     steps:
@@ -27,21 +26,10 @@ jobs:
             ./R
           key: check-files-${{ hashFiles('R/**') }}
 
-      - id: test-output
-        run: echo "::set-output name=my_value::hello"
-
-      - name: Display Dummy
-        run: echo "${{ steps.test-output.outputs.my_value }}"
-
-      - name: Display Cache Hit
-        run: echo "${{ steps.cache-R-dir.outputs.cache-hit }}"
-
   eval:
     runs-on: ubuntu-latest
     needs: setup
 
     steps:
-      - name: dummy check
-        run: echo "${{ needs.setup.outputs.dummy }}"
       - name: cache check
-        run: echo "${{ steps.cache-R-dir.outputs.cache-hit }}"
+        run: echo "${{ needs.setup.outputs.cache_status }}"
