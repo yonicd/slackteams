@@ -46,7 +46,6 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-        if: jobs.setup.steps.cache-R-dir.outputs.cache-hit == 'true'
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -55,7 +54,16 @@ jobs:
           r-version: release
           use-public-rspm: true
 
+      - name: cache-R-dir
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./R
+          key: check-files-${{ hashFiles('R/**') }}
+
+
       - uses: r-lib/actions/setup-r-dependencies@v2
+        if: steps.cache-R-dir.outputs.cache-hit == 'true'
         with:
           extra-packages: any::rcmdcheck
           needs: check
