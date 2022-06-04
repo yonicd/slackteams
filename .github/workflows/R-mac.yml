@@ -18,6 +18,7 @@ jobs:
       cache_status: ${{ steps.cache-R-dir.outputs.cache-hit }}
 
     steps:
+      - uses: actions/checkout@v2
 
       - name: cache-R-dir
         uses: actions/cache@v2
