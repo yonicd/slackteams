@@ -43,7 +43,6 @@ jobs:
 
   check:
     runs-on: macOS-latest
-    if: steps.cache-R-dir.outputs.cache-hit != 'true'
     steps:
 
       - uses: actions/checkout@v2
@@ -61,5 +60,6 @@ jobs:
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
+        if: steps.cache-R-dir.outputs.cache-hit != 'true'
         with:
           upload-snapshots: true
