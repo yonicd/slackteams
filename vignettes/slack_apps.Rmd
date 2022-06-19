@@ -19,12 +19,12 @@ To connect to a Slack workspace using `add_team_interactive()` or `add_team_code
 The Slack App must be installed on the Slack workspace.
 There are two options for this Slack App:
 
-1. The built-in Slack App for this package, `slackteams`. 
-2. Your own custom Slack App.
+1. [The built-in Slack App for this package, `slackteams`.](#builtin) 
+2. [Your own custom Slack App.](#custom)
 
 Below we detail how and why you might want to utilize each option.
 
-## Built-in `slackteams` App
+## Built-in `slackteams` App {#builtin}
 
 By default, `add_team_interactive()` uses the built-in app.
 When you call that function, if the `slackteams` App is not already installed on your workspace, Slack will prompt you to install it, or to ask your workspace administrator to do so.
@@ -38,7 +38,7 @@ The App requires these scopes, at a minimum (requested by default): `"users:read
 To request additional scopes, use `add_team_interactive(scopes = c(<your-scopes>))`. 
 A useful set is available via `add_team_interactive(scopes = load_scopes(which = "slackverse"))`. 
 
-## Your own custom Slack App
+## Your own custom Slack App {#custom}
 
 For some purposes, you may wish to create your own Slack App.
 
@@ -52,7 +52,7 @@ Here we will walk through the necessary steps.
 
 To create the Slack App, visit the [Slack API App Page](https://api.slack.com/apps).
 Choose "Create New App".
-The easiest way to create an app is to use the "From an app manifest" token.
+The easiest way to create an app is to use the "From an app manifest" option.
 We can help you build this manifest.
 
 ```{r create_custom_app}
@@ -73,9 +73,13 @@ my_app$`_metadata`$minor_version <- 1L
 custom_app_yaml(my_app)
 ```
 
+Copy and paste that manifest into the "Enter app manifest below" step (step 2 of 3) of the app creation dialog (on the `YAML` tab).
+
+Follow the dialogs to install it onto your workspace, and then copy the `Client ID` and `Client Secret`.
+
 ### Use the App
 
-Function in `{slackteams}` that use a Slack App (`add_team_interactive()`, `add_team_code()`, and `auth_url()`) consult two environment variables to decide which Slack App to use: `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
+Functions in `{slackteams}` that use a Slack App (`add_team_interactive()`, `add_team_code()`, and `auth_url()`) consult two environment variables to decide which Slack App to use: `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET`.
 If these variable are set, the functions will use the specified Slack App.
 Otherwise, the functions use the built-in Slack App.
 

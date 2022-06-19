@@ -20,3 +20,4 @@ oauth_config:
   scopes:
     user:
       - team:read
+      - channels:read

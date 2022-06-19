@@ -66,7 +66,27 @@ create_custom_app <- function(app_name,
 #' my_manifest$`_metadata`$minor_version <- 1L
 #' custom_app_yaml(my_manifest)
 custom_app_yaml <- function(app_manifest) {
-  app_manifest_yaml <- yaml::as.yaml(app_manifest)
+  # as.yaml collapses single values, and Slack doesn't like that. I can't find
+  # a clean way to deal with that, so I'm just warning the user.
+  if (
+    any(lengths(app_manifest$oauth_config$scopes)) < 2 ||
+    any(lengths(app_manifest$oauth_config$redirect_urls)) < 2
+  ) {
+    msg <- paste(
+      "Slack may flag your manifest with the error 'Must provide an array.'",
+      "If that is still occurring, move the value after : to a new line,",
+      "indented to the level of the setting, and then add '-'.",
+      sep = "\n"
+    )
+    warning(msg)
+  }
+
+  app_manifest_yaml <- yaml::as.yaml(app_manifest, indent.mapping.sequence = TRUE)
+
+  # as.yaml translates booleans to "no", but Slack expects them to be "false".
+  # Repair those.
+  app_manifest_yaml <- gsub(": no\\\n", ": false\\\n", app_manifest_yaml)
+
   cat(app_manifest_yaml)
   return(invisible(app_manifest_yaml))
 }
