@@ -67,10 +67,13 @@
     <dl><dt>app_manifest</dt>
 <dd><p>list; an app manifest such as the one returned by
 <code><a href="create_custom_app.html">create_custom_app</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The manifest in yaml format (invisibly).</p>
+    
+
+<p>The manifest in yaml format (invisibly).</p>
     </div>
 
     <div id="ref-examples">
@@ -78,6 +81,9 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">my_manifest</span> <span class="op">&lt;-</span> <span class="fu"><a href="create_custom_app.html">create_custom_app</a></span><span class="op">(</span><span class="st">"myApp"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Visit https://api.slack.com/apps &amp; Create New App</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Copy/paste this manifest:</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Slack may flag your manifest with the error 'Must provide an array.'</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> If that is still occurring, move the value after : to a new line,</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> indented to the level of the setting, and then add '-'.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _metadata:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   major_version: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   minor_version: 0</span>
@@ -90,15 +96,20 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   description: A custom app for use with the {slackteams} R package.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background_color: '#000000'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> settings:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   org_deploy_enabled: no</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   socket_mode_enabled: no</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   token_rotation_enabled: no</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   org_deploy_enabled: false</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   socket_mode_enabled: false</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   token_rotation_enabled: false</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> oauth_config:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   redirect_urls: http://127.0.0.1:4242</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   scopes:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     user: team:read</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     user:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - team:read</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - channels:read</span>
 <span class="r-in"><span class="va">my_manifest</span><span class="op">$</span><span class="va">`_metadata`</span><span class="op">$</span><span class="va">minor_version</span> <span class="op">&lt;-</span> <span class="fl">1L</span></span>
 <span class="r-in"><span class="fu">custom_app_yaml</span><span class="op">(</span><span class="va">my_manifest</span><span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Slack may flag your manifest with the error 'Must provide an array.'</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> If that is still occurring, move the value after : to a new line,</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> indented to the level of the setting, and then add '-'.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _metadata:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   major_version: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   minor_version: 1</span>
@@ -111,13 +122,15 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   description: A custom app for use with the {slackteams} R package.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background_color: '#000000'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> settings:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   org_deploy_enabled: no</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   socket_mode_enabled: no</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   token_rotation_enabled: no</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   org_deploy_enabled: false</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   socket_mode_enabled: false</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   token_rotation_enabled: false</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> oauth_config:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   redirect_urls: http://127.0.0.1:4242</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   scopes:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     user: team:read</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     user:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - team:read</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - channels:read</span>
 </code></pre></div>
     </div>
   </div>
@@ -132,7 +145,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

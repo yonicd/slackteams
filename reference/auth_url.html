@@ -73,21 +73,30 @@ for example, for authorizing a team in a Shiny app.</p>
     <h2>Arguments</h2>
     <dl><dt>scopes</dt>
 <dd><p>character, scopes to request.</p></dd>
+
+
 <dt>redirect_uri</dt>
 <dd><p>character, the uri to which the user should be directed
 after authorization. If this is NULL (default), the user will be directed
 to the default redirection set up in the Slack app.</p></dd>
+
+
 <dt>team_code</dt>
 <dd><p>character, a team code to restrict the user to (in case they
 have multiple Slack teams authorized in their browser).</p></dd>
+
+
 <dt>state</dt>
 <dd><p>character, a code to send to your redirect_uri indicating a
 state. It is recommended to use a non-human-readable format for this
 string.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>character, an authorization URL.</p>
+    
+
+<p>character, an authorization URL.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -119,7 +128,7 @@ is not provided, the function will use the built-in R4DS Slack app.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

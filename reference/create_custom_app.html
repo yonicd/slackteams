@@ -73,21 +73,30 @@ details about using custom Slack Apps.</p>
     <h2>Arguments</h2>
     <dl><dt>app_name</dt>
 <dd><p>character; a name to give to your custom app.</p></dd>
+
+
 <dt>redirect_urls</dt>
 <dd><p>character; urls to which the app can be redirected
 during authentication. We recommend including localhost on a specific port
 (eg, http://127.0.0.1:4242) for testing, and often a shinyapps.io url.</p></dd>
+
+
 <dt>description</dt>
 <dd><p>character; an optional one-sentence description of your
 app. If this parameter is NULL, an adequate description is provided.</p></dd>
+
+
 <dt>long_description</dt>
 <dd><p>character; an optional paragraph (or more) giving
 more details about your app. This field supports markdown. If this
 parameter is NULL, an adequate long description is provided.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The app manifest as an editable R object, invisibly.</p>
+    
+
+<p>The app manifest as an editable R object, invisibly.</p>
     </div>
 
     <div id="ref-examples">
@@ -98,6 +107,9 @@ parameter is NULL, an adequate long description is provided.</p></dd>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Visit https://api.slack.com/apps &amp; Create New App</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Copy/paste this manifest:</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Slack may flag your manifest with the error 'Must provide an array.'</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> If that is still occurring, move the value after : to a new line,</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> indented to the level of the setting, and then add '-'.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _metadata:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   major_version: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   minor_version: 0</span>
@@ -110,15 +122,17 @@ parameter is NULL, an adequate long description is provided.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   description: A custom app for use with the {slackteams} R package.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   background_color: '#000000'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> settings:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   org_deploy_enabled: no</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   socket_mode_enabled: no</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   token_rotation_enabled: no</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   org_deploy_enabled: false</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   socket_mode_enabled: false</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   token_rotation_enabled: false</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> oauth_config:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   redirect_urls:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   - http://127.0.0.1:4242</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   - myapp.shinyapps.io</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     - http://127.0.0.1:4242</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     - myapp.shinyapps.io</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   scopes:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     user: team:read</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     user:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - team:read</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       - channels:read</span>
 </code></pre></div>
     </div>
   </div>
@@ -133,7 +147,7 @@ parameter is NULL, an adequate long description is provided.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

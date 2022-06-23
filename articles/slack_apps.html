@@ -84,19 +84,19 @@
     
 <p>To connect to a Slack workspace using <code><a href="../reference/add_team_interactive.html">add_team_interactive()</a></code> or <code><a href="../reference/add_team_code.html">add_team_code()</a></code>, you need a Slack App. The Slack App must be installed on the Slack workspace. There are two options for this Slack App:</p>
 <ol style="list-style-type: decimal">
-<li>The built-in Slack App for this package, <code>slackteams</code>.</li>
-<li>Your own custom Slack App.</li>
+<li><a href="#builtin">The built-in Slack App for this package, <code>slackteams</code>.</a></li>
+<li><a href="#custom">Your own custom Slack App.</a></li>
 </ol>
 <p>Below we detail how and why you might want to utilize each option.</p>
 <div class="section level2">
-<h2 id="built-in-slackteams-app">Built-in <code>slackteams</code> App<a class="anchor" aria-label="anchor" href="#built-in-slackteams-app"></a>
+<h2 id="builtin">Built-in <code>slackteams</code> App<a class="anchor" aria-label="anchor" href="#builtin"></a>
 </h2>
 <p>By default, <code><a href="../reference/add_team_interactive.html">add_team_interactive()</a></code> uses the built-in app. When you call that function, if the <code>slackteams</code> App is not already installed on your workspace, Slack will prompt you to install it, or to ask your workspace administrator to do so.</p>
 <p>Note that you may wish to carefully refine the <code>scopes</code> requested by the App to minimize what the App can do. It may be valuable to explore the <a href="https://api.slack.com/methods" class="external-link">Slack API methods</a> that you wish to use and/or the documentation of the <a href="https://github.com/yonicd/slackcalls" class="external-link">{slackverse}</a> functions you plan to use to determine a subset of scopes to request. While the App only has access to information that you have permission to view (as the user who authorized it), your workspace administrator will likely appreciate it if you minimize the things the App is approved to do. If you need more scopes in the future, the App will have to be approved again.</p>
 <p>The App requires these scopes, at a minimum (requested by default): <code>"users:read", "channels:read", "groups:read", "im:read",</code> and <code>"mpim:read"</code>. To request additional scopes, use <code>add_team_interactive(scopes = c(&lt;your-scopes&gt;))</code>. A useful set is available via <code>add_team_interactive(scopes = load_scopes(which = "slackverse"))</code>.</p>
 </div>
 <div class="section level2">
-<h2 id="your-own-custom-slack-app">Your own custom Slack App<a class="anchor" aria-label="anchor" href="#your-own-custom-slack-app"></a>
+<h2 id="custom">Your own custom Slack App<a class="anchor" aria-label="anchor" href="#custom"></a>
 </h2>
 <p>For some purposes, you may wish to create your own Slack App.</p>
 <ol style="list-style-type: decimal">
@@ -107,7 +107,7 @@
 <div class="section level3">
 <h3 id="create-the-app">Create the App<a class="anchor" aria-label="anchor" href="#create-the-app"></a>
 </h3>
-<p>To create the Slack App, visit the <a href="https://api.slack.com/apps" class="external-link">Slack API App Page</a>. Choose “Create New App”. The easiest way to create an app is to use the “From an app manifest” token. We can help you build this manifest.</p>
+<p>To create the Slack App, visit the <a href="https://api.slack.com/apps" class="external-link">Slack API App Page</a>. Choose “Create New App”. The easiest way to create an app is to use the “From an app manifest” option. We can help you build this manifest.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_app</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_custom_app.html">create_custom_app</a></span><span class="op">(</span>
   app_name <span class="op">=</span> <span class="st">"myCoolApp"</span>,
@@ -118,6 +118,9 @@
 <span class="op">)</span>
 <span class="co">#&gt; Visit https://api.slack.com/apps &amp; Create New App</span>
 <span class="co">#&gt; Copy/paste this manifest:</span>
+<span class="co">#&gt; Warning in custom_app_yaml(this_app): Slack may flag your manifest with the error 'Must provide an array.'</span>
+<span class="co">#&gt; If that is still occurring, move the value after : to a new line,</span>
+<span class="co">#&gt; indented to the level of the setting, and then add '-'.</span>
 <span class="co">#&gt; _metadata:</span>
 <span class="co">#&gt;   major_version: 1</span>
 <span class="co">#&gt;   minor_version: 0</span>
@@ -130,19 +133,24 @@
 <span class="co">#&gt;   description: A custom app for use with the {slackteams} R package.</span>
 <span class="co">#&gt;   background_color: '#000000'</span>
 <span class="co">#&gt; settings:</span>
-<span class="co">#&gt;   org_deploy_enabled: no</span>
-<span class="co">#&gt;   socket_mode_enabled: no</span>
-<span class="co">#&gt;   token_rotation_enabled: no</span>
+<span class="co">#&gt;   org_deploy_enabled: false</span>
+<span class="co">#&gt;   socket_mode_enabled: false</span>
+<span class="co">#&gt;   token_rotation_enabled: false</span>
 <span class="co">#&gt; oauth_config:</span>
 <span class="co">#&gt;   redirect_urls:</span>
-<span class="co">#&gt;   - http://127.0.0.1:4242</span>
-<span class="co">#&gt;   - https://myaccount.shinyapps.io</span>
+<span class="co">#&gt;     - http://127.0.0.1:4242</span>
+<span class="co">#&gt;     - https://myaccount.shinyapps.io</span>
 <span class="co">#&gt;   scopes:</span>
-<span class="co">#&gt;     user: team:read</span></code></pre></div>
+<span class="co">#&gt;     user:</span>
+<span class="co">#&gt;       - team:read</span>
+<span class="co">#&gt;       - channels:read</span></code></pre></div>
 <p>In addition to printing the manifest to the console, <code><a href="../reference/create_custom_app.html">create_custom_app()</a></code> invisibly returns the app manifest as an R object. If you would like, you can further edit this manifest, and then print it using <code><a href="../reference/custom_app_yaml.html">custom_app_yaml()</a></code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_app</span><span class="op">$</span><span class="va">`_metadata`</span><span class="op">$</span><span class="va">minor_version</span> <span class="op">&lt;-</span> <span class="fl">1L</span>
 <span class="fu"><a href="../reference/custom_app_yaml.html">custom_app_yaml</a></span><span class="op">(</span><span class="va">my_app</span><span class="op">)</span>
+<span class="co">#&gt; Warning in custom_app_yaml(my_app): Slack may flag your manifest with the error 'Must provide an array.'</span>
+<span class="co">#&gt; If that is still occurring, move the value after : to a new line,</span>
+<span class="co">#&gt; indented to the level of the setting, and then add '-'.</span>
 <span class="co">#&gt; _metadata:</span>
 <span class="co">#&gt;   major_version: 1</span>
 <span class="co">#&gt;   minor_version: 1</span>
@@ -155,20 +163,24 @@
 <span class="co">#&gt;   description: A custom app for use with the {slackteams} R package.</span>
 <span class="co">#&gt;   background_color: '#000000'</span>
 <span class="co">#&gt; settings:</span>
-<span class="co">#&gt;   org_deploy_enabled: no</span>
-<span class="co">#&gt;   socket_mode_enabled: no</span>
-<span class="co">#&gt;   token_rotation_enabled: no</span>
+<span class="co">#&gt;   org_deploy_enabled: false</span>
+<span class="co">#&gt;   socket_mode_enabled: false</span>
+<span class="co">#&gt;   token_rotation_enabled: false</span>
 <span class="co">#&gt; oauth_config:</span>
 <span class="co">#&gt;   redirect_urls:</span>
-<span class="co">#&gt;   - http://127.0.0.1:4242</span>
-<span class="co">#&gt;   - https://myaccount.shinyapps.io</span>
+<span class="co">#&gt;     - http://127.0.0.1:4242</span>
+<span class="co">#&gt;     - https://myaccount.shinyapps.io</span>
 <span class="co">#&gt;   scopes:</span>
-<span class="co">#&gt;     user: team:read</span></code></pre></div>
+<span class="co">#&gt;     user:</span>
+<span class="co">#&gt;       - team:read</span>
+<span class="co">#&gt;       - channels:read</span></code></pre></div>
+<p>Copy and paste that manifest into the “Enter app manifest below” step (step 2 of 3) of the app creation dialog (on the <code>YAML</code> tab).</p>
+<p>Follow the dialogs to install it onto your workspace, and then copy the <code>Client ID</code> and <code>Client Secret</code>.</p>
 </div>
 <div class="section level3">
 <h3 id="use-the-app">Use the App<a class="anchor" aria-label="anchor" href="#use-the-app"></a>
 </h3>
-<p>Function in <a href="https://github.com/yonicd/slackteams" class="external-link">slackteams</a> that use a Slack App (<code><a href="../reference/add_team_interactive.html">add_team_interactive()</a></code>, <code><a href="../reference/add_team_code.html">add_team_code()</a></code>, and <code><a href="../reference/auth_url.html">auth_url()</a></code>) consult two environment variables to decide which Slack App to use: <code>SLACK_CLIENT_ID</code> and <code>SLACK_CLIENT_SECRET</code>. If these variable are set, the functions will use the specified Slack App. Otherwise, the functions use the built-in Slack App.</p>
+<p>Functions in <a href="https://github.com/yonicd/slackteams" class="external-link">slackteams</a> that use a Slack App (<code><a href="../reference/add_team_interactive.html">add_team_interactive()</a></code>, <code><a href="../reference/add_team_code.html">add_team_code()</a></code>, and <code><a href="../reference/auth_url.html">auth_url()</a></code>) consult two environment variables to decide which Slack App to use: <code>SLACK_CLIENT_ID</code> and <code>SLACK_CLIENT_SECRET</code>. If these variable are set, the functions will use the specified Slack App. Otherwise, the functions use the built-in Slack App.</p>
 <p>We recommend setting these variables in your <code>.Renviron</code> file.</p>
 </div>
 </div>
@@ -191,7 +203,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer>
