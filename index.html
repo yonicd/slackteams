@@ -78,8 +78,15 @@
 <div class="page-header"><h1 id="slackteams">slackteams<a class="anchor" aria-label="anchor" href="#slackteams"></a>
 </h1></div>
 <!-- badges: start -->
+
 <p><code>slackteams</code> is a part of <code>slackverse</code></p>
-<table class="table"><tbody>
+<table class="table">
+<colgroup>
+<col width="34%">
+<col width="32%">
+<col width="33%">
+</colgroup>
+<tbody>
 <tr class="odd">
 <td align="center"></td>
 <td align="center">slackcalls<br><a href="https://github.com/yonicd/slackcalls" class="external-link"><img src="https://github.com/yonicd/slackcalls/workflows/R-mac/badge.svg"></a>
@@ -106,20 +113,21 @@
 <td align="center">slackreprex<br><a href="https://github.com/yonicd/slackreprex" class="external-link"><img src="https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg"></a>
 </td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><code>slackteams</code> is an <code>R</code> package that allows the user to manage multiple Slack teams during a session.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"yonicd/slackteams"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"yonicd/slackteams"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="tokens">Tokens<a class="anchor" aria-label="anchor" href="#tokens"></a>
 </h2>
 <p>Creating a token is simple using</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This will generate a minimal Slack api token for you to interact with the Slack. For more information on the different permissions the token can take refer to the <a href="https://yonicd.github.io/slackteams/articles/scopes.html" class="external-link">Managing Tokens Vignette</a></p>
 <p>The token team will be created, loaded and activated for you, so you can start working right away. To store this token for future sessions refer to <a href="https://yonicd.github.io/slackteams/articles/manage.html#storing-a-token" class="external-link">Storing A Token</a>.</p>
 </div>
@@ -127,40 +135,40 @@
 <h2 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yonicd/slackteams" class="external-link">slackteams</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yonicd/slackteams" class="external-link">slackteams</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="load-the-teams">Load the teams<a class="anchor" aria-label="anchor" href="#load-the-teams"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/load_teams.html">load_teams</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co"># The following teams are loaded:</span>
-<span class="co">#   slackr, R4ds</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/load_teams.html">load_teams</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co"># The following teams are loaded:</span></span>
+<span><span class="co">#   slackr, R4ds</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="activate-a-team">Activate a Team<a class="anchor" aria-label="anchor" href="#activate-a-team"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/manage_team.html">activate_team</a></span><span class="op">(</span><span class="st">'R4ds'</span><span class="op">)</span>
-<span class="co"># slack environment variables are set to 'R4ds' supplied definitions</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/manage_team.html">activate_team</a></span><span class="op">(</span><span class="st">'R4ds'</span><span class="op">)</span></span>
+<span><span class="co"># slack environment variables are set to 'R4ds' supplied definitions</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="query-active-team-channels">Query Active Team Channels<a class="anchor" aria-label="anchor" href="#query-active-team-channels"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/get_methods.html">get_team_channels</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/get_methods.html">get_team_channels</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="query-active-team-members">Query Active Team Members<a class="anchor" aria-label="anchor" href="#query-active-team-members"></a>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/get_methods.html">get_team_users</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/get_methods.html">get_team_users</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="activate-another-team">Activate Another Team<a class="anchor" aria-label="anchor" href="#activate-another-team"></a>
 </h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/manage_team.html">activate_team</a></span><span class="op">(</span><span class="st">'slackr'</span><span class="op">)</span>
-<span class="co"># slack environment variables are set to 'slackr' supplied definitions</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/manage_team.html">activate_team</a></span><span class="op">(</span><span class="st">'slackr'</span><span class="op">)</span></span>
+<span><span class="co"># slack environment variables are set to 'slackr' supplied definitions</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -212,7 +220,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

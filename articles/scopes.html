@@ -85,12 +85,16 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><code>slackteams</code> uses incoming webhook tokens to interact with the Slack API. There are two main methods to create a token.</p>
+<p><code>slackteams</code> uses incoming webhook tokens to interact with
+the Slack API. There are two main methods to create a token.</p>
 <ol style="list-style-type: decimal">
-<li>Use <code><a href="../reference/add_team_interactive.html">slackteams::add_team_interactive</a></code> to interactively create a token for the R session.</li>
-<li>BYOT (Bring your own token) You are a super user or work at a company that supplied you a token.</li>
+<li>Use <code><a href="../reference/add_team_interactive.html">slackteams::add_team_interactive</a></code> to interactively
+create a token for the R session.</li>
+<li>BYOT (Bring your own token) You are a super user or work at a
+company that supplied you a token.</li>
 </ol>
-<p>Each has their own pros and cons depending on what type of usage you may have</p>
+<p>Each has their own pros and cons depending on what type of usage you
+may have</p>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="16%">
@@ -130,48 +134,64 @@
 <div class="section level3">
 <h3 id="interactive">Interactive<a class="anchor" aria-label="anchor" href="#interactive"></a>
 </h3>
-<p>This is similar to oauth2 implementation you would see in <a href="https://github.com/tidyverse/googlesheets4" class="external-link">googlesheets4</a>. The steps are:</p>
+<p>This is similar to oauth2 implementation you would see in <a href="https://github.com/tidyverse/googlesheets4" class="external-link">googlesheets4</a>. The
+steps are:</p>
 <ol style="list-style-type: decimal">
 <li>Call the function from the <code>R</code> console</li>
 <li>Authorize the creation of the token in a browser.</li>
 <li>Get redirected back to the R console.</li>
 </ol>
 <p>This is by far the easiest method.</p>
-<p>The main piece that the user controls are the <a href="https://api.slack.com/scopes" class="external-link">permission scopes</a> the token has attached to it. To help with this we use a yaml file to allow users to define locally what scopes they want to define. {slackteams} comes with its own yaml file with the scopes that are needed to use all of <code>slackverse</code>.</p>
+<p>The main piece that the user controls are the <a href="https://api.slack.com/scopes" class="external-link">permission scopes</a> the token has
+attached to it. To help with this we use a yaml file to allow users to
+define locally what scopes they want to define. {slackteams} comes with
+its own yaml file with the scopes that are needed to use all of
+<code>slackverse</code>.</p>
 <p><strong>scopes</strong></p>
 <ul>
 <li>
 <code>channels</code>: public channels in the workspace</li>
 <li>
-<code>groups</code>: private channels that your slack app has been added to</li>
+<code>groups</code>: private channels that your slack app has been
+added to</li>
 <li>
 <code>users</code>: people in the workspace</li>
 <li>
-<code>im</code>: direct messages that your slack app has been added to</li>
+<code>im</code>: direct messages that your slack app has been added
+to</li>
 <li>
-<code>mpim</code>: group direct messages that your slack app has been added to</li>
+<code>mpim</code>: group direct messages that your slack app has
+been added to</li>
 <li>
 <code>emoji</code>: custom emoji in the workspace</li>
 <li>
-<code>files</code>: files shared in channels and conversations that your slack app has been added to</li>
+<code>files</code>: files shared in channels and conversations that
+your slack app has been added to</li>
 <li>
 <code>usergroups</code>: user groups in the workspace</li>
 <li>
-<code>chat</code>: messages in approved channels &amp; conversations</li>
+<code>chat</code>: messages in approved channels &amp;
+conversations</li>
 <li>
 <code>team</code>: team metainformation</li>
 </ul>
 <p><strong>permissions</strong></p>
 <ul>
 <li>
-<code>write</code> access mean that you can post content in a scope</li>
+<code>write</code> access mean that you can post content in a
+scope</li>
 <li>
-<code>read</code> access mean that you can view basic information about a scope</li>
+<code>read</code> access mean that you can view basic information
+about a scope</li>
 <li>
-<code>history</code> access mean that you can view messages and other content in a scope</li>
+<code>history</code> access mean that you can view messages and
+other content in a scope</li>
 </ul>
-<p>The following yaml contains a <code>base</code> role which contains only read access permissions and <code>slackverse</code> role containing permissions needed for the packages in <code>slackverse</code>.</p>
-<p>Click the triangle to view the scopes and the permission of each of these roles:</p>
+<p>The following yaml contains a <code>base</code> role which contains
+only read access permissions and <code>slackverse</code> role containing
+permissions needed for the packages in <code>slackverse</code>.</p>
+<p>Click the triangle to view the scopes and the permission of each of
+these roles:</p>
 <details closed><summary><span title="Click to Open"> Scopes </span>
 </summary><div class="sourceCode" id="cb1"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">base</span><span class="kw">:</span></span>
@@ -220,22 +240,25 @@
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> read</span></span></code></pre></div>
 </details><p><br></p>
 <p>The default scope is called by</p>
-<pre><code><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span>
-  scopes <span class="op">=</span> <span class="fu"><a href="../reference/load_scopes.html">load_scopes</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"scopes.yml"</span>, package <span class="op">=</span> <span class="st">"slackteams"</span><span class="op">)</span>,
-    <span class="st">"base"</span>
-  <span class="op">)</span>
-<span class="op">)</span></code></pre>
+<pre><code><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span></span>
+<span>  scopes <span class="op">=</span> <span class="fu"><a href="../reference/load_scopes.html">load_scopes</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"scopes.yml"</span>, package <span class="op">=</span> <span class="st">"slackteams"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"base"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre>
 <p>and corresponds to</p>
-<pre><code><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span>scopes <span class="op">=</span> <span class="fu"><a href="../reference/load_scopes.html">load_scopes</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span>scopes <span class="op">=</span> <span class="fu"><a href="../reference/load_scopes.html">load_scopes</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 <p>To use the <code>slackverse</code> role, use</p>
 <pre><code>slackteams::add_team_interactive(which = "slackverse"))</code></pre>
-<p>It is also possible to define custom roles. To do this, define a scopes file, for example “custom_scopes.yml”, which should have scopes defined following the Slack <a href="https://api.slack.com/scopes" class="external-link">permission scopes</a>. For example</p>
+<p>It is also possible to define custom roles. To do this, define a
+scopes file, for example “custom_scopes.yml”, which should have scopes
+defined following the Slack <a href="https://api.slack.com/scopes" class="external-link">permission scopes</a>. For
+example</p>
 <p><code>{details,details.lang = 'yml',details.summary = 'Custom Scopes',echo= FALSE}` base:   - channels:     - read   - users:     - read   - groups:     - read   - mpim:     - read   - im:     - read   - team:     - read analyze:   - channels:     - read     - history   - users:     - read   - groups:     - read     - history   - mpim:     - read   - im:     - read     - history   - team:     - read   - links:     - read postanalysis:   - channels:     - read   - users:     - read   - groups:     - read   - mpim:     - read   - im:     - write   - team:     - read</code></p>
 <p>The resulting file can then be used, for example as</p>
-<pre><code><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span>
-  scopes <span class="op">=</span> <span class="fu"><a href="../reference/load_scopes.html">load_scopes</a></span><span class="op">(</span><span class="st">"/path/to/custom_scopes.yml"</span>, which <span class="op">=</span> <span class="st">"analyze"</span><span class="op">)</span>
-<span class="op">)</span></code></pre>
+<pre><code><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span></span>
+<span>  scopes <span class="op">=</span> <span class="fu"><a href="../reference/load_scopes.html">load_scopes</a></span><span class="op">(</span><span class="st">"/path/to/custom_scopes.yml"</span>, which <span class="op">=</span> <span class="st">"analyze"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="byot">BYOT<a class="anchor" aria-label="anchor" href="#byot"></a>
@@ -243,7 +266,8 @@
 <p>This is useful if you:</p>
 <ul>
 <li>Have a token that is maintained by your work slack team</li>
-<li>Are an expert user and have your own incoming webhook that you maintain.</li>
+<li>Are an expert user and have your own incoming webhook that you
+maintain.</li>
 </ul>
 </div>
 </div>
@@ -266,7 +290,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

@@ -82,15 +82,21 @@
 
     
     
-<p>Here are the ways you can use <code>slackteams</code> to manage your slack teams.</p>
+<p>Here are the ways you can use <code>slackteams</code> to manage your
+slack teams.</p>
 <div class="section level2">
 <h2 id="interactive">Interactive<a class="anchor" aria-label="anchor" href="#interactive"></a>
 </h2>
 <p>To create a new token in an interactive session:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>This will generate a minimal slack api token for you to interact with the slack. For more information on the different permissions the token can take refer to the <a href="scopes.html">Managing Tokens Vignette</a></p>
-<p>The token team will be created, loaded and activated for you, so you can start working right away. To store this token for future sessions refer to <a href="#storing-a-token">Storing A Token</a>.</p>
+<code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>This will generate a minimal slack api token for you to interact with
+the slack. For more information on the different permissions the token
+can take refer to the <a href="scopes.html">Managing Tokens
+Vignette</a></p>
+<p>The token team will be created, loaded and activated for you, so you
+can start working right away. To store this token for future sessions
+refer to <a href="#storing-a-token">Storing A Token</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="session-persistent">Session Persistent<a class="anchor" aria-label="anchor" href="#session-persistent"></a>
@@ -98,13 +104,20 @@
 <div class="section level3">
 <h3 id="slack_api_token">SLACK_API_TOKEN<a class="anchor" aria-label="anchor" href="#slack_api_token"></a>
 </h3>
-<p>If an environment variable SLACK_API_TOKEN is defined (eg .Renviron) then when the package is loaded or the namespace is attached <code>slackteams</code> will load and activate that team and determine the team name associated with the api token.</p>
+<p>If an environment variable SLACK_API_TOKEN is defined (eg .Renviron)
+then when the package is loaded or the namespace is attached
+<code>slackteams</code> will load and activate that team and determine
+the team name associated with the api token.</p>
 </div>
 <div class="section level3">
 <h3 id="json">JSON<a class="anchor" aria-label="anchor" href="#json"></a>
 </h3>
-<p>The primary method that <code>slackteams</code> loads and activates teams into the session is via a local JSON file. The assumed default location of the JSON file is <code>~/.slackteams</code>.</p>
-<p>The contents of this file can contain multiple teams which you can activate during a session. Each field in the JSON contains the team name and the api token associated with it:</p>
+<p>The primary method that <code>slackteams</code> loads and activates
+teams into the session is via a local JSON file. The assumed default
+location of the JSON file is <code>~/.slackteams</code>.</p>
+<p>The contents of this file can contain multiple teams which you can
+activate during a session. Each field in the JSON contains the team name
+and the api token associated with it:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="er">'team_a'</span><span class="fu">:</span> <span class="er">'TOKEN_A'</span><span class="fu">,</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="er">'team_b'</span><span class="fu">:</span> <span class="er">'TOKEN_B'</span></span>
@@ -113,23 +126,28 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>slackteams<span class="sc">::</span><span class="fu">load_team</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>The following teams are loaded<span class="sc">:</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  team_a, team_b</span></code></pre></div>
-<p>Once the teams are loaded then a team can be activated using <code><a href="../reference/manage_team.html">activate_team()</a></code></p>
+<p>Once the teams are loaded then a team can be activated using
+<code><a href="../reference/manage_team.html">activate_team()</a></code></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>slackteams<span class="sc">::</span><span class="fu">load_team</span>(<span class="st">'team_a'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>slack environment variables are set to <span class="st">'team_a'</span> supplied definitions</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="adding-a-team-within-session">Adding A Team Within Session<a class="anchor" aria-label="anchor" href="#adding-a-team-within-session"></a>
 </h3>
-<p>If you have a JSON file already created and want to add a team api token you can use <code><a href="../reference/manage_team.html">slackteams::add_team</a></code> to manually update the slackteams environment with the new team.</p>
+<p>If you have a JSON file already created and want to add a team api
+token you can use <code><a href="../reference/manage_team.html">slackteams::add_team</a></code> to manually update
+the slackteams environment with the new team.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/manage_team.html">add_team</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">MY_NEW_TEAM</span>, token <span class="op">=</span> <span class="va">token</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/manage_team.html">add_team</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">MY_NEW_TEAM</span>, token <span class="op">=</span> <span class="va">token</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="storing-a-token">Storing a Token<a class="anchor" aria-label="anchor" href="#storing-a-token"></a>
 </h3>
-<p>If you want to store this information in your JSON file you can use, which will either update (teams that exists) or append (new teams) to the local JSON.</p>
+<p>If you want to store this information in your JSON file you can use,
+which will either update (teams that exists) or append (new teams) to
+the local JSON.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/slackteams.html">slackteams</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">PATH_TO_JSON</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="../reference/slackteams.html">slackteams</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">PATH_TO_JSON</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -151,7 +169,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

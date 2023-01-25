@@ -61,12 +61,12 @@ for example, for authorizing a team in a Shiny app.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">auth_url</span><span class="op">(</span>
-  scopes <span class="op">=</span> <span class="fu"><a href="load_scopes.html">load_scopes</a></span><span class="op">(</span><span class="op">)</span>,
-  redirect_uri <span class="op">=</span> <span class="cn">NULL</span>,
-  team_code <span class="op">=</span> <span class="cn">NULL</span>,
-  state <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">auth_url</span><span class="op">(</span></span>
+<span>  scopes <span class="op">=</span> <span class="fu"><a href="load_scopes.html">load_scopes</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  redirect_uri <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  team_code <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  state <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -106,13 +106,13 @@ is not provided, the function will use the built-in R4DS Slack app.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">auth_url</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">auth_url</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922"</span>
-<span class="r-in"><span class="fu">auth_url</span><span class="op">(</span>redirect_uri <span class="op">=</span> <span class="st">"http://127.0.0.1:4242"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">auth_url</span><span class="op">(</span>redirect_uri <span class="op">=</span> <span class="st">"http://127.0.0.1:4242"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922&amp;redirect_uri=http://127.0.0.1:4242"</span>
-<span class="r-in"><span class="fu">auth_url</span><span class="op">(</span>redirect_uri <span class="op">=</span> <span class="st">"http://127.0.0.1:4242"</span>, team_code <span class="op">=</span> <span class="st">"T6UC1DKJQ"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">auth_url</span><span class="op">(</span>redirect_uri <span class="op">=</span> <span class="st">"http://127.0.0.1:4242"</span>, team_code <span class="op">=</span> <span class="st">"T6UC1DKJQ"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922&amp;redirect_uri=http://127.0.0.1:4242&amp;team=T6UC1DKJQ"</span>
-<span class="r-in"><span class="fu">auth_url</span><span class="op">(</span>state <span class="op">=</span> <span class="st">"aabbCCddeeFF"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">auth_url</span><span class="op">(</span>state <span class="op">=</span> <span class="st">"aabbCCddeeFF"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://slack.com/oauth/v2/authorize?user_scope=channels:read,users:read,groups:read,mpim:read,im:read,team:read&amp;client_id=232409461636.994370873922&amp;state=aabbCCddeeFF"</span>
 </code></pre></div>
     </div>
@@ -128,7 +128,7 @@ is not provided, the function will use the built-in R4DS Slack app.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
