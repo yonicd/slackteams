@@ -28,7 +28,12 @@ testthat::describe('converstion info',{
   })
 
   it('convo id',{
-    testthat::expect_equal(res_convo_list$id,c("CNRKL1H6C",  "CNRKL1JLQ","CNTFB9215","D010LH9S7H8","DNRKMTFGD","DNCS5PB7U"  ))
+    # This can vary by user, so let's ignore IMs.
+
+    testthat::expect_equal(
+      res_convo_list$id[!res_convo_list$is_im],
+      c("CNRKL1H6C",  "CNRKL1JLQ", "CNTFB9215")
+    )
   })
 
   it('convo channel count',{
