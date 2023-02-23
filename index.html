@@ -89,28 +89,28 @@
 <tbody>
 <tr class="odd">
 <td align="center"></td>
-<td align="center">slackcalls<br><a href="https://github.com/yonicd/slackcalls" class="external-link"><img src="https://github.com/yonicd/slackcalls/workflows/R-mac/badge.svg"></a>
+<td align="center">slackcalls<br><a href="https://github.com/yonicd/slackcalls" class="external-link"><img src="https://github.com/yonicd/slackcalls/actions/workflows/r-cmd-check.yml/badge.svg"></a>
 </td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td align="center">slackthreads<br><a href="https://github.com/yonicd/slackthreads" class="external-link"><img src="https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg"></a>
+<td align="center">slackthreads<br><a href="https://github.com/yonicd/slackthreads" class="external-link"><img src="https://github.com/yonicd/slackthreads/actions/workflows/r-cmd-check.yml/badge.svg"></a>
 </td>
-<td align="center">slackteams<br><a href="https://github.com/yonicd/slackteams" class="external-link"><img src="https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg"></a>
+<td align="center">slackteams<br><a href="https://github.com/yonicd/slackteams" class="external-link"><img src="https://github.com/yonicd/slackteams/actions/workflows/r-cmd-check.yml/badge.svg"></a>
 </td>
-<td align="center">slackposts<br><a href="https://github.com/yonicd/slackposts" class="external-link"><img src="https://github.com/yonicd/slackposts/workflows/R-mac/badge.svg"></a>
+<td align="center">slackposts<br><a href="https://github.com/yonicd/slackposts" class="external-link"><img src="https://github.com/yonicd/slackposts/actions/workflows/r-cmd-check.yml/badge.svg"></a>
 </td>
 </tr>
 <tr class="odd">
 <td align="center"></td>
 <td align="center"></td>
-<td align="center">slackblocks<br><a href="https://github.com/yonicd/slackblocks" class="external-link"><img src="https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg"></a>
+<td align="center">slackblocks<br><a href="https://github.com/yonicd/slackblocks" class="external-link"><img src="https://github.com/yonicd/slackblocks/actions/workflows/r-cmd-check.yml/badge.svg"></a>
 </td>
 </tr>
 <tr class="even">
 <td align="center"></td>
 <td align="center"></td>
-<td align="center">slackreprex<br><a href="https://github.com/yonicd/slackreprex" class="external-link"><img src="https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg"></a>
+<td align="center">slackreprex<br><a href="https://github.com/yonicd/slackreprex" class="external-link"><img src="https://github.com/yonicd/slackreprex/actions/workflows/r-cmd-check.yml/badge.svg"></a>
 </td>
 </tr>
 </tbody>
@@ -120,7 +120,7 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"yonicd/slackteams"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"yonicd/slackteams"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="tokens">Tokens<a class="anchor" aria-label="anchor" href="#tokens"></a>
@@ -128,8 +128,8 @@
 <p>Creating a token is simple using</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">slackteams</span><span class="fu">::</span><span class="fu"><a href="reference/add_team_interactive.html">add_team_interactive</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>This will generate a minimal Slack api token for you to interact with the Slack. For more information on the different permissions the token can take refer to the <a href="https://yonicd.github.io/slackteams/articles/scopes.html" class="external-link">Managing Tokens Vignette</a></p>
-<p>The token team will be created, loaded and activated for you, so you can start working right away. To store this token for future sessions refer to <a href="https://yonicd.github.io/slackteams/articles/manage.html#storing-a-token" class="external-link">Storing A Token</a>.</p>
+<p>This will generate a minimal Slack api token for you to interact with the Slack. For more information on the different permissions the token can take refer to the <a href="articles/scopes.html">Managing Tokens Vignette</a></p>
+<p>The token team will be created, loaded and activated for you, so you can start working right away. To store this token for future sessions refer to <a href="articles/manage.html#storing-a-token">Storing A Token</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
