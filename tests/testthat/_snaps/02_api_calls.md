@@ -157,7 +157,7 @@
 
     Code
       with_mock_api({
-        convo_members <- get_conversations_members(slack_test_channel)
+        get_conversations_members(slack_test_channel)
       })
     Output
       # A tibble: 2 x 1

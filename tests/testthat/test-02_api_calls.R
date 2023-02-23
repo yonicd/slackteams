@@ -85,8 +85,7 @@ test_that("Channel info loads", {
 
   expect_snapshot(
     with_mock_api({
-      convo_members <- get_conversations_members(slack_test_channel)
-    }),
-    NA
+      get_conversations_members(slack_test_channel)
+    })
   )
 })
