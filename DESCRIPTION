@@ -30,10 +30,13 @@ Imports:
     yaml,
     slackcalls
 Suggests: 
-    testthat,
+    covr,
+    details,
+    httptest,
     knitr,
     rmarkdown,
-    details
+    testthat (>= 2.1.0),
+    withr
 Remotes: yonicd/slackcalls
 Encoding: UTF-8
 LazyData: true
