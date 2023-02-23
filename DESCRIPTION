@@ -30,7 +30,7 @@ Imports:
     yaml,
     slackcalls
 Suggests: 
-    testthat (>= 3.0.0),
+    testthat,
     knitr,
     rmarkdown,
     details
@@ -40,4 +40,3 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
 VignetteBuilder: knitr
-Config/testthat/edition: 3
