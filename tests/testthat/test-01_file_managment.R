@@ -1,94 +1,115 @@
-testthat::context('team management')
+# Set up tests. ---------------------------------------------------------------
+# While this *could* go into a setup.R file, that makes interactive testing
+# annoying. I compromised and put it in a collapsible block at the top of each
+# test file.
 
-testthat::describe('no active team',{
+# To test the API:
 
-  it('get_team_creds',{
-    testthat::expect_error(
-      get_team_creds(),
-      'No active team'
-    )
-  })
+# Sys.setenv(SLACK_API_TEST_MODE = "true")
 
-  it('get_team_users',{
-    testthat::expect_error(
-      get_team_users(),
-      'No active team'
-    )
-  })
+# To capture test data:
 
-  it('validate team missing teams error',{
-    testthat::expect_error(
-      slackteams:::validate_team('foo'),
-      'teams are not loaded'
-    )
-  })
+# Sys.setenv(SLACK_API_TEST_MODE = "capture")
 
+# To go back to a "normal" mode:
+
+# Sys.unsetenv("SLACK_API_TEST_MODE")
+
+slack_api_test_mode <- Sys.getenv("SLACK_API_TEST_MODE")
+withr::defer(rm(slack_api_test_mode))
+
+library(httptest)
+
+# All tests use #slack-r on slackr-test (or a mocked version of it).
+slack_test_channel <- "CNTFB9215"
+withr::defer(rm(slack_test_channel))
+
+if (slack_api_test_mode == "true" || slack_api_test_mode == "capture") {
+  # In these modes we need a real API token. If one isn't set, this should throw
+  # an error right away.
+  if (Sys.getenv("SLACK_API_TOKEN") == "") {
+    stop(
+      "No SLACK_API_TOKEN available, cannot test. \n",
+      "Unset SLACK_API_TEST_MODE to use mock.")
+  }
+
+  if (slack_api_test_mode == "true") {
+    # Override the main mock function from httptest, so we use the real API.
+    with_mock_api <- force
+  } else {
+    # This tricks httptest into capturing results instead of actually testing.
+    with_mock_api <- httptest::capture_requests
+  }
+  withr::defer(rm(with_mock_api))
+}
+
+# Tests. -----------------------------------------------------------------------
+
+test_that("No active team reported gracefully", {
+  # None of these will hit the api, so no need to mock.
+  expect_error(
+    get_team_creds(),
+    'No active team'
+  )
+  expect_error(
+    get_team_users(),
+    'No active team'
+  )
+  expect_error(
+    validate_team('foo'),
+    'teams are not loaded'
+  )
 })
 
-add_team(team = 'slackr', token = Sys.getenv('SLACK_API_TOKEN'))
+test_that("Loading and saving a team works", {
+  add_team(team = "slackr", token = Sys.getenv('SLACK_API_TOKEN'))
 
-testthat::describe('load team',{
+  expect_error(
+    validate_team('foo'),
+    "team 'foo' not in loaded"
+  )
 
-  it('validate team bad name error',{
-    testthat::expect_error(
-      slackteams:::validate_team('foo'),
-      "team 'foo' not in loaded"
-    )
-  })
+  expect_message(
+    activate_team("slackr"),
+    "variables are set to 'slackr'"
+  )
 
-  it('activate team',{
-    testthat::expect_message(
-      activate_team('slackr'),
-      regexp = "variables are set to 'slackr'")
-  })
+  path <- withr::local_tempfile()
+  expect_error(slackteams(path), NA)
+  expect_true(file.exists(path))
 
-  it('slackteams to json',{
-    slackteams('test_team')
-    testthat::expect_true(
-      file.exists('test_team')
-    )
-  })
+  expect_message(
+    load_teams(file = path),
+    "slackr"
+  )
 
-  it('slackteams to dcf',{
-    testthat::expect_message(
-      load_teams(file = 'test_team'),
-      regexp = 'slackr')
-  })
+  expect_identical(
+    get_teams(),
+    "slackr"
+  )
 
-  it('get teams',{
-    testthat::expect_equal(
-      slackteams::get_teams(),
-      c('slackr')
-    )
-  })
-
-  it('cached slack creds token',{
-    testthat::expect_true(
-      grepl('^xoxp',slackteams:::.slack$teams$slackr)
-    )
-  })
-
+  expect_identical(
+    .slack$teams$slackr,
+    Sys.getenv('SLACK_API_TOKEN')
+  )
 })
 
-testthat::describe('active team channel info',{
+test_that("Channel info loads for active team", {
+  expect_error(
+    with_mock_api({
+      channels <- get_team_channels(get_active_team())
+    }),
+    NA
+  )
 
-  chnls <- get_team_channels(get_active_team())
+  valid_channel <- validate_channel("random")
 
-  chnl <- slackteams::validate_channel('random')
-
-  it('validate channel',{
-    testthat::expect_equal(chnl, "CNRKL1JLQ")
-  })
-
-  it('validate channel id',{
-    testthat::expect_equal(slackteams::validate_channel(chnl),chnl)
-  })
-
-  it('validate bad channel',{
-    testthat::expect_error(slackteams::validate_channel('foo'),regexp = 'Unknown channel')
-  })
-
+  expect_identical(valid_channel, "CNRKL1JLQ")
+  expect_identical(
+    validate_channel(valid_channel), valid_channel
+  )
+  expect_error(
+    validate_channel("foo"),
+    "Unknown channel"
+  )
 })
-
-unlink('test_team')
-

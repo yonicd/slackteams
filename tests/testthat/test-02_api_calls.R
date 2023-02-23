@@ -1,60 +1,92 @@
-testthat::context('API calls')
+# Set up tests. ---------------------------------------------------------------
+# While this *could* go into a setup.R file, that makes interactive testing
+# annoying. I compromised and put it in a collapsible block at the top of each
+# test file.
 
-res_users_list <- slackteams:::get_users_list()
-res_convo_list <- slackteams::get_conversations_list()
+# To test the API:
 
-test_chnl         <- res_convo_list$id[which(res_convo_list$name=='slack-r')]
+# Sys.setenv(SLACK_API_TEST_MODE = "true")
 
-convo_info <- slackteams:::get_conversations_info(test_chnl)
+# To capture test data:
 
-convo_members <- slackteams:::get_conversations_members(test_chnl)
+# Sys.setenv(SLACK_API_TEST_MODE = "capture")
 
-testthat::describe('team info',{
+# To go back to a "normal" mode:
 
-  it('class',{
-    testthat::expect_s3_class(res_users_list,'data.frame')
-  })
+# Sys.unsetenv("SLACK_API_TEST_MODE")
 
-  it('user names',{
-    testthat::expect_equal(res_users_list$name,c('slackbot','yonicd','jonthegeek'))
-  })
+slack_api_test_mode <- Sys.getenv("SLACK_API_TEST_MODE")
+withr::defer(rm(slack_api_test_mode))
 
+library(httptest)
+
+# All tests use #slack-r on slackr-test (or a mocked version of it).
+slack_test_channel <- "CNTFB9215"
+withr::defer(rm(slack_test_channel))
+
+if (slack_api_test_mode == "true" || slack_api_test_mode == "capture") {
+  # In these modes we need a real API token. If one isn't set, this should throw
+  # an error right away.
+  if (Sys.getenv("SLACK_API_TOKEN") == "") {
+    stop(
+      "No SLACK_API_TOKEN available, cannot test. \n",
+      "Unset SLACK_API_TEST_MODE to use mock.")
+  }
+
+  if (slack_api_test_mode == "true") {
+    # Override the main mock function from httptest, so we use the real API.
+    with_mock_api <- force
+  } else {
+    # This tricks httptest into capturing results instead of actually testing.
+    with_mock_api <- httptest::capture_requests
+  }
+  withr::defer(rm(with_mock_api))
+}
+
+# Tests. -----------------------------------------------------------------------
+
+test_that("User list loads", {
+  expect_snapshot(
+    with_mock_api({
+      get_users_list()
+    })
+  )
 })
 
-testthat::describe('converstion info',{
+test_that("Channel info loads", {
+  # We can't just use snapshots here, because different valid users in capture
+  # mode can get different IM results.
 
-  it('class',{
-    testthat::expect_s3_class(res_convo_list,'data.frame')
-  })
+  expect_error(
+    with_mock_api({
+      res_convo_list <- get_conversations_list()
+    }),
+    NA
+  )
 
-  it('convo id',{
-    # This can vary by user, so let's ignore IMs.
+  # Get rid of the bits that can change.
+  res_convo_list <- res_convo_list[!res_convo_list$is_im, ]
+  res_convo_list$updated <- NULL
 
-    testthat::expect_equal(
-      res_convo_list$id[!res_convo_list$is_im],
-      c("CNRKL1H6C",  "CNRKL1JLQ", "CNTFB9215")
-    )
-  })
+  expect_snapshot(res_convo_list)
 
-  it('convo channel count',{
-    testthat::expect_equal(sum(res_convo_list$is_channel,na.rm = TRUE),3)
-  })
+  expect_error(
+    with_mock_api({
+      convo_info <- get_conversations_info(slack_test_channel)
+    }),
+    NA
+  )
 
-  it('convo im count',{
-    testthat::expect_equal(sum(res_convo_list$is_im,na.rm = TRUE),3)
-  })
+  # Get rid of the bits that can change.
+  convo_info$channel$last_read <- NULL
+  convo_info$channel$updated <- NULL
 
-  it('convo members',{
-    testthat::expect_equal(convo_members$value,c('UNTFB8LTH','U0111B8S0LX'))
-  })
+  expect_snapshot(convo_info)
 
-  it('convo info class',{
-    testthat::expect_s3_class(convo_info,'conversations.info')
-  })
-
-  it('convo info id',{
-    testthat::expect_equal(convo_info$channel$id,'CNTFB9215')
-  })
-
+  expect_snapshot(
+    with_mock_api({
+      convo_members <- get_conversations_members(slack_test_channel)
+    }),
+    NA
+  )
 })
-
