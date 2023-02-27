@@ -44,7 +44,8 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           Rscript -e 'pak::pkg_install("hadley/emo")' \
-                  -e 'pak::pkg_install("yonicd/covrpage@actions")' \
+                  -e 'pak::pkg_install("yonicd/covrpage")' \
+                  -e 'pak::local_install()' \
                   -e 'covrpage::covrpage_ci()'
           git commit tests/README.md -m 'Update tests/README.md' || echo "No changes to commit"
           git commit README.Rmd -m 'Update README.Rmd' || echo "No changes to commit"
