@@ -1,9 +1,9 @@
 Tests and Coverage
 ================
-23 February, 2023 11:57:14
+27 February, 2023 20:28:12
 
-- <a href="#coverage" id="toc-coverage">Coverage</a>
-- <a href="#unit-tests" id="toc-unit-tests">Unit Tests</a>
+  - [Coverage](#coverage)
+  - [Unit Tests](#unit-tests)
 
 This output is created by
 [covrpage](https://github.com/yonicd/covrpage).
@@ -13,23 +13,23 @@ This output is created by
 Coverage summary is created using the
 [covr](https://github.com/r-lib/covr) package.
 
-| Object                                          | Coverage (%) |
-|:------------------------------------------------|:------------:|
-| slackteams                                      |    35.15     |
-| [R/custom_app.R](../R/custom_app.R)             |     0.00     |
-| [R/scope_management.R](../R/scope_management.R) |     0.00     |
-| [R/set_methods.R](../R/set_methods.R)           |     0.00     |
-| [R/utils.R](../R/utils.R)                       |     0.00     |
-| [R/zzz.R](../R/zzz.R)                           |     0.00     |
-| [R/team_management.R](../R/team_management.R)   |     9.47     |
-| [R/get_methods.R](../R/get_methods.R)           |    35.42     |
-| [R/tidy_slack.R](../R/tidy_slack.R)             |    36.36     |
-| [R/api.R](../R/api.R)                           |    81.82     |
-| [R/file_management.R](../R/file_management.R)   |    86.67     |
-| [R/clean.R](../R/clean.R)                       |    100.00    |
-| [R/env.R](../R/env.R)                           |    100.00    |
-| [R/has_methods.R](../R/has_methods.R)           |    100.00    |
-| [R/validate.R](../R/validate.R)                 |    100.00    |
+| Object                                           | Coverage (%) |
+| :----------------------------------------------- | :----------: |
+| slackteams                                       |    35.15     |
+| [R/custom\_app.R](../R/custom_app.R)             |     0.00     |
+| [R/scope\_management.R](../R/scope_management.R) |     0.00     |
+| [R/set\_methods.R](../R/set_methods.R)           |     0.00     |
+| [R/utils.R](../R/utils.R)                        |     0.00     |
+| [R/zzz.R](../R/zzz.R)                            |     0.00     |
+| [R/team\_management.R](../R/team_management.R)   |     9.47     |
+| [R/get\_methods.R](../R/get_methods.R)           |    35.42     |
+| [R/tidy\_slack.R](../R/tidy_slack.R)             |    36.36     |
+| [R/api.R](../R/api.R)                            |    81.82     |
+| [R/file\_management.R](../R/file_management.R)   |    86.67     |
+| [R/clean.R](../R/clean.R)                        |    100.00    |
+| [R/env.R](../R/env.R)                            |    100.00    |
+| [R/has\_methods.R](../R/has_methods.R)           |    100.00    |
+| [R/validate.R](../R/validate.R)                  |    100.00    |
 
 <br>
 
@@ -38,47 +38,47 @@ Coverage summary is created using the
 Unit Test summary is created using the
 [testthat](https://github.com/r-lib/testthat) package.
 
-| file                                                          |   n | time | error | failed | skipped | warning |
-|:--------------------------------------------------------------|----:|-----:|------:|-------:|--------:|--------:|
-| [test-01_file_managment.R](testthat/test-01_file_managment.R) |  14 | 0.76 |     0 |      0 |       0 |       0 |
-| [test-02_api_calls.R](testthat/test-02_api_calls.R)           |  21 | 0.50 |     0 |      0 |       0 |       0 |
-| [test-03_has_methods.R](testthat/test-03_has_methods.R)       |   1 | 0.01 |     0 |      0 |       0 |       0 |
+| file                                                            |  n |  time | error | failed | skipped | warning |
+| :-------------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R) | 14 | 0.390 |     0 |      0 |       0 |       0 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R)           | 21 | 0.274 |     0 |      0 |       0 |       0 |
+| [test-03\_has\_methods.R](testthat/test-03_has_methods.R)       |  1 | 0.005 |     0 |      0 |       0 |       0 |
 
 <details closed>
-<summary>
-Show Detailed Test Results
-</summary>
 
-| file                                                                   | context           | test                               | status |   n | time |
-|:-----------------------------------------------------------------------|:------------------|:-----------------------------------|:-------|----:|-----:|
-| [test-01_file_managment.R](testthat/test-01_file_managment.R#L50_L53)  | 01_file_managment | No active team reported gracefully | PASS   |   3 | 0.04 |
-| [test-01_file_managment.R](testthat/test-01_file_managment.R#L67_L70)  | 01_file_managment | Loading and saving a team works    | PASS   |   7 | 0.03 |
-| [test-01_file_managment.R](testthat/test-01_file_managment.R#L98_L103) | 01_file_managment | Channel info loads for active team | PASS   |   4 | 0.69 |
-| [test-02_api_calls.R](testthat/test-02_api_calls.R#L49_L54)            | 02_api_calls      | User list loads                    | PASS   |   5 | 0.11 |
-| [test-02_api_calls.R](testthat/test-02_api_calls.R#L84_L89)            | 02_api_calls      | Conversation list loads            | PASS   |   5 | 0.14 |
-| [test-02_api_calls.R](testthat/test-02_api_calls.R#L119_L124)          | 02_api_calls      | Convo info loads                   | PASS   |   6 | 0.15 |
-| [test-02_api_calls.R](testthat/test-02_api_calls.R#L157_L162)          | 02_api_calls      | Convo members load                 | PASS   |   5 | 0.10 |
-| [test-03_has_methods.R](testthat/test-03_has_methods.R#L5)             | 03_has_methods    | Can check for active team.         | PASS   |   1 | 0.01 |
+<summary> Show Detailed Test Results </summary>
+
+| file                                                                     | context             | test                               | status | n |  time |
+| :----------------------------------------------------------------------- | :------------------ | :--------------------------------- | :----- | -: | ----: |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L50_L53)  | 01\_file\_managment | No active team reported gracefully | PASS   | 3 | 0.111 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L67_L70)  | 01\_file\_managment | Loading and saving a team works    | PASS   | 7 | 0.027 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L98_L103) | 01\_file\_managment | Channel info loads for active team | PASS   | 4 | 0.252 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L49_L54)            | 02\_api\_calls      | User list loads                    | PASS   | 5 | 0.072 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L84_L89)            | 02\_api\_calls      | Conversation list loads            | PASS   | 5 | 0.099 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L119_L124)          | 02\_api\_calls      | Convo info loads                   | PASS   | 6 | 0.056 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L157_L162)          | 02\_api\_calls      | Convo members load                 | PASS   | 5 | 0.047 |
+| [test-03\_has\_methods.R](testthat/test-03_has_methods.R#L5)             | 03\_has\_methods    | Can check for active team.         | PASS   | 1 | 0.005 |
 
 </details>
-<details>
-<summary>
-Session Info
-</summary>
 
-| Field    | Value                             |
-|:---------|:----------------------------------|
-| Version  | R version 4.2.2 (2022-10-31 ucrt) |
-| Platform | x86_64-w64-mingw32/x64 (64-bit)   |
-| Running  | Windows 10 x64 (build 22621)      |
-| Language | English_United States             |
-| Timezone | America/Chicago                   |
+<details>
+
+<summary> Session Info </summary>
+
+| Field    | Value                         |                                                                                                                                                                                                                                                                    |
+| :------- | :---------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Version  | R version 4.2.2 (2022-10-31)  |                                                                                                                                                                                                                                                                    |
+| Platform | x86\_64-pc-linux-gnu (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/1e4c5046e1e49221a4b598c5fcb1c0fa7fd87031/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
+| Running  | Ubuntu 22.04.2 LTS            |                                                                                                                                                                                                                                                                    |
+| Language | C                             |                                                                                                                                                                                                                                                                    |
+| Timezone | UTC                           |                                                                                                                                                                                                                                                                    |
 
 | Package  | Version |
-|:---------|:--------|
+| :------- | :------ |
 | testthat | 3.1.6   |
 | covr     | 3.6.1   |
 | covrpage | 0.2     |
 
 </details>
+
 <!--- Final Status : pass --->
