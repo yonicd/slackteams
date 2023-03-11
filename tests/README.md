@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-27 February, 2023 20:28:12
+11 March, 2023 16:35:27
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -40,9 +40,9 @@ Unit Test summary is created using the
 
 | file                                                            |  n |  time | error | failed | skipped | warning |
 | :-------------------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R) | 14 | 0.390 |     0 |      0 |       0 |       0 |
-| [test-02\_api\_calls.R](testthat/test-02_api_calls.R)           | 21 | 0.274 |     0 |      0 |       0 |       0 |
-| [test-03\_has\_methods.R](testthat/test-03_has_methods.R)       |  1 | 0.005 |     0 |      0 |       0 |       0 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R) | 14 | 0.558 |     0 |      0 |       0 |       0 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R)           | 21 | 0.366 |     0 |      0 |       0 |       0 |
+| [test-03\_has\_methods.R](testthat/test-03_has_methods.R)       |  1 | 0.006 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
@@ -50,14 +50,14 @@ Unit Test summary is created using the
 
 | file                                                                     | context             | test                               | status | n |  time |
 | :----------------------------------------------------------------------- | :------------------ | :--------------------------------- | :----- | -: | ----: |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L50_L53)  | 01\_file\_managment | No active team reported gracefully | PASS   | 3 | 0.111 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L67_L70)  | 01\_file\_managment | Loading and saving a team works    | PASS   | 7 | 0.027 |
-| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L98_L103) | 01\_file\_managment | Channel info loads for active team | PASS   | 4 | 0.252 |
-| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L49_L54)            | 02\_api\_calls      | User list loads                    | PASS   | 5 | 0.072 |
-| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L84_L89)            | 02\_api\_calls      | Conversation list loads            | PASS   | 5 | 0.099 |
-| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L119_L124)          | 02\_api\_calls      | Convo info loads                   | PASS   | 6 | 0.056 |
-| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L157_L162)          | 02\_api\_calls      | Convo members load                 | PASS   | 5 | 0.047 |
-| [test-03\_has\_methods.R](testthat/test-03_has_methods.R#L5)             | 03\_has\_methods    | Can check for active team.         | PASS   | 1 | 0.005 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L50_L53)  | 01\_file\_managment | No active team reported gracefully | PASS   | 3 | 0.172 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L67_L70)  | 01\_file\_managment | Loading and saving a team works    | PASS   | 7 | 0.034 |
+| [test-01\_file\_managment.R](testthat/test-01_file_managment.R#L98_L103) | 01\_file\_managment | Channel info loads for active team | PASS   | 4 | 0.352 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L49_L54)            | 02\_api\_calls      | User list loads                    | PASS   | 5 | 0.088 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L84_L89)            | 02\_api\_calls      | Conversation list loads            | PASS   | 5 | 0.105 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L119_L124)          | 02\_api\_calls      | Convo info loads                   | PASS   | 6 | 0.089 |
+| [test-02\_api\_calls.R](testthat/test-02_api_calls.R#L157_L162)          | 02\_api\_calls      | Convo members load                 | PASS   | 5 | 0.084 |
+| [test-03\_has\_methods.R](testthat/test-03_has_methods.R#L5)             | 03\_has\_methods    | Can check for active team.         | PASS   | 1 | 0.006 |
 
 </details>
 
@@ -68,7 +68,7 @@ Unit Test summary is created using the
 | Field    | Value                         |                                                                                                                                                                                                                                                                    |
 | :------- | :---------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Version  | R version 4.2.2 (2022-10-31)  |                                                                                                                                                                                                                                                                    |
-| Platform | x86\_64-pc-linux-gnu (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/1e4c5046e1e49221a4b598c5fcb1c0fa7fd87031/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
+| Platform | x86\_64-pc-linux-gnu (64-bit) | <a href="https://github.com/yonicd/slackteams/commit/117caa79bf9291ac5cc6c6c440bf832ac174159a/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
 | Running  | Ubuntu 22.04.2 LTS            |                                                                                                                                                                                                                                                                    |
 | Language | C                             |                                                                                                                                                                                                                                                                    |
 | Timezone | UTC                           |                                                                                                                                                                                                                                                                    |
